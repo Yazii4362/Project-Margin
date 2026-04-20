@@ -218,19 +218,6 @@
               transform 0.48s cubic-bezier(0.22,1,0.36,1);
 }
 
-/* 편지지 줄 */
-.card-opened::before {
-  content: '';
-  position: absolute;
-  top: 76px; left: 28px; right: 28px; bottom: 30px;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0px, transparent 31px,
-    rgba(180,160,140,0.14) 31px, rgba(180,160,140,0.14) 32px
-  );
-  pointer-events: none;
-}
-
 .letter-name {
   font-family: var(--font-display);
   font-size: 19px;
@@ -239,16 +226,6 @@
   margin-bottom: 18px;
   position: relative;
   z-index: 1;
-}
-
-.letter-name::after {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: var(--color-red);
-  border-radius: 2px;
-  margin-top: 7px;
 }
 
 .letter-msg {
@@ -312,10 +289,6 @@
 
 .card--special .letter-name {
   color: #f0e8d0;
-}
-
-.card--special .letter-name::after {
-  background: #f5c842;
 }
 
 .card--special .letter-msg {

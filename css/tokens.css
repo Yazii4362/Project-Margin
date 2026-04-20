@@ -1,6 +1,13 @@
 @font-face {
-  font-family: 'EarlySummerFloweringTree';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/Asummerflowertree-Bold.woff2') format('woff2');
+  font-family: 'SinchonRhapsody';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2503@1.0/SinchonRhapsody.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DoolgiMayoGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
   font-weight: normal;
   font-display: swap;
 }
@@ -24,8 +31,8 @@
   --frame-shadow:    0 4px 24px rgba(60, 40, 20, 0.13);
 
   /* ── Typography ── */
-  --font-display:    'EarlySummerFloweringTree', 'Playfair Display', serif;
-  --font-body:       'Cormorant Garamond', serif;
+  --font-display:    'SinchonRhapsody', 'Playfair Display', serif;
+  --font-body:       'DoolgiMayoGothic', 'Cormorant Garamond', serif;
   --font-label:      'Montserrat', sans-serif;
 
   /* ── Font Scale ── */
