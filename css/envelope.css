@@ -1,0 +1,187 @@
+#envelope {
+  background-color: var(--color-bg);
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+.envelope-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-10);
+}
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 210px;
+  cursor: pointer;
+  transition: transform var(--dur-normal) var(--ease);
+}
+
+.envelope:hover {
+  transform: translateY(-6px);
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #fffcf8 0%, #f0e8dc 100%);
+  border: 1px solid rgba(255,255,255,0.90);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px  8px  rgba(26,22,18,0.05),
+    0 12px 40px rgba(26,22,18,0.09),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+  overflow: visible;
+}
+
+/* 대각선 접힘 광택 */
+.envelope-body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg,
+    rgba(220,210,195,0.45) 0%,
+    transparent 48%,
+    rgba(220,210,195,0.22) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── 왁스 씰 ── */
+.envelope-seal {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%,
+    #ff7a68 0%,
+    #ff5a45 45%,
+    #d93a28 100%
+  );
+  box-shadow:
+    0 2px  4px  rgba(180,40,20,0.25),
+    0 6px  18px rgba(180,40,20,0.30),
+    0 12px 28px rgba(180,40,20,0.18),
+    inset 0 1px 0 rgba(255,200,180,0.50),
+    inset 0 -2px 4px rgba(140,20,10,0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.2s ease;
+}
+
+/* 씰 내부 링 */
+.envelope-seal::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,200,180,0.40);
+}
+
+/* 씰 별 */
+.seal-star {
+  font-size: 16px;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.20);
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* hover — 살짝 들뜨는 느낌 */
+.envelope:not(.peeling):hover .envelope-seal {
+  transform: translateX(-50%) translateY(-3px) rotate(8deg);
+  box-shadow:
+    0 4px  8px  rgba(180,40,20,0.22),
+    0 10px 28px rgba(180,40,20,0.28),
+    0 18px 40px rgba(180,40,20,0.15),
+    inset 0 1px 0 rgba(255,200,180,0.50),
+    inset 0 -2px 4px rgba(140,20,10,0.30);
+}
+
+/* ── 씰 떼기 애니메이션 ── */
+@keyframes seal-peel {
+  0%   { transform: translateX(-50%) translateY(0)    rotate(0deg)   scale(1);    opacity: 1; }
+  30%  { transform: translateX(-50%) translateY(-18px) rotate(-15deg) scale(1.12); opacity: 1; }
+  60%  { transform: translateX(-30%) translateY(-40px) rotate(-30deg) scale(1.08); opacity: 0.9; }
+  100% { transform: translateX(60%)  translateY(120px) rotate(45deg)  scale(0.7);  opacity: 0; }
+}
+
+.envelope.peeling .envelope-seal {
+  animation: seal-peel 0.65s cubic-bezier(0.4, 0, 0.8, 0.6) forwards;
+  pointer-events: none;
+}
+
+/* 씰 떼진 후 자국 */
+@keyframes seal-mark-in {
+  from { opacity: 0; transform: translateX(-50%) scale(0.7); }
+  to   { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+.envelope-seal-mark {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%,
+    rgba(200,80,60,0.18) 0%,
+    rgba(180,60,40,0.10) 60%,
+    transparent 100%
+  );
+  border: 1px dashed rgba(200,80,60,0.25);
+  pointer-events: none;
+  z-index: 9;
+  animation: seal-mark-in 0.3s ease forwards;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105px;
+  background: linear-gradient(180deg, #e8ddd0 0%, #ddd0c0 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 85%);
+  z-index: 2;
+  transform-origin: top center;
+  transition: transform var(--dur-slow) var(--ease);
+  box-shadow: 0 2px 8px rgba(26,22,18,0.08);
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-text {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+.envelope-hint {
+  font-family: var(--font-label);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-faint);
+}

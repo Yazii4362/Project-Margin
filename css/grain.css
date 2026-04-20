@@ -1,0 +1,63 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   GRAIN TEXTURE SYSTEM
+   전역 0.10 / 카드 0.22 / 애니메이션 10s
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── SVG noise 두 벌 (위상 다르게) ── */
+/* grain-a: baseFrequency 0.65 */
+/* grain-b: baseFrequency 0.80 — 카드용 */
+
+/* ── 1. 전역 그레인 오버레이 ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: -30%;          /* 애니메이션 여백 */
+  width: 160%;
+  height: 160%;
+  pointer-events: none;
+  z-index: 9999;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 280px 280px;
+
+  opacity: 0.10;
+  mix-blend-mode: multiply;
+
+  animation: grain-drift 10s steps(1) infinite;
+  will-change: transform;
+}
+
+/* ── 2. 애니메이션 — 아주 느리게, 1px 단위 이동 ── */
+@keyframes grain-drift {
+   0% { transform: translate(0px,   0px);  }
+  10% { transform: translate(-2px,  1px);  }
+  20% { transform: translate(1px,  -2px);  }
+  30% { transform: translate(-1px,  2px);  }
+  40% { transform: translate(2px,   1px);  }
+  50% { transform: translate(-1px, -1px);  }
+  60% { transform: translate(1px,   2px);  }
+  70% { transform: translate(-2px, -1px);  }
+  80% { transform: translate(2px,  -2px);  }
+  90% { transform: translate(-1px,  1px);  }
+ 100% { transform: translate(0px,   0px);  }
+}
+
+/* ── 3. 카드 레벨 그레인 ── */
+/* .card-grain 은 carousel.css 에 이미 존재하므로
+   여기서 값만 오버라이드 */
+.card-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+}
+
+/* ── 4. 소프트 컬러 틴트 (카드 배경 이미지 위) ── */
+.card-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(210, 185, 155, 0.10);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
