@@ -12,6 +12,7 @@
   gap: var(--sp-6);
   text-align: center;
   padding: var(--sp-24);
+  cursor: pointer;
 }
 
 .splash-label {

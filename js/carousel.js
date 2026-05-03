@@ -1,18 +1,18 @@
 (function () {
   /* ─── CONFIG ─── */
-  const OFFSET   = 328;
+  const OFFSET = 328;
   const SWIPE_TH = 50;
-  const EASE     = 'cubic-bezier(0.22, 1, 0.36, 1)';
+  const EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
   /* ─── STATE ─── */
-  let cur        = 0;
-  let total      = 0;
-  let expanded   = false;
-  let dragging   = false;
-  let didDrag    = false;
-  let startX     = 0;
-  let $cards     = null;
-  let hintShown  = false;
+  let cur = 0;
+  let total = 0;
+  let expanded = false;
+  let dragging = false;
+  let didDrag = false;
+  let startX = 0;
+  let $cards = null;
+  let hintShown = false;
 
   /* ─── BUILD ─── */
   function build() {
@@ -53,7 +53,7 @@
     place(false);
 
     // 첫 진입 스와이프 힌트
-    setTimeout(swipeHint, 800);
+    setTimeout(swipeHint, 2000);
   }
 
   /* ─── SWIPE HINT ─── */
@@ -73,22 +73,22 @@
       if (expanded && $(this).hasClass('is-open')) return;
 
       let rel = i - cur;
-      if (rel >  half) rel -= total;
+      if (rel > half) rel -= total;
       if (rel < -half) rel += total;
 
-      const x   = rel * OFFSET + (drag || 0);
+      const x = rel * OFFSET + (drag || 0);
       const abs = Math.abs(rel);
 
       $(this).removeClass('is-active is-prev is-next is-far');
-      if      (rel === 0)  $(this).addClass('is-active');
+      if (rel === 0) $(this).addClass('is-active');
       else if (rel === -1) $(this).addClass('is-prev');
-      else if (rel ===  1) $(this).addClass('is-next');
-      else                 $(this).addClass('is-far');
+      else if (rel === 1) $(this).addClass('is-next');
+      else $(this).addClass('is-far');
 
       $(this).css({
         transition: anim ? `transform 0.65s ${EASE}, opacity 0.5s ${EASE}, filter 0.5s ${EASE}` : 'none',
-        transform : `translateX(${x}px)`,
-        zIndex    : total - abs
+        transform: `translateX(${x}px)`,
+        zIndex: total - abs
       });
     });
 
@@ -115,8 +115,8 @@
     const $c = $cards.filter('.is-active');
     $c.addClass('is-open').css({
       transition: `transform 0.65s ${EASE}`,
-      transform : 'translateX(0px) scale(1.5)',
-      zIndex    : 999
+      transform: 'translateX(0px) scale(1.5)',
+      zIndex: 999
     });
     $('#carousel').addClass('has-open');
   }
@@ -133,9 +133,9 @@
   /* ─── DRAG ─── */
   function onStart(x) {
     if (expanded) return;
-    startX   = x;
+    startX = x;
     dragging = true;
-    didDrag  = false;
+    didDrag = false;
   }
 
   function onMove(x) {
@@ -148,9 +148,9 @@
     if (!dragging) return;
     dragging = false;
     const diff = startX - x;
-    if      (diff >  SWIPE_TH) { didDrag = true; go(1);  }
+    if (diff > SWIPE_TH) { didDrag = true; go(1); }
     else if (diff < -SWIPE_TH) { didDrag = true; go(-1); }
-    else                        { place(true); }
+    else { place(true); }
   }
 
   /* ─── EVENTS ─── */
@@ -182,7 +182,7 @@
       if (e.key === 'Escape') close();
       if (!$('#carousel').hasClass('active')) return;
       if (e.key === 'ArrowRight') go(1);
-      if (e.key === 'ArrowLeft')  go(-1);
+      if (e.key === 'ArrowLeft') go(-1);
     });
 
     // 터치 — passive: false로 스크롤 방지
@@ -202,6 +202,38 @@
     // 마우스
     $(document).on('mousedown', '#carousel', function (e) { onStart(e.clientX); });
     $(document).on('mousemove', '#carousel', function (e) { onMove(e.clientX); });
-    $(document).on('mouseup',               function (e) { if (dragging) onEnd(e.clientX); });
+    $(document).on('mouseup', function (e) { if (dragging) onEnd(e.clientX); });
   });
 })();
+
+function dropCards() {
+
+  const $cards = $('#carouselTrack .card');
+
+  $cards.each(function (i, el) {
+
+    // 현재 위치 가져오기 (place() 결과)
+    const currentTransform = $(el).css('transform');
+
+    // GSAP으로 덮어쓰기
+    gsap.fromTo(el,
+      {
+        y: -300,
+        opacity: 0,
+        scale: 0.8,
+        rotation: Math.random() * 20 - 10
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotation: Math.random() * 6 - 3,
+        duration: 0.9,
+        delay: i * 0.12,
+        ease: "bounce.out"
+      }
+    );
+
+  });
+
+}

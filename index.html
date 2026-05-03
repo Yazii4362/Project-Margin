@@ -1,83 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>스승의날 롤링페이퍼</title>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
-<!-- CSS -->
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/tokens.css" />
-<link rel="stylesheet" href="css/splash.css" />
-<link rel="stylesheet" href="css/envelope.css" />
-<link rel="stylesheet" href="css/carousel.css" />
-<link rel="stylesheet" href="css/credits.css" />
-<link rel="stylesheet" href="css/grain.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>스승의날 롤링페이퍼</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap"
+    rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/splash.css" />
+  <link rel="stylesheet" href="css/envelope.css" />
+  <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/credits.css" />
+  <link rel="stylesheet" href="css/grain.css" />
 </head>
+
 <body>
 
-<!-- SECTION 1: Splash -->
-<section id="splash" class="screen active">
-  <div class="splash-inner">
-    <p class="splash-label">Teacher's Day &nbsp;·&nbsp; 2025. 05. 15</p>
-    <h1 class="splash-title">선생님께</h1>
-    <p class="splash-sub">저희가 준비한 작은 선물이에요</p>
-    <p class="splash-hint">Tap to continue</p>
-  </div>
-</section>
-
-<!-- SECTION 2: Envelope -->
-<section id="envelope" class="screen">
-  <div class="envelope-wrap">
-    <div class="envelope" id="envelopeEl">
-      <div class="envelope-flap"></div>
-      <div class="envelope-body">
-        <div class="envelope-seal" id="envelopeSeal">
-          <span class="seal-star">✦</span>
-        </div>
-        <p class="envelope-text">마음을 담아</p>
-      </div>
+  <!-- SECTION 1: Splash -->
+  <section id="splash" class="screen active">
+    <div class="splash-inner">
+      <p class="splash-label">Teacher's Day &nbsp;·&nbsp; 2025. 05. 15</p>
+      <h1 class="splash-title">선생님께</h1>
+      <p class="splash-sub">저희가 준비한 작은 선물이에요</p>
+      <p class="splash-hint">Tap to continue</p>
     </div>
-    <p class="envelope-hint">Touch to open</p>
-  </div>
-</section>
+  </section>
 
-<!-- SECTION 3: Carousel -->
-<section id="carousel" class="screen">
-  <div class="carousel-track-wrap">
-    <div class="carousel-track" id="carouselTrack"></div>
-  </div>
-  <div class="rays-wrap" id="raysWrap">
-    <div class="rays-disc"></div>
-  </div>
-  <div class="carousel-progress">
-    <div class="carousel-progress-fill" id="progressFill"></div>
-  </div>
-</section>
+  <!-- SECTION 2: Envelope -->
+  <section id="envelope" class="screen">
+    <div class="envelope-wrap">
+      <div class="envelope" id="envelopeEl">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="envelope-seal" id="envelopeSeal">
+            <span class="seal-star">✦</span>
+          </div>
+          <p class="envelope-text">마음을 담아</p>
+        </div>
+      </div>
+      <p class="envelope-hint">Touch to open</p>
+    </div>
+  </section>
 
-<!-- SECTION 4: Credits -->
-<section id="credits" class="screen">
-  <div class="credits-inner">
-    <p class="credits-eyebrow">Made with love</p>
-    <h2 class="credits-title">만든이들</h2>
-    <ul class="credits-list">
-      <li><span class="role">PM</span><span class="name">—</span></li>
-      <li><span class="role">PD</span><span class="name">—</span></li>
-      <li><span class="role">FE</span><span class="name">—</span></li>
-    </ul>
-  </div>
-</section>
+  <!-- SECTION 3: Carousel -->
+  <section id="carousel" class="screen">
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carouselTrack"></div>
+    </div>
+    <div class="rays-wrap" id="raysWrap">
+      <div class="rays-disc"></div>
+    </div>
+    <div class="carousel-progress">
+      <div class="carousel-progress-fill" id="progressFill"></div>
+    </div>
+  </section>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<!-- JS -->
-<script src="js/data.js"></script>
-<script src="js/splash.js"></script>
-<script src="js/envelope.js"></script>
-<script src="js/carousel.js"></script>
-<script src="js/credits.js"></script>
+  <!-- SECTION 4: Credits -->
+  <section id="credits" class="screen">
+    <div class="credits-inner">
+      <p class="credits-eyebrow">Made with love</p>
+      <h2 class="credits-title">만든이들</h2>
+      <ul class="credits-list">
+        <li><span class="role">PM</span><span class="name">—</span></li>
+        <li><span class="role">PD</span><span class="name">—</span></li>
+        <li><span class="role">FE</span><span class="name">—</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- JS -->
+  <script src="js/data.js"></script>
+  <script src="js/splash.js"></script>
+  <script src="js/envelope.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/credits.js"></script>
 </body>
+
 </html>

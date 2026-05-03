@@ -41,6 +41,8 @@
   overflow: hidden;
   cursor: grab;
   will-change: transform;
+  opacity: 0;
+  transform: translateY(-300px) scale(0.8);
 }
 
 .card:active { cursor: grabbing; }

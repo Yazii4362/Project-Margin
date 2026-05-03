@@ -98,7 +98,7 @@ const CARDS_DATA = [
   {
     id: 13,
     type: 'student',
-    name: "?연수",
+    name: "박연수",
     shape: "oval",
     bgImage: "assets/images/cards/card-13.jpg",
     message: "선생님께 전하고 싶은 메시지를 여기에 작성해주세요."

@@ -56,7 +56,7 @@
 /* ── 왁스 씰 ── */
 .envelope-seal {
   position: absolute;
-  top: -22px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   width: 52px;
@@ -175,6 +175,7 @@
   font-weight: 400;
   color: var(--color-muted);
   letter-spacing: 0.04em;
+  transform: translatey(100%);
 }
 
 .envelope-hint {
@@ -184,4 +185,10 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-faint);
+  animation: blink 2.4s var(--ease) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1;   }
 }
