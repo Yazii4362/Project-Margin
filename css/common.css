@@ -1,0 +1,30 @@
+/* Reset은 reset.css에서 처리 */
+
+/* Typography */
+h1 { font-size: var(--font-size-h1); font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: var(--font-size-h2); font-weight: 600; letter-spacing: -0.01em; }
+h3 { font-size: var(--font-size-h3); font-weight: 600; }
+p  { font-size: var(--font-size-body); line-height: 1.7; }
+
+.caption { font-size: var(--font-size-caption); color: var(--color-red-mid); }
+.label   { font-size: var(--font-size-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Layout */
+.container  { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+.section    { padding: var(--space-3xl) 0; }
+
+/* Buttons */
+.btn         { display: inline-block; padding: 9px 20px; font-size: 13px; letter-spacing: 0.05em; cursor: pointer; border: none; }
+.btn-primary { background: var(--color-black); color: var(--color-white); }
+.btn-red     { background: var(--color-red); color: var(--color-white); }
+.btn-outline { background: transparent; border: 1.5px solid var(--color-black); color: var(--color-black); }
+.btn-ghost   { background: transparent; border: 1.5px solid var(--color-red); color: var(--color-red); }
+
+/* Tags */
+.tag         { display: inline-block; padding: 3px 10px; font-size: 11px; letter-spacing: 0.08em; }
+.tag-dark    { background: var(--color-black); color: var(--color-white); }
+.tag-red     { background: var(--color-red); color: var(--color-white); }
+.tag-green   { background: var(--color-green); color: var(--color-white); }
+
+/* Utilities */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
