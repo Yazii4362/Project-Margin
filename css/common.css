@@ -1,30 +1,121 @@
-/* Reset은 reset.css에서 처리 */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COMMON.CSS
+   공통 유틸 + 마키 시스템
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* Typography */
-h1 { font-size: var(--font-size-h1); font-weight: 700; letter-spacing: -0.02em; }
-h2 { font-size: var(--font-size-h2); font-weight: 600; letter-spacing: -0.01em; }
-h3 { font-size: var(--font-size-h3); font-weight: 600; }
-p  { font-size: var(--font-size-body); line-height: 1.7; }
+/* ── 마키 공통 기반 ── */
+.marquee {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+}
 
-.caption { font-size: var(--font-size-caption); color: var(--color-red-mid); }
-.label   { font-size: var(--font-size-label); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+.marquee--top {
+  top: 0;
+  background: var(--color-red);
+  padding: 8px 0;
+}
 
-/* Layout */
-.container  { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
-.section    { padding: var(--space-3xl) 0; }
+.marquee--bottom {
+  bottom: 2px; /* progress bar(2px) 바로 위 */
+  background: var(--color-ink);
+  padding: 7px 0;
+}
 
-/* Buttons */
-.btn         { display: inline-block; padding: 9px 20px; font-size: 13px; letter-spacing: 0.05em; cursor: pointer; border: none; }
-.btn-primary { background: var(--color-black); color: var(--color-white); }
-.btn-red     { background: var(--color-red); color: var(--color-white); }
-.btn-outline { background: transparent; border: 1.5px solid var(--color-black); color: var(--color-black); }
-.btn-ghost   { background: transparent; border: 1.5px solid var(--color-red); color: var(--color-red); }
+/* ── 트랙 ── */
+.marquee-inner {
+  display: inline-flex;
+  flex-shrink: 0;
+  animation: marquee-left var(--marquee-dur, 28s) linear infinite;
+}
 
-/* Tags */
-.tag         { display: inline-block; padding: 3px 10px; font-size: 11px; letter-spacing: 0.08em; }
-.tag-dark    { background: var(--color-black); color: var(--color-white); }
-.tag-red     { background: var(--color-red); color: var(--color-white); }
-.tag-green   { background: var(--color-green); color: var(--color-white); }
+.marquee-inner--reverse {
+  animation-name: marquee-right;
+  animation-duration: 34s; /* 하단은 살짝 다른 속도 */
+}
 
-/* Utilities */
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+/* ── 아이템 ── */
+.marquee-item {
+  font-family: var(--font-label);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* 상단 마키 — 어두운 교차 아이템 */
+.marquee--top .marquee-item--dim {
+  color: rgba(255, 255, 255, 0.50);
+}
+
+/* 하단 마키 — 레드 강조 / 페인트 교차 */
+.marquee--bottom .marquee-item--red {
+  color: var(--color-red-soft);
+}
+
+.marquee--bottom .marquee-item--faint {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+/* ── 구분 점 ── */
+.marquee-dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin: 0 var(--sp-2);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.marquee-dot--red {
+  background: var(--color-red-soft);
+  opacity: 0.7;
+}
+
+.marquee-dot--faint {
+  background: rgba(255, 255, 255, 0.20);
+}
+
+/* ── 애니메이션 ── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── 카드 영역 여백 조정 ── */
+/* 마키 높이(약 32px)만큼 트랙 위아래 오프셋 */
+#carousel .carousel-track-wrap {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  height: calc(100vh - 2px); /* progress bar 제외 */
+}
+
+/* ── 다크 테마 대응 ── */
+body.dark-theme .marquee--top {
+  /* 레드는 그대로 유지 — 다크에서도 잘 어울림 */
+}
+
+body.dark-theme .marquee--bottom {
+  background: #0a0a0a;
+}
+
+/* ── 마키 일시정지 — 카드 열렸을 때 ── */
+#carousel.has-open .marquee-inner {
+  animation-play-state: paused;
+}
