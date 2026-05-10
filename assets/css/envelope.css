@@ -9,12 +9,13 @@
   flex-direction: column;
   align-items: center;
   gap: var(--sp-10);
+  padding: 40px;
 }
 
 .envelope {
   position: relative;
-  width: 300px;
-  height: 210px;
+  width: 530px;
+  height: 400px;
   cursor: pointer;
   transition: transform var(--dur-normal) var(--ease);
 }
@@ -56,11 +57,11 @@
 /* ── 왁스 씰 ── */
 .envelope-seal {
   position: absolute;
-  top: 50px;
+  top: 140px;
   left: 50%;
   transform: translateX(-50%);
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: radial-gradient(circle at 38% 32%,
     #ff7a68 0%,
@@ -86,14 +87,14 @@
 .envelope-seal::before {
   content: '';
   position: absolute;
-  inset: 6px;
+  inset: 8px;
   border-radius: 50%;
   border: 1px solid rgba(255,200,180,0.40);
 }
 
 /* 씰 별 */
 .seal-star {
-  font-size: 16px;
+  font-size: 30px;
   color: rgba(255,255,255,0.92);
   text-shadow: 0 1px 4px rgba(0,0,0,0.20);
   position: relative;
@@ -135,9 +136,9 @@
   position: absolute;
   top: -22px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 52px;
-  height: 52px;
+  transform: none;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle at 40% 35%,
     rgba(200,80,60,0.18) 0%,
@@ -155,7 +156,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 105px;
+  height: 220px;
   background: linear-gradient(180deg, #e8ddd0 0%, #ddd0c0 100%);
   clip-path: polygon(0 0, 100% 0, 50% 85%);
   z-index: 2;
@@ -170,17 +171,17 @@
 
 .envelope-text {
   font-family: var(--font-display);
-  font-size: var(--text-md);
+  font-size: var(--text-xl);
   font-style: italic;
   font-weight: 400;
   color: var(--color-muted);
   letter-spacing: 0.04em;
-  transform: translatey(100%);
+  transform: translatey(160%);
 }
 
 .envelope-hint {
   font-family: var(--font-label);
-  font-size: var(--text-2xs);
+  font-size: var(--text-2sm);
   font-weight: 400;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;

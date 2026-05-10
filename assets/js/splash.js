@@ -16,12 +16,24 @@
 //   });
 // })();
 
-gsap.from('.splash-inner', {
-  opacity: 0,
-  scale: 0.95,
-  filter: "blur(10px)",
-  duration: 3.5,
-  ease: "power3.out"
+gsap.fromTo('.splash-blur',
+  {
+    opacity: 1
+  },
+  {
+    opacity: 0,
+    duration: 2.8,
+    ease: 'power2.out'
+  }
+);
+
+gsap.to('#splash', {
+  opacity: 1,
+},
+{
+  scale: 1,
+  duration: 1.8,
+  ease: 'power2.out'
 });
 
 $(function () {
@@ -64,20 +76,20 @@ $(function () {
       ease: "power2.out"
     })
 
-    // 2. 화면 위로 올라감 (핵심)
-    .to('#splash', {
-      y: "-100%",
-      duration: 1,
-      ease: "power4.inOut"
-    }, "-=0.3")
+      // 2. 화면 위로 올라감 (핵심)
+      .to('#splash', {
+        y: "-100%",
+        duration: 1,
+        ease: "power4.inOut"
+      }, "-=0.3")
 
-    // 3. envelope 미리 준비
-    .from('#envelope', {
-      y: "100%",
-      opacity: 0,
-      duration: 1,
-      ease: "power4.out"
-    }, "-=0.8");
+      // 3. envelope 미리 준비
+      .from('#envelope', {
+        y: "100%",
+        opacity: 0,
+        duration: 1,
+        ease: "power4.out"
+      }, "-=0.8");
 
   });
 

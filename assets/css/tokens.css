@@ -16,7 +16,7 @@
   /* ── Color ── */
   --color-bg:        #F8F9FA;
   --color-ink:       #1A1612;
-  --color-muted:     #6B6258;
+  --color-muted:     #615d59;
   --color-faint:     #B0A898;
   --color-red:       #FF5A45;
   --color-red-soft:  #FF7A68;
@@ -65,8 +65,10 @@
   --sp-10: 40px;
   --sp-12: 48px;
   --sp-16: 64px;
+  --sp-17: 70px;
   --sp-20: 80px;
   --sp-24: 96px;
+  --sp-25: 102px;
 
   /* ── Radius ── */
   --radius-card:   4px;

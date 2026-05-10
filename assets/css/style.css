@@ -1,0 +1,121 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COMMON.CSS
+   공통 유틸 + 마키 시스템
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── 마키 공통 기반 ── */
+.marquee {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+}
+
+.marquee--top {
+  top: 0;
+  background: var(--color-red);
+  padding: 8px 0;
+}
+
+.marquee--bottom {
+  bottom: 2px; /* progress bar(2px) 바로 위 */
+  background: var(--color-ink);
+  padding: 7px 0;
+}
+
+/* ── 트랙 ── */
+.marquee-inner {
+  display: inline-flex;
+  flex-shrink: 0;
+  animation: marquee-left var(--marquee-dur, 28s) linear infinite;
+}
+
+.marquee-inner--reverse {
+  animation-name: marquee-right;
+  animation-duration: 34s; /* 하단은 살짝 다른 속도 */
+}
+
+/* ── 아이템 ── */
+.marquee-item {
+  font-family: var(--font-label);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* 상단 마키 — 어두운 교차 아이템 */
+.marquee--top .marquee-item--dim {
+  color: rgba(255, 255, 255, 0.50);
+}
+
+/* 하단 마키 — 레드 강조 / 페인트 교차 */
+.marquee--bottom .marquee-item--red {
+  color: var(--color-red-soft);
+}
+
+.marquee--bottom .marquee-item--faint {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+/* ── 구분 점 ── */
+.marquee-dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin: 0 var(--sp-2);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.marquee-dot--red {
+  background: var(--color-red-soft);
+  opacity: 0.7;
+}
+
+.marquee-dot--faint {
+  background: rgba(255, 255, 255, 0.20);
+}
+
+/* ── 애니메이션 ── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── 카드 영역 여백 조정 ── */
+/* 마키 높이(약 32px)만큼 트랙 위아래 오프셋 */
+#carousel .carousel-track-wrap {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  height: calc(100vh - 2px); /* progress bar 제외 */
+}
+
+/* ── 다크 테마 대응 ── */
+body.dark-theme .marquee--top {
+  /* 레드는 그대로 유지 — 다크에서도 잘 어울림 */
+}
+
+body.dark-theme .marquee--bottom {
+  background: #0a0a0a;
+}
+
+/* ── 마키 일시정지 — 카드 열렸을 때 ── */
+#carousel.has-open .marquee-inner {
+  animation-play-state: paused;
+}

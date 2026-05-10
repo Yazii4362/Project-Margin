@@ -18,12 +18,14 @@
 
     setTimeout(function () {
 
-      const offset = $seal.position(); // 부모 기준 좌표
+      const offset = $seal.position();
 
       const $mark = $('<div class="envelope-seal-mark"></div>').css({
         position: 'absolute',
-        top: '20%',
-        left: '50%',
+
+        top: offset.top + 47,
+        left: offset.left + ($seal.outerWidth() / 1.5),
+
         width: $seal.outerWidth(),
         height: $seal.outerHeight()
       });
