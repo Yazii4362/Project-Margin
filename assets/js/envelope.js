@@ -37,7 +37,7 @@
 
     // 4. 화면 전환
     setTimeout(function () {
-      $('#envelope').removeClass('active');
+      $('#hero').removeClass('active');
       setTimeout(function () {
         $('#carousel').addClass('active').attr('aria-hidden', 'false');
         $(document).trigger('carousel:init');
