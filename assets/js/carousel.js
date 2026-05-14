@@ -340,11 +340,11 @@
     if (cheer) {
       cheerHtml =
         '<div class="to-cheer-wrap" role="region" aria-label="치어">'
-          + '<p class="to-section-label">Special thanks</p>'
+          + '<p class="to-cheer-head">응원 스쿼드</p>'
           + '<div class="to-cheer-card">'
             + '<div class="to-cheer-avatar"><span class="to-cheer-initial">' + cheer.name.slice(-1) + '</span></div>'
             + '<div class="to-cheer-text">'
-              + '<p class="to-cheer-kicker">Cheerleader</p>'
+              + '<p class="to-cheer-kicker">치어리더</p>'
               + '<p class="to-cheer-name">' + cheer.name + '</p>'
             + '</div>'
           + '</div>'
