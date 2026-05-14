@@ -73,7 +73,8 @@
               '<div class="card-grain"></div>' +
               preview +
               '<div class="card-opened">' +
-              '<button class="card-close" aria-label="닫기">✕</button>' +
+              '<button class="card-nav card-nav--prev" aria-label="이전 카드">←</button>' +
+              '<button class="card-nav card-nav--next" aria-label="다음 카드">→</button>' +
               '<p class="letter-name">' +
               d.name +
               '</p>' +
@@ -302,20 +303,23 @@
     $(document).on('carousel:init', build);
 
     $(document).on('click', '#carouselTrack .card.is-active', function (e) {
-      if ($(e.target).hasClass('card-close') || $(e.target).closest('.card-close').length)
-        return;
-      if ($(e.target).hasClass('card-link-btn') || $(e.target).closest('.card-link-btn').length)
-        return;
-      if (didDrag) {
-        didDrag = false;
-        return;
-      }
+      if ($(e.target).closest('.card-nav').length) return;
+      if ($(e.target).hasClass('card-link-btn') || $(e.target).closest('.card-link-btn').length) return;
+      if (didDrag) { didDrag = false; return; }
       expanded ? close() : open();
     });
 
-    $(document).on('click', '.card-close', function (e) {
+    // 화살표 버튼 — 닫고 이동
+    $(document).on('click', '.card-nav--prev', function (e) {
       e.stopPropagation();
       close();
+      setTimeout(function () { go(-1); }, 80);
+    });
+
+    $(document).on('click', '.card-nav--next', function (e) {
+      e.stopPropagation();
+      close();
+      setTimeout(function () { go(1); }, 80);
     });
 
     $(document).on('click', '#carousel', function (e) {

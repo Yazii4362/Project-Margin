@@ -560,44 +560,53 @@ background: #f5c842;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  CLOSE BUTTON
+  CARD NAV ARROWS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.card-close {
+.card-nav {
 position: absolute;
-top: 14px;
-right: 14px;
-width: 28px;
-height: 28px;
+bottom: 18px;
+width: 36px;
+height: 36px;
 border-radius: 50%;
-border: none;
-background: rgba(26,22,18,0.08);
-color: var(--color-muted);
-font-size: 12px;
+border: 1px solid rgba(26,22,18,0.12);
+background: rgba(255,255,255,0.85);
+color: var(--color-ink);
+font-size: 16px;
 cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;
-z-index: 2;
-transition: background 0.15s ease, transform 0.15s ease;
-pointer-events: none; /* opened 상태에서만 활성화 */
+z-index: 4;
+pointer-events: none;
+opacity: 0;
+transition: background 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
 }
 
-.card.is-open .card-close {
+.card.is-open .card-nav {
 pointer-events: all;
+opacity: 1;
 }
 
-.card-close:hover {
-background: rgba(26,22,18,0.15);
+.card-nav--prev { left: 18px; }
+.card-nav--next { right: 18px; }
+
+.card-nav:hover {
+background: rgba(255,255,255,1);
 transform: scale(1.1);
 }
 
-.card--special .card-close {
-background: rgba(255,255,255,0.10);
-color: rgba(240,232,208,0.7);
+.card-nav:active {
+transform: scale(0.95);
 }
 
-.card--special .card-close:hover {
-background: rgba(255,255,255,0.18);
+.card--special .card-nav {
+background: rgba(255,255,255,0.08);
+border-color: rgba(255,255,255,0.15);
+color: rgba(240,232,208,0.85);
+}
+
+.card--special .card-nav:hover {
+background: rgba(255,255,255,0.15);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
