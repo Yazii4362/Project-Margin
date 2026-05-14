@@ -69,22 +69,37 @@ $(function () {
     return TOOLTIPS[Math.floor(Math.random() * TOOLTIPS.length)];
   }
 
-  function showTooltip(tooltipData) {
+  function showTooltip() {
     clearTimeout(hideTimer);
-    var text = tooltipData[0];
-    var topOffset = tooltipData[1];
-    var leftOffset = tooltipData[2];
 
+    // 매 호버마다 새 문구 + 랜덤 방향
+    var text = pickRandom();
     $tooltip.text(text);
 
-    // 위치 계산
     var rect = $target[0].getBoundingClientRect();
     $tooltip.css({ left: '-9999px', top: '-9999px', display: 'block' });
     var tw = $tooltip[0].offsetWidth;
-    var x = rect.left + rect.width / 2 - tw / 2 + leftOffset;
-    var y = rect.top + topOffset;
+    var th = $tooltip[0].offsetHeight;
+
+    // 0=위, 1=좌, 2=우 랜덤
+    var dir = Math.floor(Math.random() * 3);
+    var x, y;
+    var jitter = (Math.random() - 0.5) * 50;
+
+    if (dir === 0) {
+      x = rect.left + rect.width / 2 - tw / 2 + jitter;
+      y = rect.top - th - 12;
+    } else if (dir === 1) {
+      x = rect.left - tw - 14;
+      y = rect.top + rect.height / 2 - th / 2 + jitter * 0.5;
+    } else {
+      x = rect.right + 14;
+      y = rect.top + rect.height / 2 - th / 2 + jitter * 0.5;
+    }
 
     x = Math.max(8, Math.min(x, window.innerWidth - tw - 8));
+    y = Math.max(8, Math.min(y, window.innerHeight - th - 8));
+
     $tooltip.css({ left: x + 'px', top: y + 'px' });
     $tooltip.addClass('is-visible');
   }
@@ -97,32 +112,31 @@ $(function () {
 
   function autoShow() {
     if (!$tooltip.hasClass('is-visible')) {
-      var tooltipData = pickRandom();
-      showTooltip(tooltipData);
+      showTooltip();
       setTimeout(function () {
         $tooltip.removeClass('is-visible');
-      }, 1000); // 1초 노출
+      }, 2000);
     }
-    // 다음 자동 표시: 5초마다
     autoTimer = setTimeout(autoShow, 5000);
   }
 
   $(document).ready(function () {
-    // 호버 이벤트
     $target.on('mouseenter', function () {
-      var tooltipData = pickRandom();
-      showTooltip(tooltipData);
+      showTooltip();
     });
     $target.on('mouseleave', hideTooltip);
 
-    // 터치 이벤트
     $target.on('touchstart', function () {
-      var tooltipData = pickRandom();
-      showTooltip(tooltipData);
-      setTimeout(function () { $tooltip.removeClass('is-visible'); }, 1000);
+      showTooltip();
+      setTimeout(function () { $tooltip.removeClass('is-visible'); }, 2000);
     });
 
-    // 자동 표시 시작 (페이지 로드 후 3초부터)
-    setTimeout(autoShow, 3000);
+    setTimeout(function () { autoShow(); }, 3000);
+
+    // carousel 진입 시 툴팁 숨기고 타이머 멈춤
+    $(document).on('carousel:init', function () {
+      clearTimeout(autoTimer);
+      $tooltip.removeClass('is-visible');
+    });
   });
 })();

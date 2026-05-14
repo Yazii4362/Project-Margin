@@ -5,6 +5,9 @@
     if (opened) return;
     opened = true;
 
+    // 클릭 시 커서 이모지를 따봉으로 변경 (cursor를 grab으로)
+    document.body.style.cursor = 'grab';
+
     const $env = $('#envelopeEl');
     const $seal = $('#envelopeSeal');
 
@@ -47,5 +50,10 @@
 
   $(document).ready(function () {
     $('#envelopeEl').on('click', openEnvelope);
+
+    // carousel 진입 시 커서 리셋
+    $(document).on('carousel:init', function () {
+      document.body.style.cursor = 'default';
+    });
   });
 })();
