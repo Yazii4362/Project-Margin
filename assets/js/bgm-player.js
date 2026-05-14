@@ -37,7 +37,7 @@ function initRandomBGM() {
       lyricist: '신혜인'
     },
     'khm3-jueun.mp3': {
-      title: '따뜻한 가르침',
+      title: '고강도노력',
       composer: '김주은',
       lyricist: '김주은'
     },
