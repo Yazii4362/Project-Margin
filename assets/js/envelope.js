@@ -17,21 +17,17 @@
     // }, 350);
 
     setTimeout(function () {
-
-      const offset = $seal.position();
-
-      const $mark = $('<div class="envelope-seal-mark"></div>').css({
+      // getBoundingClientRect 기반으로 정확한 위치 계산
+      var sealRect = document.getElementById('envelopeSeal').getBoundingClientRect();
+      var envRect  = document.getElementById('envelopeEl').getBoundingClientRect();
+      var $mark = $('<div class="envelope-seal-mark"></div>').css({
         position: 'absolute',
-
-        top: offset.top + 47,
-        left: offset.left + ($seal.outerWidth() / 1.5),
-
-        width: $seal.outerWidth(),
-        height: $seal.outerHeight()
+        top:  sealRect.top  - envRect.top,
+        left: sealRect.left - envRect.left,
+        width:  sealRect.width,
+        height: sealRect.height
       });
-
       $seal.after($mark);
-
     }, 350);
 
     // 3. 씰 다 날아간 후 플랩 열기
@@ -43,7 +39,7 @@
     setTimeout(function () {
       $('#envelope').removeClass('active');
       setTimeout(function () {
-        $('#carousel').addClass('active');
+        $('#carousel').addClass('active').attr('aria-hidden', 'false');
         $(document).trigger('carousel:init');
       }, 900);
     }, 1100);
@@ -53,4 +49,3 @@
     $('#envelopeEl').on('click', openEnvelope);
   });
 })();
-

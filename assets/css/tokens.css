@@ -1,13 +1,37 @@
+/* ── Display font ── */
 @font-face {
-  font-family: 'SinchonRhapsody';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2503@1.0/SinchonRhapsody.woff2') format('woff2');
-  font-weight: normal;
+  font-family: 'MuseumCulturalFoundationClassic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식L.woff') format('woff');
+  font-weight: 300;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'DoolgiMayoGothic';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  font-family: 'MuseumCulturalFoundationClassic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식M.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MuseumCulturalFoundationClassic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ── Heading font ── */
+@font-face {
+  font-family: 'OgRenaissanceSecret';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/OG_Renaissance_Secret-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* ── Body font ── */
+@font-face {
+  font-family: 'HsGlidingSerif';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/HSHwalkongSerif-Regular.woff2') format('woff2');
   font-weight: normal;
   font-display: swap;
 }
@@ -31,8 +55,9 @@
   --frame-shadow:    0 4px 24px rgba(60, 40, 20, 0.13);
 
   /* ── Typography ── */
-  --font-display:    'SinchonRhapsody', 'Playfair Display', serif;
-  --font-body:       'DoolgiMayoGothic', 'Cormorant Garamond', serif;
+  --font-display:    'MuseumCulturalFoundationClassic', serif;
+  --font-heading:    'OgRenaissanceSecret', serif;
+  --font-body:       'HsGlidingSerif', serif;
   --font-label:      'Montserrat', sans-serif;
 
   /* ── Font Scale ── */
@@ -43,6 +68,7 @@
   --text-lg:   26px;
   --text-xl:   40px;
   --text-2xl:  62px;
+  --text-3xl:  92px;
 
   /* ── Line Height ── */
   --lh-tight:   1.15;

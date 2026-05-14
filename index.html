@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>스승의날 롤링페이퍼</title>
+  <title>2026년 스승의날에 - 다정하신 강현명 선생님께</title>
+  <link rel="icon" href="assets/images/siling.webp" type="image/webp" />
+  <link rel="shortcut icon" href="assets/images/siling.webp" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +16,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/reset.css" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/common.css" />
   <link rel="stylesheet" href="assets/css/splash.css" />
   <link rel="stylesheet" href="assets/css/envelope.css" />
   <link rel="stylesheet" href="assets/css/carousel.css" />
@@ -25,12 +28,11 @@
 
   <!-- SECTION 1: Splash -->
   <section id="splash" class="screen active">
-    <div class="splash-bg"></div>
     <div class="splash-blur"></div>
     <div class="splash-inner">
       <p class="splash-label">Teacher's Day &nbsp;·&nbsp; 2026. 05. 15</p>
-      <h1 class="splash-title">선생님께</h1>
-      <p class="splash-sub">저희가 준비한 작은 선물이에요</p>
+      <h1 class="splash-title">To. 강현명 선생님</h1>
+      <p class="splash-sub">2026년 스승의 날을 맞아</p>
       <p class="splash-hint">Tap to continue</p>
     </div>
   </section>
@@ -39,12 +41,10 @@
   <section id="envelope" class="screen">
     <div class="envelope-wrap">
       <div class="envelope" id="envelopeEl">
+        <img class="envelope-svg" src="assets/images/envelope-red.svg" alt="봉투" draggable="false" />
         <div class="envelope-flap"></div>
-        <div class="envelope-body">
-          <div class="envelope-seal" id="envelopeSeal">
-            <span class="seal-star">✦</span>
-          </div>
-          <p class="envelope-text">마음을 담아</p>
+        <div class="envelope-seal" id="envelopeSeal">
+          <img src="assets/images/siling.webp" alt="씰" draggable="false" />
         </div>
       </div>
       <p class="envelope-hint">Touch to open</p>
@@ -52,13 +52,70 @@
   </section>
 
   <!-- SECTION 3: Carousel -->
-  <section id="carousel" class="screen">
+  <section id="carousel" class="screen" aria-hidden="true">
+    <!-- 상단 마키 -->
+    <div class="marquee marquee--top" aria-hidden="true">
+      <div class="marquee-inner">
+        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
+        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
+      </div>
+      <div class="marquee-inner" aria-hidden="true">
+        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
+        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
+      </div>
+    </div>
+
     <div class="carousel-track-wrap">
       <div class="carousel-track" id="carouselTrack"></div>
     </div>
     <div class="rays-wrap" id="raysWrap">
       <div class="rays-disc"></div>
     </div>
+
+    <!-- 하단 마키 -->
+    <div class="marquee marquee--bottom" aria-hidden="true">
+      <div class="marquee-inner marquee-inner--reverse">
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+      </div>
+      <div class="marquee-inner marquee-inner--reverse" aria-hidden="true">
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+          class="marquee-dot marquee-dot--red"></span>
+        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
+      </div>
+    </div>
+
     <div class="carousel-progress">
       <div class="carousel-progress-fill" id="progressFill"></div>
     </div>
@@ -74,11 +131,12 @@
         <li><span class="role">PD</span><span class="name">—</span></li>
         <li><span class="role">FE</span><span class="name">—</span></li>
       </ul>
+      <button class="credits-back" id="creditsBack">← 처음으로</button>
     </div>
   </section>
 
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <!-- JS -->
   <script src="assets/js/data.js"></script>

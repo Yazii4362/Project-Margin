@@ -22,7 +22,7 @@
 }
 
 .credits-title {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: 400;
   font-style: italic;
