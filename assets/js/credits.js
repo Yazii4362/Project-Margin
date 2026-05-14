@@ -164,4 +164,89 @@
       $envelope.removeClass('is-open');
     }, 550);
   }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     커피사주기 모달
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  var $coffeeModal = $('#coffeeModal');
+  var $coffeeDesc = $('#coffeeDesc');
+  var $coffeeLinks = $('#coffeeLinks');
+
+  // 각 제작자별 커피 링크 정보
+  var coffeeData = {
+    'yeji': {
+      name: '임예지',
+      links: [
+        { type: 'primary', icon: '☕', text: '카카오페이로 커피 사주기', url: 'https://qr.kakaopay.com/your-link' },
+        { type: 'secondary', icon: '💝', text: '토스로 응원하기', url: 'https://toss.me/your-id' }
+      ]
+    },
+    'jooeun': {
+      name: '김주은',
+      links: [
+        { type: 'primary', icon: '☕', text: '카카오페이로 커피 사주기', url: 'https://qr.kakaopay.com/jooeun' },
+        { type: 'secondary', icon: '💝', text: '토스로 응원하기', url: 'https://toss.me/jooeun' }
+      ]
+    },
+    'hyein': {
+      name: '신혜인',
+      links: [
+        { type: 'primary', icon: '☕', text: '카카오페이로 커피 사주기', url: 'https://qr.kakaopay.com/hyein' },
+        { type: 'secondary', icon: '💝', text: '토스로 응원하기', url: 'https://toss.me/hyein' }
+      ]
+    },
+    'taekyung': {
+      name: '윤태경',
+      links: [
+        { type: 'primary', icon: '☕', text: '카카오페이로 커피 사주기', url: 'https://qr.kakaopay.com/taekyung' },
+        { type: 'secondary', icon: '💝', text: '토스로 응원하기', url: 'https://toss.me/taekyung' }
+      ]
+    }
+  };
+
+  // 아바타 더블클릭 이벤트
+  $(document).on('dblclick', '.cr-avatar', function (e) {
+    e.stopPropagation();
+    var $card = $(this).closest('[data-maker]');
+    var maker = $card.attr('data-maker');
+    
+    if (!maker || !coffeeData[maker]) return;
+    
+    var data = coffeeData[maker];
+    
+    // 모달 내용 업데이트
+    $coffeeDesc.text(data.name + '님에게 응원의 마음을 전해보세요');
+    
+    // 링크 버튼 생성
+    $coffeeLinks.empty();
+    data.links.forEach(function(link) {
+      var $link = $('<a>')
+        .addClass('cr-coffee-link')
+        .addClass('cr-coffee-link--' + link.type)
+        .attr('href', link.url)
+        .attr('target', '_blank')
+        .attr('rel', 'noopener noreferrer')
+        .html('<span class="cr-coffee-link-icon">' + link.icon + '</span><span>' + link.text + '</span>');
+      $coffeeLinks.append($link);
+    });
+    
+    // 모달 열기
+    $coffeeModal.attr('aria-hidden', 'false');
+  });
+
+  // 커피 모달 닫기
+  $(document).on('click', '#coffeeBg, #coffeeClose', function () {
+    closeCoffeeModal();
+  });
+
+  // ESC 키로 커피 모달 닫기
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape' && $coffeeModal.attr('aria-hidden') === 'false') {
+      closeCoffeeModal();
+    }
+  });
+
+  function closeCoffeeModal() {
+    $coffeeModal.attr('aria-hidden', 'true');
+  }
 })();
