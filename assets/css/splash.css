@@ -14,7 +14,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url(../images/bg-img.png);
+  background-image: url(../images/splash-bg.webp);
   background-size: cover;
   background-position: center;
   filter: brightness(0.55) saturate(0.85);
