@@ -101,10 +101,10 @@ $(function () {
       showTooltip(tooltipData);
       setTimeout(function () {
         $tooltip.removeClass('is-visible');
-      }, 2000); // 2초 노출
+      }, 1000); // 1초 노출
     }
-    // 다음 자동 표시: 5-10초 랜덤
-    autoTimer = setTimeout(autoShow, 5000 + Math.random() * 5000);
+    // 다음 자동 표시: 5초마다
+    autoTimer = setTimeout(autoShow, 5000);
   }
 
   $(document).ready(function () {
@@ -119,7 +119,7 @@ $(function () {
     $target.on('touchstart', function () {
       var tooltipData = pickRandom();
       showTooltip(tooltipData);
-      setTimeout(function () { $tooltip.removeClass('is-visible'); }, 1400);
+      setTimeout(function () { $tooltip.removeClass('is-visible'); }, 1000);
     });
 
     // 자동 표시 시작 (페이지 로드 후 3초부터)
