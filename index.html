@@ -30,215 +30,240 @@
 
       <!-- SECTION 1: Hero -->
       <section id="hero" class="screen active">
-    <div class="splash-blur"></div>
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="hero-label">Teacher's Day · 2026. 05. 15</p>
-        <h1 class="hero-title">To. 강현명 선생님</h1>
-        <p class="hero-sub">2026년 스승의 날을 맞아</p>
-        <p class="hero-description">선생님의 하루에 담긴 소중한 마음을 열어보세요.</p>
-      </div>
-      <div class="hero-panel">
-        <div class="envelope-wrap">
-          <div class="envelope" id="envelopeEl">
-            <img class="envelope-svg" src="assets/images/envelope-red.svg" alt="봉투" draggable="false" />
-            <div class="envelope-flap"></div>
-            <div class="envelope-seal" id="envelopeSeal">
-              <img src="assets/images/siling.webp" alt="씰" draggable="false" id="silingImg" />
+        <div class="splash-blur"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-label">Teacher's Day · 2026. 05. 15</p>
+            <h1 class="hero-title">To. 강현명 선생님</h1>
+            <p class="hero-sub">2026년 스승의 날을 맞아</p>
+            <p class="hero-description">선생님의 하루에 담긴 소중한 마음을 열어보세요.</p>
+          </div>
+          <div class="hero-panel">
+            <div class="envelope-wrap">
+              <div class="envelope" id="envelopeEl">
+                <img class="envelope-svg" src="assets/images/envelope-red.svg" alt="봉투" draggable="false" />
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal" id="envelopeSeal">
+                  <img src="assets/images/siling.webp" alt="씰" draggable="false" id="silingImg" />
+                </div>
+              </div>
+              <p class="envelope-hint">Touch to open</p>
             </div>
           </div>
-          <p class="envelope-hint">Touch to open</p>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- 툴팁 -->
-  <div class="ios-tooltip" id="iosTooltip"></div>
+      <!-- 툴팁 -->
+      <div class="ios-tooltip" id="iosTooltip"></div>
 
-  <!-- SECTION 3: Carousel -->
-  <section id="carousel" class="screen" aria-hidden="true">
-    <!-- 상단 마키 -->
-    <div class="marquee marquee--top" aria-hidden="true">
-      <div class="marquee-inner" data-speed="0.24">
-        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
-        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
-        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
-        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
-      </div>
-      <div class="marquee-inner" aria-hidden="true" data-speed="0.16">
-        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
-        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
-        <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
-        <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
-        <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
-      </div>
-    </div>
-
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carouselTrack"></div>
-    </div>
-    <div class="carousel-instruction">
-      <p>PC로 스크롤하거나 카드 위를 드래그해 보세요. 키보드 ←/→로 이동 가능.</p>
-    </div>
-    <div class="rays-wrap" id="raysWrap" data-speed="-0.15">
-      <div class="rays-disc"></div>
-    </div>
-
-    <!-- 하단 마키 -->
-    <div class="marquee marquee--bottom" aria-hidden="true">
-      <div class="marquee-inner marquee-inner--reverse">
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-      </div>
-      <div class="marquee-inner marquee-inner--reverse" aria-hidden="true">
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-        <span class="marquee-item marquee-item--red">Rolling Paper</span><span
-          class="marquee-dot marquee-dot--red"></span>
-        <span class="marquee-item marquee-item--faint">마음을 담아</span><span class="marquee-dot marquee-dot--faint"></span>
-      </div>
-    </div>
-
-    <div class="carousel-progress">
-      <div class="carousel-progress-fill" id="progressFill"></div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: Credits -->
-  <section id="credits" class="screen">
-    <div class="credits-inner">
-      <div class="credits-header">
-        <p class="credits-eyebrow">Made with love</p>
-        <h2 class="credits-title">The Creators</h2>
-      </div>
-
-      <div class="profiles-grid">
-        <!-- 1. 임예지 -->
-        <div class="profile-card" data-id="11">
-          <div class="profile-avatar">
-            <div class="avatar-placeholder">YJ</div>
+      <!-- SECTION 3: Carousel -->
+      <section id="carousel" class="screen" aria-hidden="true">
+        <!-- 상단 마키 -->
+        <div class="marquee marquee--top" aria-hidden="true">
+          <div class="marquee-inner" data-speed="0.24">
+            <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+            <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
+            <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+            <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
           </div>
-          <h3 class="profile-name">임예지</h3>
-          <p class="profile-role">PM · Frontend Dev</p>
-          <div class="profile-links">
-            <a href="mailto:yeji@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-            <a href="https://yeji.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-            <a href="https://github.com/yeji" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+          <div class="marquee-inner" aria-hidden="true" data-speed="0.16">
+            <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+            <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
+            <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
+            <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
+            <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
           </div>
-          <button class="view-card-btn">💌 편지 열어보기</button>
         </div>
 
-        <!-- 2. 김주은 -->
-        <div class="profile-card" data-id="5">
-          <div class="profile-avatar">
-            <div class="avatar-placeholder">JE</div>
-          </div>
-          <h3 class="profile-name">김주은</h3>
-          <p class="profile-role">UI Design · Planning</p>
-          <div class="profile-links">
-            <a href="mailto:jooeun@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-            <a href="https://jooeun.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-            <a href="https://github.com/jooeun" title="GitHub" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <button class="view-card-btn">💌 편지 열어보기</button>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+        <div class="carousel-instruction">
+          <p>PC로 스크롤하거나 카드 위를 드래그해 보세요. 키보드 ←/→로 이동 가능.</p>
         </div>
 
-        <!-- 3. 신혜인 -->
-        <div class="profile-card" data-id="7">
-          <div class="profile-avatar">
-            <div class="avatar-placeholder">HI</div>
-          </div>
-          <h3 class="profile-name">신혜인</h3>
-          <p class="profile-role">UX Research · Design</p>
-          <div class="profile-links">
-            <a href="mailto:hyein@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-            <a href="https://hyein.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-            <a href="https://github.com/hyein" title="GitHub" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <button class="view-card-btn">💌 편지 열어보기</button>
+        <!-- Global Carousel Navigation -->
+        <div class="carousel-global-nav">
+          <button class="global-nav-btn global-nav-btn--prev" aria-label="이전 카드">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button class="global-nav-btn global-nav-btn--next" aria-label="다음 카드">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
         </div>
 
-        <!-- 4. 윤태경 -->
-        <div class="profile-card" data-id="8">
-          <div class="profile-avatar">
-            <div class="avatar-placeholder">TK</div>
-          </div>
-          <h3 class="profile-name">윤태경</h3>
-          <p class="profile-role">Frontend Dev · Design</p>
-          <div class="profile-links">
-            <a href="mailto:taekyung@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-            <a href="https://taekyung.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-            <a href="https://github.com/taekyung" title="GitHub" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <button class="view-card-btn">💌 편지 열어보기</button>
+        <div class="rays-wrap" id="raysWrap" data-speed="-0.15">
+          <div class="rays-disc"></div>
         </div>
-      </div>
 
-      <!-- 기훈 -->
-      <div class="cheerleader-card" data-id="9">
-        <div class="profile-avatar profile-avatar--small">
-          <div class="avatar-placeholder avatar-placeholder--small">KH</div>
-        </div>
-        <div class="cheerleader-info">
-          <h4 class="profile-name">이기훈</h4>
-          <p class="profile-role">Cheerleader 📣</p>
-        </div>
-        <button class="view-card-btn view-card-btn--small">💌</button>
-      </div>
-
-      <div class="credits-footer">
-        <img src="assets/images/margin.svg" alt="Margin" class="margin-logo" />
-      </div>
-
-      <button class="credits-back" id="creditsBack">← 처음으로</button>
-    </div>
-
-    <!-- 카드 모달 -->
-    <div class="maker-card-modal" id="makerCardModal">
-      <div class="modal-overlay"></div>
-      <div class="modal-content">
-        <button class="modal-close" aria-label="닫기">✕</button>
-        <!-- 임시 카드 봉투 디자인 (추후 제공 시 교체) -->
-        <div class="modal-envelope" id="modalEnvelope">
-          <div class="modal-envelope-flap"></div>
-          <div class="modal-envelope-body">
-             <p class="modal-envelope-hint">Click to Open</p>
+        <!-- 하단 마키 -->
+        <div class="marquee marquee--bottom" aria-hidden="true">
+          <div class="marquee-inner marquee-inner--reverse">
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
           </div>
-          <div class="modal-letter" id="modalLetter">
-             <div class="modal-letter-inner">
-               <p class="letter-text" id="modalLetterText"></p>
-               <p class="letter-sender" id="modalLetterSender"></p>
-             </div>
+          <div class="marquee-inner marquee-inner--reverse" aria-hidden="true">
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
+            <span class="marquee-item marquee-item--red">Rolling Paper</span><span
+              class="marquee-dot marquee-dot--red"></span>
+            <span class="marquee-item marquee-item--faint">마음을 담아</span><span
+              class="marquee-dot marquee-dot--faint"></span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+
+        <div class="carousel-progress">
+          <div class="carousel-progress-fill" id="progressFill"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: Credits -->
+      <section id="credits" class="screen">
+        <div class="credits-inner">
+          <div class="credits-header">
+            <p class="credits-eyebrow">Made with love</p>
+            <h2 class="credits-title">The Creators</h2>
+          </div>
+
+          <div class="profiles-grid">
+            <!-- 1. 임예지 -->
+            <div class="profile-card" data-id="11">
+              <div class="profile-avatar">
+                <div class="avatar-placeholder">YJ</div>
+              </div>
+              <h3 class="profile-name">임예지</h3>
+              <p class="profile-role">PM · Frontend Dev</p>
+              <div class="profile-links">
+                <a href="mailto:yeji@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+                <a href="https://yeji.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+                <a href="https://github.com/yeji" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+              </div>
+              <button class="view-card-btn">💌 편지 열어보기</button>
+            </div>
+
+            <!-- 2. 김주은 -->
+            <div class="profile-card" data-id="5">
+              <div class="profile-avatar">
+                <div class="avatar-placeholder">JE</div>
+              </div>
+              <h3 class="profile-name">김주은</h3>
+              <p class="profile-role">UI Design · Planning</p>
+              <div class="profile-links">
+                <a href="mailto:jooeun@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+                <a href="https://jooeun.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+                <a href="https://github.com/jooeun" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+              </div>
+              <button class="view-card-btn">💌 편지 열어보기</button>
+            </div>
+
+            <!-- 3. 신혜인 -->
+            <div class="profile-card" data-id="7">
+              <div class="profile-avatar">
+                <div class="avatar-placeholder">HI</div>
+              </div>
+              <h3 class="profile-name">신혜인</h3>
+              <p class="profile-role">UX Research · Design</p>
+              <div class="profile-links">
+                <a href="mailto:hyein@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+                <a href="https://hyein.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+                <a href="https://github.com/hyein" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+              </div>
+              <button class="view-card-btn">💌 편지 열어보기</button>
+            </div>
+
+            <!-- 4. 윤태경 -->
+            <div class="profile-card" data-id="8">
+              <div class="profile-avatar">
+                <div class="avatar-placeholder">TK</div>
+              </div>
+              <h3 class="profile-name">윤태경</h3>
+              <p class="profile-role">Frontend Dev · Design</p>
+              <div class="profile-links">
+                <a href="mailto:taekyung@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+                <a href="https://taekyung.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+                <a href="https://github.com/taekyung" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+              </div>
+              <button class="view-card-btn">💌 편지 열어보기</button>
+            </div>
+          </div>
+
+          <!-- 기훈 -->
+          <div class="cheerleader-card" data-id="9">
+            <div class="profile-avatar profile-avatar--small">
+              <div class="avatar-placeholder avatar-placeholder--small">KH</div>
+            </div>
+            <div class="cheerleader-info">
+              <h4 class="profile-name">이기훈</h4>
+              <p class="profile-role">Cheerleader 📣</p>
+            </div>
+            <button class="view-card-btn view-card-btn--small">💌</button>
+          </div>
+
+          <div class="credits-footer">
+            <img src="assets/images/margin.svg" alt="Margin" class="margin-logo" />
+          </div>
+
+          <button class="credits-back" id="creditsBack">← 처음으로</button>
+        </div>
+
+        <!-- 카드 모달 -->
+        <div class="maker-card-modal" id="makerCardModal">
+          <div class="modal-overlay"></div>
+          <div class="modal-content">
+            <button class="modal-close" aria-label="닫기">✕</button>
+            <!-- 임시 카드 봉투 디자인 (추후 제공 시 교체) -->
+            <div class="modal-envelope" id="modalEnvelope">
+              <div class="modal-envelope-flap"></div>
+              <div class="modal-envelope-body">
+                <p class="modal-envelope-hint">Click to Open</p>
+              </div>
+              <div class="modal-letter" id="modalLetter">
+                <div class="modal-letter-inner">
+                  <p class="letter-text" id="modalLetterText"></p>
+                  <p class="letter-sender" id="modalLetterSender"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   </div>

@@ -22,15 +22,13 @@
     var $track = $('#carouselTrack');
     $track.empty();
 
-    var normalItems  = [];
-    var specialItems = [];
-
-    window.CARDS_DATA.forEach(function (d) {
-      // maker / cheerleader 는 캐러셀 제외
-      if (d.type === 'maker' || d.type === 'cheerleader') return;
-      if (d.type === 'special') specialItems.push(d);
-      else                      normalItems.push(d);
+    // maker / cheerleader 먼저 제외
+    var filtered = window.CARDS_DATA.filter(function (d) {
+      return d.type !== 'maker' && d.type !== 'cheerleader';
     });
+
+    var normalItems  = filtered.filter(function (d) { return d.type !== 'special'; });
+    var specialItems = filtered.filter(function (d) { return d.type === 'special'; });
 
     var orderedItems = normalItems.concat(specialItems);
     total = orderedItems.length;
@@ -59,8 +57,6 @@
           + '<div class="card-grain"></div>'
           + preview
           + '<div class="card-opened">'
-            + '<button class="card-nav card-nav--prev" aria-label="이전 카드">←</button>'
-            + '<button class="card-nav card-nav--next" aria-label="다음 카드">→</button>'
             + '<p class="letter-name">' + d.name + '</p>'
             + '<p class="letter-msg">' + d.message + '</p>'
             + linkBtn
@@ -70,15 +66,56 @@
     });
 
     $cards = $track.find('.card');
-    cur    = 0;
-    markVisited(0);
+    cur = 0;
+    loadState(); // load visited cards and cur
+
+    markVisited(cur); // ensures current is marked, and also saves state
     place(false);
     setTimeout(swipeHint, 2000);
   }
 
   /* ─── VISITED ─── */
   function markVisited(idx) {
-    if (idx >= 0 && idx < total) visited[idx] = true;
+    if (idx >= 0 && idx < total) {
+      visited[idx] = true;
+      if ($cards && $cards.eq(idx)) {
+        $cards.eq(idx).addClass('is-read');
+      }
+      saveState();
+    }
+  }
+
+  function saveState() {
+    try {
+      sessionStorage.setItem('visitedCards', JSON.stringify(visited));
+      sessionStorage.setItem('curCard', cur.toString());
+    } catch(e) {}
+  }
+
+  function loadState() {
+    try {
+      var saved = sessionStorage.getItem('visitedCards');
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (parsed && parsed.length === total) {
+          visited = parsed;
+          visited.forEach(function (v, i) {
+            if (v && $cards && $cards.eq(i)) {
+              $cards.eq(i).addClass('is-read');
+            }
+          });
+        }
+      }
+      var savedCur = sessionStorage.getItem('curCard');
+      if (savedCur !== null) {
+        var parsedCur = parseInt(savedCur, 10);
+        if (!isNaN(parsedCur) && parsedCur >= 0 && parsedCur < total) {
+          cur = parsedCur;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to parse visited cards state', e);
+    }
   }
 
   function allRegularVisited() {
@@ -151,9 +188,19 @@
   function go(dir) {
     if (!total) return;
     cur = getNextIndex(dir);
-    markVisited(cur);
+    markVisited(cur); // also calls saveState()
     place(true);
   }
+
+  /* ─── PUBLIC API (for StateManager restore) ─── */
+  window.CarouselAPI = {
+    goTo: function (idx) {
+      if (!$cards || !total) return;
+      cur = Math.max(0, Math.min(idx, total - 1));
+      markVisited(cur);
+      place(true);
+    }
+  };
 
   /* ─── EXPAND ─── */
   function open() {
@@ -263,16 +310,16 @@
       expanded ? close() : open();
     });
 
-    // 화살표 버튼
-    $(document).on('click', '.card-nav--prev', function (e) {
+    // Global Navigation Arrows
+    $(document).on('click', '.global-nav-btn--prev', function (e) {
       e.stopPropagation();
-      close();
-      setTimeout(function () { go(-1); }, 80);
+      if (expanded) close();
+      setTimeout(function () { go(-1); }, expanded ? 80 : 0);
     });
-    $(document).on('click', '.card-nav--next', function (e) {
+    $(document).on('click', '.global-nav-btn--next', function (e) {
       e.stopPropagation();
-      close();
-      setTimeout(function () { go(1); }, 80);
+      if (expanded) close();
+      setTimeout(function () { go(1); }, expanded ? 80 : 0);
     });
 
     // 카드 바깥 클릭 → 닫기
@@ -297,4 +344,12 @@
     $(document).on('mousemove', '#carousel', function (e) { onMove(e.clientX); });
     $(document).on('mouseup',               function (e) { if (dragging) onEnd(e.clientX); });
   });
+
+  /* ─── TEAM OVERLAY → #credits section ─── */
+  window.openTeamOverlay = function () {
+    $('#carousel').removeClass('active').attr('aria-hidden', 'true');
+    $('#credits').addClass('active').attr('aria-hidden', 'false');
+    if (window.StateManager) window.StateManager.saveScreen('credits');
+  };
+
 })();
