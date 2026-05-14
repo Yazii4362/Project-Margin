@@ -1,0 +1,141 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MARGIN — SVG 프레임 커스텀 커서 (전역 기본 커서 숨김, 링크·캐러셀 동일)
+   로드 순서: 다른 페이지 CSS 이후 (index에서 마지막 링크)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.margin-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100000;
+  width: var(--margin-cursor-size, 64px);
+  height: var(--margin-cursor-size, 64px);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+  contain: strict;
+}
+
+html.margin-cursor-active .margin-cursor {
+  opacity: 1;
+  visibility: visible;
+}
+
+html.margin-cursor-active .margin-cursor.margin-cursor--out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.margin-cursor__stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
+    filter 0.1s var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.margin-cursor__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.margin-cursor__frame.is-active {
+  opacity: 1;
+}
+
+/* 링크·버튼 등 위: 시스템 커서 없이 커스텀만 약간 강조 */
+.margin-cursor.margin-cursor--pointer .margin-cursor__stack {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+/* 꼭짓점: 핫스팟에서 위·왼으로 띄움(JS), 기울기 -22.5deg — 엄지와 분리 */
+.margin-cursor__tip {
+  position: absolute;
+  left: var(--cursor-tip-x, 6.95px);
+  top: var(--cursor-tip-y, 4.48px);
+  z-index: 6;
+  width: 7px;
+  height: 7px;
+  margin: 0;
+  pointer-events: none;
+  opacity: 0.96;
+  transform: translate(-50%, 0) rotate(var(--cursor-tip-tilt, -22.5deg));
+  transform-origin: 50% 0;
+}
+
+.margin-cursor__tip::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-ink, #1a1612);
+  clip-path: polygon(50% 0%, 100% 100%, 0 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.margin-cursor-active .margin-cursor__stack {
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  html.margin-cursor-active .margin-cursor__tip {
+    --cursor-tip-tilt: 0deg;
+  }
+}
+
+/* 전역 + 주요 섹션(id 선택자로 splash/credits/carousel의 cursor 규칙 덮어씀) */
+html.margin-cursor-active,
+html.margin-cursor-active *,
+html.margin-cursor-active #hero,
+html.margin-cursor-active #hero *,
+html.margin-cursor-active #carousel,
+html.margin-cursor-active #carousel *,
+html.margin-cursor-active #credits,
+html.margin-cursor-active #credits * {
+  cursor: none !important;
+}
+
+/* carousel.css의 #carousel .card.is-active 등 (1,2,0) 대비 */
+html.margin-cursor-active #carousel .card,
+html.margin-cursor-active #carousel .card *,
+html.margin-cursor-active #carousel .marquee,
+html.margin-cursor-active #carousel .marquee *,
+html.margin-cursor-active #carousel .carousel-track-wrap,
+html.margin-cursor-active #carousel .carousel-track-wrap *,
+html.margin-cursor-active #carousel .carousel-instruction,
+html.margin-cursor-active #carousel .carousel-instruction *,
+html.margin-cursor-active #carousel .carousel-progress,
+html.margin-cursor-active #carousel .carousel-progress *,
+html.margin-cursor-active #carousel .rays-wrap,
+html.margin-cursor-active #carousel .rays-wrap * {
+  cursor: none !important;
+}
+
+html.margin-cursor-active #team-overlay,
+html.margin-cursor-active #team-overlay * {
+  cursor: none !important;
+}
+
+/* 봉투 peel 등 레거시 클래스만 유지(시스템 grab 미사용) */
+html.margin-cursor-active body.margin-cursor-grab-mode,
+html.margin-cursor-active body.margin-cursor-grab-mode * {
+  cursor: none !important;
+}
+
+/* 커스텀 비활성(미초기화) 시 봉투 peel grab — 터치 등 */
+html:not(.margin-cursor-active) body.margin-cursor-grab-mode,
+html:not(.margin-cursor-active) body.margin-cursor-grab-mode * {
+  cursor: grab !important;
+}

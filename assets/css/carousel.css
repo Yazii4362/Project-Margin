@@ -243,6 +243,12 @@ position: relative;
 z-index: 1;
 }
 
+/* 펼친 카드 — 좌우 네비가 가리지 않도록 본문만 살짝 안쪽으로 */
+.card.is-open .letter-msg {
+padding-left: 44px;
+padding-right: 44px;
+}
+
 .letter-msg::-webkit-scrollbar { width: 3px; }
 .letter-msg::-webkit-scrollbar-thumb { background: rgba(180,160,140,0.4); border-radius: 2px; }
 
@@ -509,18 +515,19 @@ background: #f5c842;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  CARD NAV ARROWS
+  CARD NAV ARROWS — 카드 세로 중앙·좌우, 본문과 겹침 최소화
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .card-nav {
 position: absolute;
-bottom: 18px;
-width: 36px;
-height: 36px;
+top: 50%;
+bottom: auto;
+width: 34px;
+height: 34px;
 border-radius: 50%;
 border: 1px solid rgba(26,22,18,0.12);
 background: rgba(255,255,255,0.85);
 color: var(--color-ink);
-font-size: 16px;
+font-size: 15px;
 cursor: pointer;
 display: flex;
 align-items: center;
@@ -528,6 +535,7 @@ justify-content: center;
 z-index: 4;
 pointer-events: none;
 opacity: 0;
+transform: translateY(-50%);
 transition: background 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
 }
 
@@ -536,16 +544,16 @@ pointer-events: all;
 opacity: 1;
 }
 
-.card-nav--prev { left: 18px; }
-.card-nav--next { right: 18px; }
+.card-nav--prev { left: 10px; }
+.card-nav--next { right: 10px; }
 
 .card-nav:hover {
 background: rgba(255,255,255,1);
-transform: scale(1.1);
+transform: translateY(-50%) scale(1.08);
 }
 
 .card-nav:active {
-transform: scale(0.95);
+transform: translateY(-50%) scale(0.96);
 }
 
 .card--special .card-nav {
@@ -556,6 +564,11 @@ color: rgba(240,232,208,0.85);
 
 .card--special .card-nav:hover {
 background: rgba(255,255,255,0.15);
+transform: translateY(-50%) scale(1.08);
+}
+
+.card--special .card-nav:active {
+transform: translateY(-50%) scale(0.96);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
