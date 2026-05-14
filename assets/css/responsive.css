@@ -116,13 +116,13 @@
 
   .letter-name {
     font-size: 18px;
-    padding: 36px 28px 0 28px;
+    padding: 24px 28px 0 28px;
   }
 
   .letter-msg {
     font-size: 13.5px;
     line-height: 1.75;
-    padding: 18px 28px 32px 28px;
+    padding: 14px 28px 24px 28px;
   }
 
   /* Marquee */
@@ -293,13 +293,13 @@
 
   .letter-name {
     font-size: 17px;
-    padding: 32px 24px 0 24px;
+    padding: 22px 24px 0 24px;
   }
 
   .letter-msg {
     font-size: 13px;
     line-height: 1.7;
-    padding: 16px 24px 28px 24px;
+    padding: 12px 24px 22px 24px;
   }
 
   /* Credits */
