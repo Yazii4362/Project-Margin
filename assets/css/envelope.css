@@ -190,7 +190,7 @@
   animation: seal-mark-in 0.3s ease forwards;
 }
 
-..envelope-flap {
+.envelope-flap {
   position: absolute;
   top: 0;
   left: 0;
@@ -203,7 +203,7 @@
     #931b0e 55%,
     #6b060e 100%
   );
-  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
   z-index: 3;
   transform-origin: top center;
   transition: transform var(--dur-slow) var(--ease);
@@ -222,7 +222,7 @@
     transparent 55%,
     rgba(0,0,0,0.08) 100%
   );
-  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
 /* 플랩 하단 접힘선 */

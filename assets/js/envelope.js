@@ -17,24 +17,19 @@
     // 1. 씰 떼기 시작
     $env.addClass('peeling');
 
-    // 2. 씰 사라지는 중간쯤 자국 추가
+    // 2. 씰 사라지는 중간쯤 자국 추가 (주석 처리 - 자국 표시 안 함)
     // setTimeout(function () {
-    //   $seal.after('<div class="envelope-seal-mark"></div>');
+    //   var sealRect = document.getElementById('envelopeSeal').getBoundingClientRect();
+    //   var envRect  = document.getElementById('envelopeEl').getBoundingClientRect();
+    //   var $mark = $('<div class="envelope-seal-mark"></div>').css({
+    //     position: 'absolute',
+    //     top:  sealRect.top  - envRect.top,
+    //     left: sealRect.left - envRect.left,
+    //     width:  sealRect.width,
+    //     height: sealRect.height
+    //   });
+    //   $seal.after($mark);
     // }, 350);
-
-    setTimeout(function () {
-      // getBoundingClientRect 기반으로 정확한 위치 계산
-      var sealRect = document.getElementById('envelopeSeal').getBoundingClientRect();
-      var envRect  = document.getElementById('envelopeEl').getBoundingClientRect();
-      var $mark = $('<div class="envelope-seal-mark"></div>').css({
-        position: 'absolute',
-        top:  sealRect.top  - envRect.top,
-        left: sealRect.left - envRect.left,
-        width:  sealRect.width,
-        height: sealRect.height
-      });
-      $seal.after($mark);
-    }, 350);
 
     // 3. 씰 다 날아간 후 플랩 열기
     setTimeout(function () {

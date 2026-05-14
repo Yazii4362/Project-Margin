@@ -26,7 +26,7 @@ window.CARDS_DATA = [
     contribution: 30,
     teamBio: "프론트엔드 개발과 디자인, 기획까지 폭넓게 함께했어요.",
     email: "jooeun@example.com",
-    tistory: "https://jooeun.tistory.com",
+    tistory: "https://jurmi.tistory.com/",
     github: "https://github.com/jooeun",
     message: "강사님!<br> 바쁜 하루 속에서도 늘 밝게 수업해주시고 따뜻하게 챙겨주셔서 감사합니다.<br> 처음 배우는 UI/UX가 어렵기도 했지만,<br> 강사님 덕분에 즐겁게 배우고 있습니다.<br> 좋은 스승을 만난 건 오래 기억에 남을 행운인 것 같아요.<br> 항상 감사드립니다!<br> 2026.05.15 주은 올림"
   },
@@ -74,7 +74,7 @@ window.CARDS_DATA = [
     contribution: 35,
     teamBio: "팀 리드와 기획, 그리고 프로젝트 전반을 총괄·조율했어요.",
     email: "yeji@example.com",
-    tistory: "https://yeji.tistory.com",
+    tistory: "https://yaziihome.tistory.com/",
     github: "https://github.com/yeji",
     message: "강현명 선생님께<br> 선생님! 어느덧 3개월 반 동안 선생님의 가르침을 받고 있는 예지 입니다.<br> 우여곡절을 겪고 선생님의 강의실에 앉기까지 많은 고민을 했고, 많은 갈등을 겪었는데요,<br> 돌이켜보면 제 고민과 갈등들이 값지다는 것을 요즘들어 더 깨닫고 있습니다.<br> 많은 스트레스들이 있으실텐데 잦은 결석으로 스트레스거리를 더 얹어 드려 늘 죄송하고,<br> 동시에 정말 현실적인 감각으로 가르쳐주셔서 매일 즐거운 마음으로 학원에 오고 있습니다.<br> 진심으로 선생님께 감사합니다!<br> 남은기간 더 재밌게 배우도록 하겠습니다~<br> -2026.5.15. 임예지 올림."
   },

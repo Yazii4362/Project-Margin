@@ -31,13 +31,43 @@
     opacity 0.6s var(--ease),
     visibility 0.6s var(--ease),
     transform 0.6s var(--ease),
-    box-shadow var(--dur-fast) var(--ease);
+    box-shadow var(--dur-fast) var(--ease),
+    left 0.4s var(--ease),
+    right 0.4s var(--ease),
+    top 0.4s var(--ease),
+    bottom 0.4s var(--ease);
 }
 
 html.splash-complete .bgm-player {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+/* 모바일: 하단 중앙 고정 */
+@media (max-width: 768px) {
+  .bgm-player {
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: max(20px, env(safe-area-inset-bottom, 0px) + 8px) !important;
+    min-width: 0;
+    width: min(340px, calc(100vw - var(--sp-6)));
+    max-width: none;
+  }
+
+  .bgm-player:not(.splash-complete) {
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  html.splash-complete .bgm-player {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  /* 플레이리스트 열렸을 때 위로 확장 */
+  .bgm-player--playlist-open {
+    bottom: max(20px, env(safe-area-inset-bottom, 0px) + 8px) !important;
+  }
 }
 
 .bgm-player-inner {
@@ -64,17 +94,29 @@ html.splash-complete .bgm-player {
 
 @media (max-width: 480px) {
   .bgm-player {
-    left: max(var(--sp-2), env(safe-area-inset-left, 0px));
-    top: calc(env(safe-area-inset-top, 0px) + 36px);
-    min-width: 0;
-    width: min(280px, calc(100vw - var(--sp-4)));
+    /* 모바일 하단 고정은 위에서 처리 */
     padding: var(--sp-2) var(--sp-3);
     backdrop-filter: blur(12px) saturate(1.05);
     -webkit-backdrop-filter: blur(12px) saturate(1.05);
+    width: min(320px, calc(100vw - 32px)) !important;
   }
 
   .bgm-player-bar {
     gap: var(--sp-2);
+  }
+  
+  .bgm-track-label {
+    font-size: 10px;
+  }
+  
+  .bgm-btn-toggle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .bgm-playlist-toggle {
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -138,10 +180,16 @@ html.splash-complete .bgm-player {
   overflow: hidden;
   text-overflow: ellipsis;
   opacity: 0.92;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .bgm-player:not(.bgm-player--playing) .bgm-track-label {
   opacity: 0.62;
+}
+
+.bgm-player--playing .bgm-track-label {
+  color: var(--color-red-soft);
+  opacity: 1;
 }
 
 @media (max-width: 480px) {
@@ -175,24 +223,62 @@ html.splash-complete .bgm-player {
   height: 16px;
   padding: 0 2px;
   opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.bgm-player--playing .bgm-volume {
+  opacity: 0.75;
 }
 
 .bgm-volume__bar {
   width: 3px;
   border-radius: 1px;
   background: var(--color-muted);
+  transition: background 0.3s ease;
+}
+
+.bgm-player--playing .bgm-volume__bar {
+  background: var(--color-red-soft);
 }
 
 .bgm-volume__bar:nth-child(1) {
   height: 5px;
+  animation: none;
 }
 
 .bgm-volume__bar:nth-child(2) {
   height: 9px;
+  animation: none;
 }
 
 .bgm-volume__bar:nth-child(3) {
   height: 14px;
+  animation: none;
+}
+
+/* 재생 중일 때 볼륨 바 애니메이션 */
+.bgm-player--playing .bgm-volume__bar:nth-child(1) {
+  animation: volume-bounce 0.8s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.bgm-player--playing .bgm-volume__bar:nth-child(2) {
+  animation: volume-bounce 0.8s ease-in-out infinite;
+  animation-delay: 0.15s;
+}
+
+.bgm-player--playing .bgm-volume__bar:nth-child(3) {
+  animation: volume-bounce 0.8s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes volume-bounce {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.6);
+  }
 }
 
 /* 플레이리스트 토글 */
@@ -249,17 +335,30 @@ html.splash-complete .bgm-player {
 }
 
 .bgm-player--playlist-open .bgm-playlist-panel {
-  max-height: 220px;
+  max-height: 260px;
   opacity: 1;
   border-top-color: rgba(255, 255, 255, 0.35);
   padding-top: var(--sp-2);
+}
+
+/* 모바일에서 플레이리스트 높이 조정 */
+@media (max-width: 768px) {
+  .bgm-player--playlist-open .bgm-playlist-panel {
+    max-height: 220px;
+  }
+}
+
+@media (max-height: 600px) {
+  .bgm-player--playlist-open .bgm-playlist-panel {
+    max-height: 160px;
+  }
 }
 
 .bgm-playlist {
   list-style: none;
   margin: 0;
   padding: 0 0 var(--sp-1);
-  max-height: 200px;
+  max-height: 240px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -283,6 +382,7 @@ html.splash-complete .bgm-player {
   text-align: left;
   cursor: unset;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  line-height: 1.4;
 }
 
 .bgm-playlist-row:hover {
@@ -301,6 +401,57 @@ html.splash-complete .bgm-player {
   font-size: 9px;
   opacity: 0;
   color: var(--color-red-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* 재생 중일 때 파형 애니메이션 */
+.bgm-playlist-row.is-current.is-playing .bgm-playlist-row__mark {
+  opacity: 1;
+}
+
+.bgm-playlist-row.is-current.is-playing .bgm-playlist-row__mark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background-image: 
+    linear-gradient(var(--color-red-soft) 0%, var(--color-red-soft) 100%),
+    linear-gradient(var(--color-red-soft) 0%, var(--color-red-soft) 100%),
+    linear-gradient(var(--color-red-soft) 0%, var(--color-red-soft) 100%);
+  background-repeat: no-repeat;
+  background-size: 2px 40%, 2px 100%, 2px 60%;
+  background-position: 0px center, 4px center, 8px center;
+  animation: wave-bars 0.8s ease-in-out infinite;
+}
+
+@keyframes wave-bars {
+  0%, 100% {
+    background-size: 2px 40%, 2px 100%, 2px 60%;
+  }
+  25% {
+    background-size: 2px 100%, 2px 60%, 2px 80%;
+  }
+  50% {
+    background-size: 2px 60%, 2px 80%, 2px 100%;
+  }
+  75% {
+    background-size: 2px 80%, 2px 100%, 2px 40%;
+  }
+}
+
+/* 현재 곡이지만 일시정지 상태일 때 */
+.bgm-playlist-row.is-current:not(.is-playing) .bgm-playlist-row__mark {
+  opacity: 0.5;
+}
+
+.bgm-playlist-row.is-current:not(.is-playing) .bgm-playlist-row__mark::before {
+  display: none;
 }
 
 .bgm-playlist-row__title {
@@ -308,7 +459,11 @@ html.splash-complete .bgm-player {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
 }
 
 /* 현재 로드된 트랙 */
@@ -322,10 +477,24 @@ html.splash-complete .bgm-player {
   background: rgba(255, 90, 69, 0.14);
   color: var(--color-ink);
   font-weight: 500;
+  box-shadow: 0 0 0 1px rgba(255, 90, 69, 0.2) inset;
 }
 
 .bgm-playlist-row.is-current.is-playing .bgm-playlist-row__mark {
   opacity: 1;
+}
+
+.bgm-playlist-row.is-current.is-playing .bgm-playlist-row__title {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
 }
 
 .bgm-audio {

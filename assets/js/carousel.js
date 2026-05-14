@@ -56,8 +56,6 @@
           + '<div class="card-grain"></div>'
           + preview
           + '<div class="card-opened">'
-            + '<button class="card-nav card-nav--prev" aria-label="이전 카드">←</button>'
-            + '<button class="card-nav card-nav--next" aria-label="다음 카드">→</button>'
             + '<p class="letter-name">' + d.name + '</p>'
             + '<p class="letter-msg">' + d.message + '</p>'
             + linkBtn
@@ -250,7 +248,6 @@
 
     // 카드 클릭
     $(document).on('click', '#carouselTrack .card.is-active', function (e) {
-      if ($(e.target).closest('.card-nav').length) return;
       if ($(e.target).closest('.card-link-btn').length) return;
       if (didDrag) { didDrag = false; return; }
       if ($(this).hasClass('card--special')) {
@@ -258,18 +255,6 @@
         return;
       }
       expanded ? close() : open();
-    });
-
-    // 화살표 버튼
-    $(document).on('click', '.card-nav--prev', function (e) {
-      e.stopPropagation();
-      close();
-      setTimeout(function () { go(-1); }, 80);
-    });
-    $(document).on('click', '.card-nav--next', function (e) {
-      e.stopPropagation();
-      close();
-      setTimeout(function () { go(1); }, 80);
     });
 
     // 카드 바깥 클릭 → 닫기

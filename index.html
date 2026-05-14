@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="assets/css/envelope.css" />
   <link rel="stylesheet" href="assets/css/carousel.css" />
   <link rel="stylesheet" href="assets/css/credits.css" />
+  <link rel="stylesheet" href="assets/css/credits-enhanced.css" />
   <link rel="stylesheet" href="assets/css/grain.css" />
   <link rel="stylesheet" href="assets/css/bgm-player.css" />
   <link rel="stylesheet" href="assets/css/margin-cursor.css" />
@@ -90,7 +91,7 @@
           <div class="carousel-track" id="carouselTrack"></div>
         </div>
         <div class="carousel-instruction">
-          <p>PC로 스크롤하거나 카드 위를 드래그해 보세요. 키보드 ←/→로 이동 가능.</p>
+          <p>PC에서는 스크롤하거나 카드 위를 드래그하세요. ←/→ 키로 이동할 수 있습니다.</p>
         </div>
         <div class="rays-wrap" id="raysWrap" data-speed="-0.15">
           <div class="rays-disc"></div>
@@ -173,26 +174,24 @@
                 <div class="cr-card-bottom">
                   <div class="cr-links">
                     <a href="mailto:yeji@example.com" class="cr-btn cr-btn--mail" aria-label="이메일 보내기"
-                      title="Email">
-                      <svg class="cr-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true">
-                        <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
-                        <path d="m4 7 8 5.5L20 7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
-                      </svg>
+                      title="Gmail">
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/gmail-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                     <a href="https://github.com/Yazii4362" class="cr-btn cr-btn--gh" target="_blank" rel="noopener"
                       aria-label="GitHub 프로필" title="GitHub">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M12 1C6.48 1 2 5.48 2 11c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-.91-1.47-.91-1.47-.74-.5.06-.49.06-.49.82.12 1.27.84 1.27.84.73 1.26 1.91.9 2.38.69.07-.53.28-.9.51-1.11-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .26.18.58.69.48A10.01 10.01 0 0022 11c0-5.52-4.48-10-10-10z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/github-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
-                    <a href="https://yeji.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
-                      aria-label="티스토리 블로그" title="Tistory">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M0 3.99A2.99 2.99 0 0 1 2.99 1h18.02A2.99 2.99 0 0 1 24 3.99v16.02A2.99 2.99 0 0 1 21.01 23H2.99A2.99 2.99 0 0 1 0 20.01V3.99Zm9.25 1.5v13.02h5.5V5.49h-5.5Zm7.25 0v13.02H21V5.49h-4.5Zm-14.5 0v13.02h5.5V5.49H2Z" />
-                      </svg>
+                    <a href="https://yaziihome.tistory.com/" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
+                      aria-label="티스토리: Yazii Home" title="Yazii Home">
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/tistory-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
+                    </a>
+                    <a href="https://studio-yama.tistory.com/" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
+                      aria-label="티스토리: studio-yama" title="studio-yama">
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/tistory-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                   </div>
                   <button type="button" class="cr-letter-btn" aria-label="임예지 편지 열기">💌 편지 열기</button>
@@ -202,7 +201,9 @@
               <!-- 김주은 -->
               <article class="cr-card cr-card--jooeun" data-id="5" data-maker="jooeun">
                 <div class="cr-card-top">
-                  <div class="cr-avatar"><span>JE</span></div>
+                  <div class="cr-avatar">
+                    <img src="assets/images/jueun-profile.webp" alt="김주은 프로필" loading="lazy" decoding="async" />
+                  </div>
                   <h3 class="cr-name">김주은</h3>
                   <p class="cr-tag">FE · 디자인 · 기획</p>
                   <p class="cr-desc">디자인 · 기획 일부 + FE 하드코딩</p>
@@ -210,26 +211,19 @@
                 <div class="cr-card-bottom">
                   <div class="cr-links">
                     <a href="mailto:jooeun@example.com" class="cr-btn cr-btn--mail" aria-label="이메일 보내기"
-                      title="Email">
-                      <svg class="cr-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true">
-                        <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
-                        <path d="m4 7 8 5.5L20 7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
-                      </svg>
+                      title="Gmail">
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/gmail-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                     <a href="https://github.com/Jurmiii" class="cr-btn cr-btn--gh" target="_blank" rel="noopener"
                       aria-label="GitHub 프로필" title="GitHub">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M12 1C6.48 1 2 5.48 2 11c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-.91-1.47-.91-1.47-.74-.5.06-.49.06-.49.82.12 1.27.84 1.27.84.73 1.26 1.91.9 2.38.69.07-.53.28-.9.51-1.11-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .26.18.58.69.48A10.01 10.01 0 0022 11c0-5.52-4.48-10-10-10z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/github-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
-                    <a href="https://jooeun.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
+                    <a href="https://jurmi.tistory.com/" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
                       aria-label="티스토리 블로그" title="Tistory">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M0 3.99A2.99 2.99 0 0 1 2.99 1h18.02A2.99 2.99 0 0 1 24 3.99v16.02A2.99 2.99 0 0 1 21.01 23H2.99A2.99 2.99 0 0 1 0 20.01V3.99Zm9.25 1.5v13.02h5.5V5.49h-5.5Zm7.25 0v13.02H21V5.49h-4.5Zm-14.5 0v13.02h5.5V5.49H2Z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/tistory-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                   </div>
                   <button type="button" class="cr-letter-btn" aria-label="김주은 편지 열기">💌 편지 열기</button>
@@ -239,7 +233,9 @@
               <!-- 신혜인 -->
               <article class="cr-card cr-card--hyein" data-id="7" data-maker="hyein">
                 <div class="cr-card-top">
-                  <div class="cr-avatar"><span>HI</span></div>
+                  <div class="cr-avatar">
+                    <img src="assets/images/cards/hyein-profile.webp" alt="신혜인 프로필" loading="lazy" decoding="async" />
+                  </div>
                   <h3 class="cr-name">신혜인</h3>
                   <p class="cr-tag">그래픽 · AI 음악</p>
                   <p class="cr-desc">피그마 그래픽 + AI 음악 제작</p>
@@ -247,26 +243,19 @@
                 <div class="cr-card-bottom">
                   <div class="cr-links">
                     <a href="mailto:hyein@example.com" class="cr-btn cr-btn--mail" aria-label="이메일 보내기"
-                      title="Email">
-                      <svg class="cr-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true">
-                        <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
-                        <path d="m4 7 8 5.5L20 7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
-                      </svg>
+                      title="Gmail">
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/gmail-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                     <a href="https://github.com/shinini524" class="cr-btn cr-btn--gh" target="_blank" rel="noopener"
                       aria-label="GitHub 프로필" title="GitHub">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M12 1C6.48 1 2 5.48 2 11c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-.91-1.47-.91-1.47-.74-.5.06-.49.06-.49.82.12 1.27.84 1.27.84.73 1.26 1.91.9 2.38.69.07-.53.28-.9.51-1.11-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .26.18.58.69.48A10.01 10.01 0 0022 11c0-5.52-4.48-10-10-10z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/github-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                     <a href="https://hyein.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
                       aria-label="티스토리 블로그" title="Tistory">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M0 3.99A2.99 2.99 0 0 1 2.99 1h18.02A2.99 2.99 0 0 1 24 3.99v16.02A2.99 2.99 0 0 1 21.01 23H2.99A2.99 2.99 0 0 1 0 20.01V3.99Zm9.25 1.5v13.02h5.5V5.49h-5.5Zm7.25 0v13.02H21V5.49h-4.5Zm-14.5 0v13.02h5.5V5.49H2Z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/tistory-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                   </div>
                   <button type="button" class="cr-letter-btn" aria-label="신혜인 편지 열기">💌 편지 열기</button>
@@ -276,7 +265,9 @@
               <!-- 윤태경 -->
               <article class="cr-card cr-card--taekyung" data-id="8" data-maker="taekyung">
                 <div class="cr-card-top">
-                  <div class="cr-avatar"><span>TK</span></div>
+                  <div class="cr-avatar">
+                    <img src="assets/images/cards/tk-profile.webp" alt="윤태경 프로필" loading="lazy" decoding="async" />
+                  </div>
                   <h3 class="cr-name">윤태경</h3>
                   <p class="cr-tag">FE</p>
                   <p class="cr-desc">JS 이스터에그 게임 구현</p>
@@ -284,26 +275,19 @@
                 <div class="cr-card-bottom">
                   <div class="cr-links">
                     <a href="mailto:taekyung@example.com" class="cr-btn cr-btn--mail" aria-label="이메일 보내기"
-                      title="Email">
-                      <svg class="cr-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true">
-                        <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
-                        <path d="m4 7 8 5.5L20 7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
-                      </svg>
+                      title="Gmail">
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/gmail-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                     <a href="https://github.com/arcaniac7303" class="cr-btn cr-btn--gh" target="_blank" rel="noopener"
                       aria-label="GitHub 프로필" title="GitHub">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M12 1C6.48 1 2 5.48 2 11c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-.91-1.47-.91-1.47-.74-.5.06-.49.06-.49.82.12 1.27.84 1.27.84.73 1.26 1.91.9 2.38.69.07-.53.28-.9.51-1.11-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .26.18.58.69.48A10.01 10.01 0 0022 11c0-5.52-4.48-10-10-10z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/github-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                     <a href="https://taekyung.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener"
                       aria-label="티스토리 블로그" title="Tistory">
-                      <svg class="cr-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill="currentColor"
-                          d="M0 3.99A2.99 2.99 0 0 1 2.99 1h18.02A2.99 2.99 0 0 1 24 3.99v16.02A2.99 2.99 0 0 1 21.01 23H2.99A2.99 2.99 0 0 1 0 20.01V3.99Zm9.25 1.5v13.02h5.5V5.49h-5.5Zm7.25 0v13.02H21V5.49h-4.5Zm-14.5 0v13.02h5.5V5.49H2Z" />
-                      </svg>
+                      <img class="cr-icon cr-icon--img" src="assets/images/sns/tistory-mark.svg" width="24" height="24"
+                        alt="" decoding="async" />
                     </a>
                   </div>
                   <button type="button" class="cr-letter-btn" aria-label="윤태경 편지 열기">💌 편지 열기</button>
@@ -403,6 +387,7 @@
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollSmoother.min.js"></script>
   <!-- JS -->
   <script src="assets/js/data.js"></script>

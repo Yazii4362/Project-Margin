@@ -24,6 +24,30 @@ function initRandomBGM() {
     'khm4-jueun.mp3',
   ];
 
+  /** 트랙 메타데이터: 노래명, 작곡/작사 정보 */
+  var BGM_TRACK_META = {
+    'khm1-hyein.mp3': {
+      title: '선생님의 하루',
+      composer: '신혜인',
+      lyricist: '신혜인'
+    },
+    'khm2-hyein.mp3': {
+      title: '감사의 마음',
+      composer: '신혜인',
+      lyricist: '신혜인'
+    },
+    'khm3-jueun.mp3': {
+      title: '따뜻한 가르침',
+      composer: '김주은',
+      lyricist: '김주은'
+    },
+    'khm4-jueun.mp3': {
+      title: '고강도노력',
+      composer: '김주은',
+      lyricist: '김주은'
+    }
+  };
+
   var BGM_BASE = 'assets/audio/';
   var BGM_MAKER_LABELS = {
     hyein: '혜인',
@@ -45,21 +69,42 @@ function initRandomBGM() {
 
   function parseTrackMeta(filename) {
     var m = filename.match(KHM_FILE_RE);
+    var meta = BGM_TRACK_META[filename];
+    
     if (!m) {
       return { num: '', slug: '', line: filename };
     }
+    
+    var trackNum = m[1];
     var slug = m[2].toLowerCase();
     var who = BGM_MAKER_LABELS[slug] || m[2];
+    
+    // 메타데이터가 있으면 상세 정보 표시
+    if (meta) {
+      return {
+        num: trackNum,
+        slug: slug,
+        line: 'Track ' + trackNum + ' · ' + meta.title + ' - 작곡/작사: ' + meta.composer,
+        shortLine: meta.title + ' · ' + who + '님'
+      };
+    }
+    
     return {
-      num: m[1],
+      num: trackNum,
       slug: slug,
-      line: who + '님의 곡 · #' + m[1],
+      line: 'Track ' + trackNum + ' · ' + who + '님의 곡',
     };
   }
 
-  /** UI 리스트용: "Track 1 - hyein" */
+  /** UI 리스트용: "Track 번호 · 노래명 - 작곡/작사: 이름" */
   function formatPlaylistTitle(filename) {
+    var meta = BGM_TRACK_META[filename];
     var m = filename.match(KHM_FILE_RE);
+    
+    if (meta && m) {
+      return 'Track ' + m[1] + ' · ' + meta.title + ' - 작곡/작사: ' + meta.composer;
+    }
+    
     if (!m) {
       return filename.replace(/\.mp3$/i, '');
     }
