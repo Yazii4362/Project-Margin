@@ -77,8 +77,21 @@
     });
   }
 
+  /* ─── BGM 상태 추적 변수 ─── */
+  var bgmWasPlayingBeforeCredits = false;
+
   /* ─── 시크릿카드 → 크레딧 섹션 전환 ─── */
   window.openTeamOverlay = function () {
+    // BGM 현재 재생 상태 저장 및 일시정지
+    var $audio = $('#bgmAudio');
+    if ($audio.length) {
+      var audio = $audio[0];
+      bgmWasPlayingBeforeCredits = !audio.paused && !audio.ended;
+      if (bgmWasPlayingBeforeCredits) {
+        audio.pause();
+      }
+    }
+
     $carousel.removeClass('active').attr('aria-hidden', 'true');
     $credits.addClass('active').attr('aria-hidden', 'false');
     
@@ -114,6 +127,19 @@
     
     $credits.removeClass('active').attr('aria-hidden', 'true');
     $carousel.addClass('active').attr('aria-hidden', 'false');
+
+    // BGM 재생 재개 (크레딧 진입 전에 재생 중이었다면)
+    var $audio = $('#bgmAudio');
+    if ($audio.length && bgmWasPlayingBeforeCredits) {
+      var audio = $audio[0];
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function() {
+          // 자동 재생 실패 시 무시 (사용자가 수동으로 재생 가능)
+        });
+      }
+      bgmWasPlayingBeforeCredits = false;
+    }
   });
 
   /* ─── 편지 모달 열기 ─── */
