@@ -137,116 +137,124 @@
         </div>
       </section>
 
-      <!-- SECTION 4: Credits -->
+      <!-- SECTION 4: Credits (시크릿카드 페이지) -->
       <section id="credits" class="screen">
-        <div class="credits-inner">
-          <div class="credits-header">
-            <p class="credits-eyebrow">Made with love</p>
-            <h2 class="credits-title">The Creators</h2>
-          </div>
+        <!-- 배경 노이즈 레이어 -->
+        <div class="cr-noise" aria-hidden="true"></div>
 
-          <div class="profiles-grid">
-            <!-- 1. 임예지 -->
-            <div class="profile-card" data-id="11">
-              <div class="profile-avatar">
-                <div class="avatar-placeholder">YJ</div>
+        <!-- 스크롤 가능한 내용 래퍼 -->
+        <div class="cr-scroll">
+          <div class="cr-inner">
+
+            <!-- ─── 헤더 ─── -->
+            <header class="cr-header">
+              <img src="assets/images/margin.svg" alt="Margin" class="cr-logo" />
+              <p class="cr-eyebrow">Made with love · 2026. 05. 15</p>
+              <h2 class="cr-title">The Creators</h2>
+              <p class="cr-subtitle">스승의 날 롤링페이퍼를 함께 만든 사람들</p>
+            </header>
+
+            <!-- ─── 프로필 그리드 ─── -->
+            <div class="cr-grid">
+
+              <!-- 임예지 -->
+              <div class="cr-card" data-id="11">
+                <div class="cr-avatar"><span>YJ</span></div>
+                <div class="cr-tag">PM · Frontend Dev</div>
+                <h3 class="cr-name">임예지</h3>
+                <div class="cr-links">
+                  <a href="mailto:yeji@example.com" class="cr-btn cr-btn--mail" title="Email">✉</a>
+                  <a href="https://yeji.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener" title="Tistory">T</a>
+                  <a href="https://github.com/Yazii4362" class="cr-btn cr-btn--gh" target="_blank" rel="noopener" title="GitHub">GH</a>
+                </div>
+                <button class="cr-letter-btn" aria-label="임예지 편지 열기">💌 편지 열기</button>
               </div>
-              <h3 class="profile-name">임예지</h3>
-              <p class="profile-role">PM · Frontend Dev</p>
-              <div class="profile-links">
-                <a href="mailto:yeji@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-                <a href="https://yeji.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-                <a href="https://github.com/Yazii4362" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+
+              <!-- 김주은 -->
+              <div class="cr-card" data-id="5">
+                <div class="cr-avatar"><span>JE</span></div>
+                <div class="cr-tag">UI Design · Planning</div>
+                <h3 class="cr-name">김주은</h3>
+                <div class="cr-links">
+                  <a href="mailto:jooeun@example.com" class="cr-btn cr-btn--mail" title="Email">✉</a>
+                  <a href="https://jooeun.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener" title="Tistory">T</a>
+                  <a href="https://github.com/Jurmiii" class="cr-btn cr-btn--gh" target="_blank" rel="noopener" title="GitHub">GH</a>
+                </div>
+                <button class="cr-letter-btn" aria-label="김주은 편지 열기">💌 편지 열기</button>
               </div>
-              <button class="view-card-btn">💌 편지 열어보기</button>
+
+              <!-- 신혜인 -->
+              <div class="cr-card" data-id="7">
+                <div class="cr-avatar"><span>HI</span></div>
+                <div class="cr-tag">UX Research · Design</div>
+                <h3 class="cr-name">신혜인</h3>
+                <div class="cr-links">
+                  <a href="mailto:hyein@example.com" class="cr-btn cr-btn--mail" title="Email">✉</a>
+                  <a href="https://hyein.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener" title="Tistory">T</a>
+                  <a href="https://github.com/shinini524" class="cr-btn cr-btn--gh" target="_blank" rel="noopener" title="GitHub">GH</a>
+                </div>
+                <button class="cr-letter-btn" aria-label="신혜인 편지 열기">💌 편지 열기</button>
+              </div>
+
+              <!-- 윤태경 -->
+              <div class="cr-card" data-id="8">
+                <div class="cr-avatar"><span>TK</span></div>
+                <div class="cr-tag">Frontend Dev · Design</div>
+                <h3 class="cr-name">윤태경</h3>
+                <div class="cr-links">
+                  <a href="mailto:taekyung@example.com" class="cr-btn cr-btn--mail" title="Email">✉</a>
+                  <a href="https://taekyung.tistory.com" class="cr-btn cr-btn--ts" target="_blank" rel="noopener" title="Tistory">T</a>
+                  <a href="https://github.com/arcaniac7303" class="cr-btn cr-btn--gh" target="_blank" rel="noopener" title="GitHub">GH</a>
+                </div>
+                <button class="cr-letter-btn" aria-label="윤태경 편지 열기">💌 편지 열기</button>
+              </div>
+
+            </div><!-- /.cr-grid -->
+
+            <!-- ─── 치어리더 ─── -->
+            <div class="cr-cheer" data-id="9">
+              <div class="cr-cheer-avatar"><span>KH</span></div>
+              <div class="cr-cheer-info">
+                <h4 class="cr-cheer-name">이기훈</h4>
+                <p class="cr-cheer-role">📣 Special Cheerleader</p>
+              </div>
+              <button class="cr-cheer-btn" aria-label="이기훈 편지 열기">💌</button>
             </div>
 
-            <!-- 2. 김주은 -->
-            <div class="profile-card" data-id="5">
-              <div class="profile-avatar">
-                <div class="avatar-placeholder">JE</div>
-              </div>
-              <h3 class="profile-name">김주은</h3>
-              <p class="profile-role">UI Design · Planning</p>
-              <div class="profile-links">
-                <a href="mailto:jooeun@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-                <a href="https://jooeun.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-                <a href="https://github.com/Jurmiii" title="GitHub" target="_blank" rel="noopener">GitHub</a>
-              </div>
-              <button class="view-card-btn">💌 편지 열어보기</button>
-            </div>
+            <!-- ─── 하단 ─── -->
+            <footer class="cr-footer">
+              <button class="cr-back" id="creditsBack">← 처음으로</button>
+            </footer>
 
-            <!-- 3. 신혜인 -->
-            <div class="profile-card" data-id="7">
-              <div class="profile-avatar">
-                <div class="avatar-placeholder">HI</div>
-              </div>
-              <h3 class="profile-name">신혜인</h3>
-              <p class="profile-role">UX Research · Design</p>
-              <div class="profile-links">
-                <a href="mailto:hyein@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-                <a href="https://hyein.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-                <a href="https://github.com/shinini524" title="GitHub" target="_blank" rel="noopener">GitHub</a>
-              </div>
-              <button class="view-card-btn">💌 편지 열어보기</button>
-            </div>
+          </div><!-- /.cr-inner -->
+        </div><!-- /.cr-scroll -->
 
-            <!-- 4. 윤태경 -->
-            <div class="profile-card" data-id="8">
-              <div class="profile-avatar">
-                <div class="avatar-placeholder">TK</div>
+        <!-- ─── 편지 모달 ─── -->
+        <div class="cr-modal" id="makerCardModal" aria-hidden="true">
+          <div class="cr-modal-bg" id="crModalBg"></div>
+          <div class="cr-modal-box">
+            <button class="cr-modal-close" id="crModalClose" aria-label="닫기">✕</button>
+            <!-- 봉투 -->
+            <div class="cr-envelope" id="modalEnvelope">
+              <!-- 플랩 -->
+              <div class="cr-env-flap"></div>
+              <!-- 봉투 바디 힌트 -->
+              <div class="cr-env-body">
+                <p class="cr-env-hint">클릭하여 열기</p>
               </div>
-              <h3 class="profile-name">윤태경</h3>
-              <p class="profile-role">Frontend Dev · Design</p>
-              <div class="profile-links">
-                <a href="mailto:taekyung@example.com" title="Email" target="_blank" rel="noopener">Email</a>
-                <a href="https://taekyung.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
-                <a href="https://github.com/arcaniac7303" title="GitHub" target="_blank" rel="noopener">GitHub</a>
-              </div>
-              <button class="view-card-btn">💌 편지 열어보기</button>
-            </div>
-          </div>
-
-          <!-- 기훈 -->
-          <div class="cheerleader-card" data-id="9">
-            <div class="profile-avatar profile-avatar--small">
-              <div class="avatar-placeholder avatar-placeholder--small">KH</div>
-            </div>
-            <div class="cheerleader-info">
-              <h4 class="profile-name">이기훈</h4>
-              <p class="profile-role">Cheerleader 📣</p>
-            </div>
-            <button class="view-card-btn view-card-btn--small">💌</button>
-          </div>
-
-          <div class="credits-footer">
-            <img src="assets/images/margin.svg" alt="Margin" class="margin-logo" />
-          </div>
-
-          <button class="credits-back" id="creditsBack">← 처음으로</button>
-        </div>
-
-        <!-- 카드 모달 -->
-        <div class="maker-card-modal" id="makerCardModal">
-          <div class="modal-overlay"></div>
-          <div class="modal-content">
-            <button class="modal-close" aria-label="닫기">✕</button>
-            <!-- 임시 카드 봉투 디자인 (추후 제공 시 교체) -->
-            <div class="modal-envelope" id="modalEnvelope">
-              <div class="modal-envelope-flap"></div>
-              <div class="modal-envelope-body">
-                <p class="modal-envelope-hint">Click to Open</p>
-              </div>
-              <div class="modal-letter" id="modalLetter">
-                <div class="modal-letter-inner">
-                  <p class="letter-text" id="modalLetterText"></p>
-                  <p class="letter-sender" id="modalLetterSender"></p>
+              <!-- 편지지 -->
+              <div class="cr-letter" id="modalLetter">
+                <div class="cr-letter-inner">
+                  <p class="cr-letter-text" id="modalLetterText"></p>
+                  <p class="cr-letter-from" id="modalLetterSender"></p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </div><!-- /.cr-envelope -->
+          </div><!-- /.cr-modal-box -->
+        </div><!-- /.cr-modal -->
+
       </section>
+
 
     </div>
   </div>

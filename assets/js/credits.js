@@ -1,62 +1,72 @@
 (function () {
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     STATE MANAGER — 새로고침 위치 복원
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  var KEY_SCREEN = 'pm_screen';
-  var KEY_CARD   = 'pm_card';
+  var $credits  = $('#credits');
+  var $carousel = $('#carousel');
+  var $modal    = $('#makerCardModal');
+  var $envelope = $('#modalEnvelope');
+  var $txtEl    = $('#modalLetterText');
+  var $fromEl   = $('#modalLetterSender');
 
-  window.StateManager = {
-    saveScreen: function (name) {
-      try { sessionStorage.setItem(KEY_SCREEN, name); } catch(e) {}
-    },
-    saveCard: function (idx) {
-      try { sessionStorage.setItem(KEY_CARD, String(idx)); } catch(e) {}
-    },
-    getScreen: function () {
-      try { return sessionStorage.getItem(KEY_SCREEN); } catch(e) { return null; }
-    },
-    getCard: function () {
-      try { var v = sessionStorage.getItem(KEY_CARD); return v !== null ? parseInt(v, 10) : 0; }
-      catch(e) { return 0; }
-    }
+  /* ─── 시크릿카드 → 크레딧 섹션 전환 ─── */
+  window.openTeamOverlay = function () {
+    $carousel.removeClass('active').attr('aria-hidden', 'true');
+    $credits.addClass('active').attr('aria-hidden', 'false');
+    // 스크롤 상단으로 리셋
+    var scroll = $credits.find('.cr-scroll')[0];
+    if (scroll) scroll.scrollTop = 0;
   };
 
-  /* ─── 복원: 새로고침 시 마지막 화면으로 점프 ─── */
-  $(document).ready(function () {
-    var screen = window.StateManager.getScreen();
-
-    if (screen === 'carousel' || screen === 'credits') {
-      // 스플래시/봉투 스킵 → 바로 캐러셀
-      $('#hero').removeClass('active');
-      $('#carousel').addClass('active').attr('aria-hidden', 'false');
-      $(document).trigger('carousel:init');
-
-      // 카드 위치 복원
-      $(document).one('carousel:ready', function () {
-        var idx = window.StateManager.getCard();
-        if (idx > 0 && window.CarouselAPI) window.CarouselAPI.goTo(idx);
-      });
-
-      // credits 오버레이 복원
-      if (screen === 'credits') {
-        setTimeout(function () {
-          if (typeof window.openTeamOverlay === 'function') window.openTeamOverlay();
-        }, 400);
-      }
-    }
-  });
-
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     CREDITS / TEAM OVERLAY
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  const $credits  = $('#credits');
-  const $carousel = $('#carousel');
-
-  // 뒤로가기
+  /* ─── 처음으로 버튼 ─── */
   $(document).on('click', '#creditsBack', function () {
     $credits.removeClass('active').attr('aria-hidden', 'true');
     $carousel.addClass('active').attr('aria-hidden', 'false');
-    window.StateManager.saveScreen('carousel');
   });
 
+  /* ─── 편지 모달 열기 ─── */
+  $(document).on('click', '.cr-letter-btn, .cr-cheer-btn', function (e) {
+    e.stopPropagation();
+    var $parent = $(this).closest('[data-id]');
+    var id = parseInt($parent.attr('data-id'), 10);
+    if (!window.CARDS_DATA) return;
+
+    var data = window.CARDS_DATA.find(function (d) { return d.id === id; });
+    if (!data) return;
+
+    // 상태 초기화
+    $envelope.removeClass('is-open');
+    $txtEl.html('');
+    $fromEl.text('');
+
+    // 내용 세팅
+    $txtEl.html(data.message);
+    $fromEl.text('— ' + data.name);
+
+    // 모달 표시
+    $modal.attr('aria-hidden', 'false').addClass('is-active');
+  });
+
+  /* ─── 모달 닫기: 배경 / 닫기버튼 ─── */
+  $(document).on('click', '#crModalBg, #crModalClose', function () {
+    closeModal();
+  });
+
+  /* ─── 봉투 클릭 → 편지 열기 ─── */
+  $(document).on('click', '#modalEnvelope', function () {
+    if (!$envelope.hasClass('is-open')) {
+      $envelope.addClass('is-open');
+    }
+  });
+
+  /* ─── ESC 키 닫기 ─── */
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape' && $modal.hasClass('is-active')) {
+      closeModal();
+    }
+  });
+
+  function closeModal() {
+    $modal.removeClass('is-active').attr('aria-hidden', 'true');
+    setTimeout(function () {
+      $envelope.removeClass('is-open');
+    }, 550);
+  }
 })();
