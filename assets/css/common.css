@@ -107,12 +107,9 @@
   box-sizing: border-box;
 }
 
-body.dark-theme .marquee--top {
-  display: none;
-}
-
+body.dark-theme .marquee--top,
 body.dark-theme .marquee--bottom {
-  background: #0a0a0a;
+  display: none;
 }
 
 /* ── 마키 일시정지 — 카드 열렸을 때 ── */
