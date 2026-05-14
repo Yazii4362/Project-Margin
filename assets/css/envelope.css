@@ -143,16 +143,25 @@
 
 #hero .envelope-seal:hover::after,
 #hero .envelope-seal:hover::before {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  animation: naga-tooltip 2s ease forwards;
 }
-  85% {
+
+@keyframes naga-tooltip {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateX(-50%) translateY(-4px);
+    transform: translateX(-50%) translateY(-8px);
   }
 }
 
