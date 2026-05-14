@@ -24,7 +24,7 @@
   /* Carousel 카드 크기 */
   #carousel {
     --carousel-card-w: 280px;
-    --carousel-card-h: 390px;
+    --carousel-card-h: calc(var(--carousel-card-w) * 1.518292683);
   }
 
   /* Credits 그리드 */
@@ -107,21 +107,22 @@
   /* Carousel */
   #carousel {
     --carousel-card-w: 260px;
-    --carousel-card-h: 360px;
+    --carousel-card-h: calc(var(--carousel-card-w) * 1.518292683);
   }
 
   .card-opened {
-    padding: 28px 20px 24px;
+    padding: 0;
   }
 
   .letter-name {
     font-size: 18px;
-    margin-bottom: 14px;
+    padding: 28px 20px 0 20px;
   }
 
   .letter-msg {
     font-size: 13.5px;
     line-height: 1.75;
+    padding: 14px 20px 24px 20px;
   }
 
   /* Marquee */
@@ -283,21 +284,22 @@
   /* Carousel */
   #carousel {
     --carousel-card-w: 240px;
-    --carousel-card-h: 340px;
+    --carousel-card-h: calc(var(--carousel-card-w) * 1.518292683);
   }
 
   .card-opened {
-    padding: 24px 18px 20px;
+    padding: 0;
   }
 
   .letter-name {
     font-size: 17px;
-    margin-bottom: 12px;
+    padding: 24px 18px 0 18px;
   }
 
   .letter-msg {
     font-size: 13px;
     line-height: 1.7;
+    padding: 12px 18px 20px 18px;
   }
 
   /* Credits */

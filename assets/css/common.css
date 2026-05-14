@@ -107,6 +107,10 @@
   box-sizing: border-box;
 }
 
+body.dark-theme .marquee--top {
+  display: none;
+}
+
 body.dark-theme .marquee--bottom {
   background: #0a0a0a;
 }

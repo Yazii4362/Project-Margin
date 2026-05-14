@@ -45,7 +45,7 @@
         : '';
 
       var preview = d.type === 'special'
-        ? '<div class="card-preview special-preview"><p class="special-question">?</p></div>'
+        ? '<div class="card-preview special-preview"></div>'
         : '<div class="card-preview">'
             + '<p class="env-name">' + d.name + '</p>'
           + '</div>';

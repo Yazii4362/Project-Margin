@@ -27,7 +27,7 @@ align-items: stretch;
 justify-items: stretch;
 /* 카드 크기 — .card의 calc(50% - …)와 맞춤; 가로 간격은 JS OFFSET과 별도 */
 --carousel-card-w: 300px;
---carousel-card-h: 420px;
+--carousel-card-h: calc(var(--carousel-card-w) * 1.518292683);
 background: var(--color-bg);
 overflow: hidden;
 user-select: none;
@@ -209,7 +209,7 @@ text-shadow:
 position: absolute;
 inset: 0;
 z-index: 3;
-padding: 32px 24px 28px;
+padding: 0;
 display: flex;
 flex-direction: column;
 background: rgba(253,250,244,0.98);
@@ -225,7 +225,8 @@ font-family: var(--font-display);
 font-size: 20px;
 font-style: italic;
 color: var(--color-ink);
-margin-bottom: 16px;
+margin: 0;
+padding: 32px 24px 0 24px;
 position: relative;
 z-index: 1;
 flex-shrink: 0;
@@ -243,7 +244,7 @@ overflow-x: hidden;
 flex: 1;
 position: relative;
 z-index: 1;
-padding: 0 4px;
+padding: 16px 24px 28px 24px;
 word-wrap: break-word;
 word-break: keep-all;
 }
@@ -321,20 +322,12 @@ z-index: 999 !important;
   SPECIAL CARD — 닫힌 카드(비밀 프리뷰) + 다크 톤
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .card--special .card-bg {
-background-color: #060608 !important;
-filter: brightness(0.48) saturate(0.6) contrast(1.06);
+background-color: transparent !important;
+filter: none !important;
 }
 
 .card--special .card-bg::after {
-content: '';
-position: absolute;
-inset: 0;
-pointer-events: none;
-background:
-  radial-gradient(ellipse 130% 88% at 50% -18%, rgba(245, 200, 66, 0.28) 0%, transparent 54%),
-  radial-gradient(ellipse 55% 42% at 100% 88%, rgba(90, 70, 140, 0.12) 0%, transparent 48%),
-  linear-gradient(168deg, rgba(12, 12, 18, 0.55) 0%, transparent 42%, rgba(0, 0, 0, 0.45) 100%);
-mix-blend-mode: soft-light;
+display: none;
 }
 
 .card--special .card-grain {

@@ -692,7 +692,7 @@
 .cr-envelope {
   width: 320px;
   height: 210px;
-  background: #E8DEC9;
+  background: linear-gradient(160deg, #BB310D 0%, #931B0E 55%, #6B060E 100%);
   border-radius: 10px;
   position: relative;
   box-shadow:
@@ -713,7 +713,7 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 115px;
-  background: #D5C5A8;
+  background: linear-gradient(160deg, #BB310D 0%, #931B0E 55%, #6B060E 100%);
   clip-path: polygon(0 0, 100% 0, 50% 90%);
   border-radius: 10px 10px 0 0;
   transform-origin: top center;
@@ -730,7 +730,7 @@
 .cr-env-body {
   position: absolute;
   inset: 0;
-  background: #E8DEC9;
+  background: linear-gradient(160deg, #BB310D 0%, #931B0E 55%, #6B060E 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
