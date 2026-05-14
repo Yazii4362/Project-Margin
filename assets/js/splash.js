@@ -36,71 +36,53 @@ $(function () {
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SILING HOVER TOOLTIP
-   가중치: NAGA/엎드려뻗쳐 = 20% 확률
-           예지야!/태경아!! 등 7개 = 동일 확률
-           나머지 이름들 = 기본 확률
+   랜덤 문구와 위치, 자동 표시 + 호버
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 (function () {
-  // 가중치 배열: [text, weight]
-  var WEIGHTED = [
-    // 최고빈도 — 합산 20% (각 10%)
-    ['NAGA', 10],
-    ['엎드려뻗쳐.', 10],
-    // 중간빈도 — 각 6%
-    ['예지야!', 6],
-    ['태경아!!', 6],
-    ['혜인아!!!', 6],
-    ['주은아!', 6],
-    ['기훈아!!!!', 6],
-    ['점심 뭐먹니', 6],
-    ['언제까지 지각할래?', 6],
-    // 기본빈도 — 각 4%
-    ['가은아!', 4],
-    ['수연아!', 4],
-    ['정수야!', 4],
-    ['지원아!', 4],
-    ['태연아!', 4],
-    ['선규야!', 4],
-    ['신비야!', 4],
-    ['연수야!', 4]
+  // 문구와 위치 배열: [text, topOffset, leftOffset]
+  var TOOLTIPS = [
+    ['NAGA', -48, 0],
+    ['엎드려뻗쳐.', -60, -20],
+    ['예지야!', -40, 20],
+    ['태경아!!', -50, -10],
+    ['혜인아!!!', -55, 10],
+    ['주은아!', -45, -15],
+    ['기훈아!!!!', -52, 15],
+    ['점심 뭐먹니', -58, 0],
+    ['언제까지 지각할래?', -42, -25],
+    ['가은아!', -50, 25],
+    ['수연아!', -47, -5],
+    ['정수야!', -53, 5],
+    ['지원아!', -49, -30],
+    ['태연아!', -51, 30],
+    ['선규야!', -46, 0],
+    ['신비야!', -54, -8],
+    ['연수야!', -44, 8]
   ];
 
-  // 가중치 누적합 빌드
-  var totalWeight = 0;
-  var cumulative = WEIGHTED.map(function (item) {
-    totalWeight += item[1];
-    return { text: item[0], cum: totalWeight };
-  });
-
-  var $tooltip  = $('#iosTooltip');
-  var $target   = $('#silingImg');
+  var $tooltip = $('#iosTooltip');
+  var $target = $('#silingImg');
   var hideTimer = null;
-  var lastText  = '';
+  var autoTimer = null;
 
   function pickRandom() {
-    var rand, picked;
-    // 같은 문구 연속 방지 — 최대 3번 재시도
-    for (var i = 0; i < 3; i++) {
-      rand = Math.random() * totalWeight;
-      picked = cumulative.find(function (c) { return rand < c.cum; });
-      if (!picked) picked = cumulative[cumulative.length - 1];
-      if (picked.text !== lastText) break;
-    }
-    lastText = picked.text;
-    return picked.text;
+    return TOOLTIPS[Math.floor(Math.random() * TOOLTIPS.length)];
   }
 
-  function showTooltip() {
+  function showTooltip(tooltipData) {
     clearTimeout(hideTimer);
-    var text = pickRandom();
+    var text = tooltipData[0];
+    var topOffset = tooltipData[1];
+    var leftOffset = tooltipData[2];
+
     $tooltip.text(text);
 
-    // 위치: 씰 이미지 위 중앙
+    // 위치 계산
     var rect = $target[0].getBoundingClientRect();
     $tooltip.css({ left: '-9999px', top: '-9999px', display: 'block' });
     var tw = $tooltip[0].offsetWidth;
-    var x  = rect.left + rect.width / 2 - tw / 2;
-    var y  = rect.top - 48;
+    var x = rect.left + rect.width / 2 - tw / 2 + leftOffset;
+    var y = rect.top + topOffset;
 
     x = Math.max(8, Math.min(x, window.innerWidth - tw - 8));
     $tooltip.css({ left: x + 'px', top: y + 'px' });
@@ -113,12 +95,34 @@ $(function () {
     }, 150);
   }
 
+  function autoShow() {
+    if (!$tooltip.hasClass('is-visible')) {
+      var tooltipData = pickRandom();
+      showTooltip(tooltipData);
+      setTimeout(function () {
+        $tooltip.removeClass('is-visible');
+      }, 2000); // 2초 노출
+    }
+    // 다음 자동 표시: 5-10초 랜덤
+    autoTimer = setTimeout(autoShow, 5000 + Math.random() * 5000);
+  }
+
   $(document).ready(function () {
-    $target.on('mouseenter', showTooltip);
+    // 호버 이벤트
+    $target.on('mouseenter', function () {
+      var tooltipData = pickRandom();
+      showTooltip(tooltipData);
+    });
     $target.on('mouseleave', hideTooltip);
+
+    // 터치 이벤트
     $target.on('touchstart', function () {
-      showTooltip();
+      var tooltipData = pickRandom();
+      showTooltip(tooltipData);
       setTimeout(function () { $tooltip.removeClass('is-visible'); }, 1400);
     });
+
+    // 자동 표시 시작 (페이지 로드 후 3초부터)
+    setTimeout(autoShow, 3000);
   });
 })();
