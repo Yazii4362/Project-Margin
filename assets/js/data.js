@@ -20,8 +20,12 @@ window.CARDS_DATA = [
     message: "안녕하세요. 쌤 저 지원입니다ㅋㅋ<br> 어느덧 5월 중순을 내다보고 있네요.<br> 2월, 3월엔 정말 서로가 다 어색해서 다들 대답도 제대로 안했었는데<br> 쌤이 대답 좀 해라.. 라고 하신 말에 진심이 느껴졌어요ㅋㅋㅋ<br> 그래서 그 후로부터 제 나름(?) 대답을 열심히 하려고 했던 게 생각납니다.. 허허.<br> 스승의 날 편지 쓰는 게 상당히 오랜만인데. 지친 일상 속 저희 편지로 환기 하셨음 좋겠네요. 화이팅.<br> 저의 목표가 하나 있습니다.<br> 선생님께서 수업 중 가끔씩 언급하시는<br> '전에 수강생 중 ~~~한 애가 ~~~취업 잘해서 지금 어디가있어~~~'의 '걔'가 되는 거예요. 하하<br> 열심히 하겠슴다 항상 감사합니다<br>p.s 아가 너무 기여워요!"
   },
   {
-    id: 5, type: 'student', name: "김주은",
+    id: 5, type: 'maker', name: "김주은",
     bgImage: "assets/images/cards/card-01.png",
+    role: "UI Design · Planning",
+    email: "jooeun@example.com",
+    tistory: "https://jooeun.tistory.com",
+    github: "https://github.com/jooeun",
     message: "강사님!<br> 바쁜 하루 속에서도 늘 밝게 수업해주시고 따뜻하게 챙겨주셔서 감사합니다.<br> 처음 배우는 UI/UX가 어렵기도 했지만,<br> 강사님 덕분에 즐겁게 배우고 있습니다.<br> 좋은 스승을 만난 건 오래 기억에 남을 행운인 것 같아요.<br> 항상 감사드립니다!<br> 2026.05.15 주은 올림"
   },
   {
@@ -30,17 +34,25 @@ window.CARDS_DATA = [
     message: "To. 강현명<br> 스승의 날을 맞이하여 간략하게 짧게라도<br> 감사인사를 전하고자 합니다.<br> 훈련과정이 쉽지 않지만 그래도 덕분에 하나씩 해내고 있어요.<br> 남은 기간도 잘 부탁드립니다.<br> 태연 올림."
   },
   {
-    id: 7, type: 'student', name: "신혜인",
+    id: 7, type: 'maker', name: "신혜인",
     bgImage: "assets/images/cards/card-03.png",
+    role: "UX Research · Design",
+    email: "hyein@example.com",
+    tistory: "https://hyein.tistory.com",
+    github: "https://github.com/hyein",
     message: "강 : 강의하다가 지치실 때도 있겠지만<br> 현 : 현재 저희 반 웃음, 분위기, 친밀감 지분 90%는 선생님 덕분입니다~<br> 명 : 명강의 감사합니다! 스승의 날 축하드려요🎉"
   },
   {
-    id: 8, type: 'student', name: "윤태경",
+    id: 8, type: 'maker', name: "윤태경",
     bgImage: "assets/images/cards/card-04.png",
+    role: "Frontend Dev · Design",
+    email: "taekyung@example.com",
+    tistory: "https://taekyung.tistory.com",
+    github: "https://github.com/taekyung",
     message: "현명쌤. 항상 따뜻(?)하게 지도해주셔서 감사합니다ㅎㅎ<br> 맨날 지각하는 저를 포기하지 않으셔서 정말 감사하게 생각하고 있습니다.<br> (진짜로)<br> 조금(?)느려도 끝까지 열심히 해보겠습니다.<br> 건강하세요!<br> 스승의 날 진심으로 감사드립니다!<br> from.윤태경"
   },
   {
-    id: 9, type: 'student', name: "이기훈",
+    id: 9, type: 'cheerleader', name: "이기훈",
     bgImage: "assets/images/cards/card-01.png",
     message: "선생님 덕분에 인간의 형태를 유지하고 있습니다.<br> 저는 빌런이였지만 선생님은 히어로 였습니다."
   },
@@ -50,8 +62,12 @@ window.CARDS_DATA = [
     message: "안녕하세요 선생님<br> 항상 저희를 위해 열정적으로 가르쳐주셔서 감사드립니다.<br> 이 수업을 통해 실무는 어찌 진행되고<br> 실무적으로 어떻게 해야하는지 알려주셔서 감사합니다.<br> 남은 기간 동안에도 잘 부탁드려요"
   },
   {
-    id: 11, type: 'student', name: "임예지",
+    id: 11, type: 'maker', name: "임예지",
     bgImage: "assets/images/cards/card-03.png",
+    role: "PM · Frontend Dev",
+    email: "yeji@example.com",
+    tistory: "https://yeji.tistory.com",
+    github: "https://github.com/yeji",
     message: "강현명 선생님께<br> 선생님! 어느덧 3개월 반 동안 선생님의 가르침을 받고 있는 예지 입니다.<br> 우여곡절을 겪고 선생님의 강의실에 앉기까지 많은 고민을 했고, 많은 갈등을 겪었는데요,<br> 돌이켜보면 제 고민과 갈등들이 값지다는 것을 요즘들어 더 깨닫고 있습니다.<br> 많은 스트레스들이 있으실텐데 잦은 결석으로 스트레스거리를 더 얹어 드려 늘 죄송하고,<br> 동시에 정말 현실적인 감각으로 가르쳐주셔서 매일 즐거운 마음으로 학원에 오고 있습니다.<br> 진심으로 선생님께 감사합니다!<br> 남은기간 더 재밌게 배우도록 하겠습니다~<br> -2026.5.15. 임예지 올림."
   },
   {

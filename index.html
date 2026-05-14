@@ -132,14 +132,111 @@
   <!-- SECTION 4: Credits -->
   <section id="credits" class="screen">
     <div class="credits-inner">
-      <p class="credits-eyebrow">Made with love</p>
-      <h2 class="credits-title">만든이들</h2>
-      <ul class="credits-list">
-        <li><span class="role">PM</span><span class="name">—</span></li>
-        <li><span class="role">PD</span><span class="name">—</span></li>
-        <li><span class="role">FE</span><span class="name">—</span></li>
-      </ul>
+      <div class="credits-header">
+        <p class="credits-eyebrow">Made with love</p>
+        <h2 class="credits-title">The Creators</h2>
+      </div>
+
+      <div class="profiles-grid">
+        <!-- 1. 임예지 -->
+        <div class="profile-card" data-id="11">
+          <div class="profile-avatar">
+            <div class="avatar-placeholder">YJ</div>
+          </div>
+          <h3 class="profile-name">임예지</h3>
+          <p class="profile-role">PM · Frontend Dev</p>
+          <div class="profile-links">
+            <a href="mailto:yeji@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+            <a href="https://yeji.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+            <a href="https://github.com/yeji" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <button class="view-card-btn">💌 편지 열어보기</button>
+        </div>
+
+        <!-- 2. 김주은 -->
+        <div class="profile-card" data-id="5">
+          <div class="profile-avatar">
+            <div class="avatar-placeholder">JE</div>
+          </div>
+          <h3 class="profile-name">김주은</h3>
+          <p class="profile-role">UI Design · Planning</p>
+          <div class="profile-links">
+            <a href="mailto:jooeun@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+            <a href="https://jooeun.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+            <a href="https://github.com/jooeun" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <button class="view-card-btn">💌 편지 열어보기</button>
+        </div>
+
+        <!-- 3. 신혜인 -->
+        <div class="profile-card" data-id="7">
+          <div class="profile-avatar">
+            <div class="avatar-placeholder">HI</div>
+          </div>
+          <h3 class="profile-name">신혜인</h3>
+          <p class="profile-role">UX Research · Design</p>
+          <div class="profile-links">
+            <a href="mailto:hyein@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+            <a href="https://hyein.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+            <a href="https://github.com/hyein" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <button class="view-card-btn">💌 편지 열어보기</button>
+        </div>
+
+        <!-- 4. 윤태경 -->
+        <div class="profile-card" data-id="8">
+          <div class="profile-avatar">
+            <div class="avatar-placeholder">TK</div>
+          </div>
+          <h3 class="profile-name">윤태경</h3>
+          <p class="profile-role">Frontend Dev · Design</p>
+          <div class="profile-links">
+            <a href="mailto:taekyung@example.com" title="Email" target="_blank" rel="noopener">Email</a>
+            <a href="https://taekyung.tistory.com" title="Tistory" target="_blank" rel="noopener">Tistory</a>
+            <a href="https://github.com/taekyung" title="GitHub" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <button class="view-card-btn">💌 편지 열어보기</button>
+        </div>
+      </div>
+
+      <!-- 기훈 -->
+      <div class="cheerleader-card" data-id="9">
+        <div class="profile-avatar profile-avatar--small">
+          <div class="avatar-placeholder avatar-placeholder--small">KH</div>
+        </div>
+        <div class="cheerleader-info">
+          <h4 class="profile-name">이기훈</h4>
+          <p class="profile-role">Cheerleader 📣</p>
+        </div>
+        <button class="view-card-btn view-card-btn--small">💌</button>
+      </div>
+
+      <div class="credits-footer">
+        <img src="assets/images/margin.svg" alt="Margin" class="margin-logo" />
+      </div>
+
       <button class="credits-back" id="creditsBack">← 처음으로</button>
+    </div>
+
+    <!-- 카드 모달 -->
+    <div class="maker-card-modal" id="makerCardModal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="닫기">✕</button>
+        <!-- 임시 카드 봉투 디자인 (추후 제공 시 교체) -->
+        <div class="modal-envelope" id="modalEnvelope">
+          <div class="modal-envelope-flap"></div>
+          <div class="modal-envelope-body">
+             <p class="modal-envelope-hint">Click to Open</p>
+          </div>
+          <div class="modal-letter" id="modalLetter">
+             <div class="modal-letter-inner">
+               <p class="letter-text" id="modalLetterText"></p>
+               <p class="letter-sender" id="modalLetterSender"></p>
+             </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

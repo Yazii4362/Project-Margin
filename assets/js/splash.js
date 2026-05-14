@@ -58,6 +58,10 @@ $(function () {
   ];
 
   var lastText = '';
+  var $tooltip  = $('#iosTooltip');
+  var $target   = $('#silingImg');
+  var hideTimer = null;
+  var autoTimer = null;
 
   function pickRandom() {
     var candidates = TOOLTIPS.filter(function (t) { return t !== lastText; });
