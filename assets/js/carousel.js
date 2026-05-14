@@ -57,6 +57,8 @@
           + '<div class="card-grain"></div>'
           + preview
           + '<div class="card-opened">'
+            + '<button class="card-nav card-nav--prev" aria-label="이전 카드">←</button>'
+            + '<button class="card-nav card-nav--next" aria-label="다음 카드">→</button>'
             + '<p class="letter-name">' + d.name + '</p>'
             + '<p class="letter-msg">' + d.message + '</p>'
             + linkBtn
@@ -66,56 +68,15 @@
     });
 
     $cards = $track.find('.card');
-    cur = 0;
-    loadState(); // load visited cards and cur
-
-    markVisited(cur); // ensures current is marked, and also saves state
+    cur    = 0;
+    markVisited(0);
     place(false);
     setTimeout(swipeHint, 2000);
   }
 
   /* ─── VISITED ─── */
   function markVisited(idx) {
-    if (idx >= 0 && idx < total) {
-      visited[idx] = true;
-      if ($cards && $cards.eq(idx)) {
-        $cards.eq(idx).addClass('is-read');
-      }
-      saveState();
-    }
-  }
-
-  function saveState() {
-    try {
-      sessionStorage.setItem('visitedCards', JSON.stringify(visited));
-      sessionStorage.setItem('curCard', cur.toString());
-    } catch(e) {}
-  }
-
-  function loadState() {
-    try {
-      var saved = sessionStorage.getItem('visitedCards');
-      if (saved) {
-        var parsed = JSON.parse(saved);
-        if (parsed && parsed.length === total) {
-          visited = parsed;
-          visited.forEach(function (v, i) {
-            if (v && $cards && $cards.eq(i)) {
-              $cards.eq(i).addClass('is-read');
-            }
-          });
-        }
-      }
-      var savedCur = sessionStorage.getItem('curCard');
-      if (savedCur !== null) {
-        var parsedCur = parseInt(savedCur, 10);
-        if (!isNaN(parsedCur) && parsedCur >= 0 && parsedCur < total) {
-          cur = parsedCur;
-        }
-      }
-    } catch (e) {
-      console.error('Failed to parse visited cards state', e);
-    }
+    if (idx >= 0 && idx < total) visited[idx] = true;
   }
 
   function allRegularVisited() {
@@ -188,19 +149,9 @@
   function go(dir) {
     if (!total) return;
     cur = getNextIndex(dir);
-    markVisited(cur); // also calls saveState()
+    markVisited(cur);
     place(true);
   }
-
-  /* ─── PUBLIC API (for StateManager restore) ─── */
-  window.CarouselAPI = {
-    goTo: function (idx) {
-      if (!$cards || !total) return;
-      cur = Math.max(0, Math.min(idx, total - 1));
-      markVisited(cur);
-      place(true);
-    }
-  };
 
   /* ─── EXPAND ─── */
   function open() {
@@ -310,16 +261,16 @@
       expanded ? close() : open();
     });
 
-    // Global Navigation Arrows
-    $(document).on('click', '.global-nav-btn--prev', function (e) {
+    // 화살표 버튼
+    $(document).on('click', '.card-nav--prev', function (e) {
       e.stopPropagation();
-      if (expanded) close();
-      setTimeout(function () { go(-1); }, expanded ? 80 : 0);
+      close();
+      setTimeout(function () { go(-1); }, 80);
     });
-    $(document).on('click', '.global-nav-btn--next', function (e) {
+    $(document).on('click', '.card-nav--next', function (e) {
       e.stopPropagation();
-      if (expanded) close();
-      setTimeout(function () { go(1); }, expanded ? 80 : 0);
+      close();
+      setTimeout(function () { go(1); }, 80);
     });
 
     // 카드 바깥 클릭 → 닫기
@@ -345,11 +296,57 @@
     $(document).on('mouseup',               function (e) { if (dragging) onEnd(e.clientX); });
   });
 
-  /* ─── TEAM OVERLAY → #credits section ─── */
+  /* ─── TEAM OVERLAY ─── */
   window.openTeamOverlay = function () {
-    $('#carousel').removeClass('active').attr('aria-hidden', 'true');
-    $('#credits').addClass('active').attr('aria-hidden', 'false');
-    if (window.StateManager) window.StateManager.saveScreen('credits');
+    var makers = window.CARDS_DATA.filter(function (d) {
+      return d.type === 'maker' || d.type === 'cheerleader';
+    });
+
+    var cardsHtml = makers.map(function (d) {
+      var isCheer = d.type === 'cheerleader';
+      var links = isCheer ? '' :
+        '<div class="to-links">'
+          + (d.github  ? '<a href="' + d.github  + '" target="_blank" rel="noopener" class="to-btn to-btn--gh">GitHub</a>' : '')
+          + (d.tistory ? '<a href="' + d.tistory + '" target="_blank" rel="noopener" class="to-btn to-btn--ts">Blog</a>' : '')
+          + (d.email   ? '<a href="mailto:' + d.email + '" class="to-btn to-btn--mail">✉</a>' : '')
+        + '</div>';
+
+      return '<div class="to-card' + (isCheer ? ' to-card--cheer' : '') + '">'
+        + '<div class="to-avatar"><div class="to-avatar-init">' + d.name.slice(-1) + '</div></div>'
+        + '<p class="to-role">' + (isCheer ? '치어리더 🎉' : (d.role || '')) + '</p>'
+        + '<p class="to-name">' + d.name + '</p>'
+        + (d.email && !isCheer ? '<p class="to-email">' + d.email + '</p>' : '')
+        + links
+        + '</div>';
+    }).join('');
+
+    var html = '<div id="teamOverlay" class="to-overlay">'
+      + '<button class="to-close" id="teamOverlayClose">✕</button>'
+      + '<div class="to-inner">'
+        + '<div class="to-header">'
+          + '<img src="assets/images/margin.svg" alt="Margin" class="to-logo" />'
+          + '<p class="to-sub">Made with love · 2026</p>'
+        + '</div>'
+        + '<div class="to-grid">' + cardsHtml + '</div>'
+      + '</div>'
+    + '</div>';
+
+    $('body').append(html);
+    requestAnimationFrame(function () {
+      $('#teamOverlay').addClass('is-open');
+    });
+
+    $('#teamOverlayClose').on('click', window.closeTeamOverlay);
+    $(document).on('keydown.teamOverlay', function (e) {
+      if (e.key === 'Escape') window.closeTeamOverlay();
+    });
+  };
+
+  window.closeTeamOverlay = function () {
+    var $o = $('#teamOverlay');
+    $o.removeClass('is-open');
+    setTimeout(function () { $o.remove(); }, 400);
+    $(document).off('keydown.teamOverlay');
   };
 
 })();

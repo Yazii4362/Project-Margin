@@ -560,73 +560,53 @@ background: #f5c842;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  GLOBAL CAROUSEL NAV ARROWS
+  CARD NAV ARROWS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.carousel-global-nav {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  padding: 0 40px;
-  z-index: 50; /* Above cards */
-  pointer-events: none; /* Let clicks pass through empty space */
+.card-nav {
+position: absolute;
+bottom: 18px;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 1px solid rgba(26,22,18,0.12);
+background: rgba(255,255,255,0.85);
+color: var(--color-ink);
+font-size: 16px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 4;
+pointer-events: none;
+opacity: 0;
+transition: background 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  .carousel-global-nav {
-    padding: 0 16px;
-  }
+.card.is-open .card-nav {
+pointer-events: all;
+opacity: 1;
 }
 
-.global-nav-btn {
-  pointer-events: auto; /* Re-enable clicks for buttons */
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--color-ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  opacity: 0.6;
+.card-nav--prev { left: 18px; }
+.card-nav--next { right: 18px; }
+
+.card-nav:hover {
+background: rgba(255,255,255,1);
+transform: scale(1.1);
 }
 
-body.dark-theme .global-nav-btn {
-  background: rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #fff;
+.card-nav:active {
+transform: scale(0.95);
 }
 
-.global-nav-btn:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.9);
-  transform: scale(1.1);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+.card--special .card-nav {
+background: rgba(255,255,255,0.08);
+border-color: rgba(255,255,255,0.15);
+color: rgba(240,232,208,0.85);
 }
 
-body.dark-theme .global-nav-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.global-nav-btn:active {
-  transform: scale(0.95);
-}
-
-#carousel.has-open .global-nav-btn {
-  opacity: 0.3;
-}
-
-#carousel.has-open .global-nav-btn:hover {
-  opacity: 1;
+.card--special .card-nav:hover {
+background: rgba(255,255,255,0.15);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
