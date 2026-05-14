@@ -131,9 +131,11 @@
     if (expanded || !$cards) return;
     expanded = true;
     var $c = $cards.filter('.is-active');
+    var isSpecial = $c.hasClass('card--special');
     $c.addClass('is-open').css({
-      transition: 'transform 0.45s ' + EASE + ', width 0.45s ' + EASE + ', height 0.45s ' + EASE + ', top 0.45s ' + EASE + ', left 0.45s ' + EASE,
+      transition: 'transform 0.45s ' + EASE + ', top 0.45s ' + EASE + ', left 0.45s ' + EASE + ', width 0.45s ' + EASE + ', height 0.45s ' + EASE,
       zIndex: 999,
+      transform: isSpecial ? 'none' : 'translateX(0px) scale(1.1)',
     });
     $('#carousel').addClass('has-open');
   }
