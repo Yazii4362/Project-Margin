@@ -15,14 +15,20 @@
   visibility: hidden;
   will-change: transform, opacity;
   contain: strict;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
 }
 
 html.margin-cursor-active .margin-cursor {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html.margin-cursor-active.splash-complete .margin-cursor {
   opacity: 1;
   visibility: visible;
 }
 
-html.margin-cursor-active .margin-cursor.margin-cursor--out {
+html.margin-cursor-active.splash-complete .margin-cursor.margin-cursor--out {
   opacity: 0;
   visibility: hidden;
 }

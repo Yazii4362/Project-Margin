@@ -16,6 +16,10 @@ gsap.to('#hero', {
   opacity: 1,
   duration: 1.4,
   ease: 'power2.out',
+  onComplete: function() {
+    // 스플래시 애니메이션 완료 후 커서 표시
+    document.documentElement.classList.add('splash-complete');
+  }
 });
 
 if (window.ScrollSmoother && gsap.registerPlugin) {
