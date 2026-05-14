@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true">
-  <!-- Gmail-style multicolor M (simplified) -->
-  <rect x="3" y="4" width="3.6" height="16" rx="1.2" fill="#4285F4"/>
-  <rect x="17.4" y="4" width="3.6" height="16" rx="1.2" fill="#34A853"/>
-  <path fill="#FBBC04" d="M11.1 4h1.8l1 2.3h-3.8l1-2.3z"/>
-  <path fill="#EA4335" d="M6.8 4h10.4L12 15.2 6.8 4z"/>
-</svg>
