@@ -201,7 +201,6 @@
   }
 
   function onStart(x) {
-    if (expanded) return;
     startX = x;
     dragging = true;
     didDrag = false;
@@ -210,13 +209,31 @@
   function onMove(x) {
     if (!dragging) return;
     var dx = x - startX;
-    place(false, dx * (Math.abs(dx) > 100 ? 0.4 : 0.8));
+    // 열린 상태에서는 드래그 미리보기 없이 threshold만 감지
+    if (!expanded) {
+      place(false, dx * (Math.abs(dx) > 100 ? 0.4 : 0.8));
+    }
   }
 
   function onEnd(x) {
     if (!dragging) return;
     dragging = false;
     var diff = startX - x;
+
+    if (expanded) {
+      // 열린 상태: 스와이프로 닫고 다음 카드 이동
+      if (diff > SWIPE_TH) {
+        close();
+        setTimeout(function () { go(1); }, 80);
+        didDrag = true;
+      } else if (diff < -SWIPE_TH) {
+        close();
+        setTimeout(function () { go(-1); }, 80);
+        didDrag = true;
+      }
+      return;
+    }
+
     if (diff > SWIPE_TH) {
       didDrag = true;
       go(1);
@@ -244,7 +261,7 @@
     el.addEventListener(
       'touchmove',
       function (e) {
-        if (dragging) e.preventDefault();
+        if (dragging && !expanded) e.preventDefault();
         onMove(e.touches[0].clientX);
       },
       { passive: false }
