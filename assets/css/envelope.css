@@ -15,9 +15,12 @@
 .envelope {
   position: relative;
   width: min(530px, 90vw);
-  height: min(400px, 68vw);
+  aspect-ratio: 7 / 5;
+  height: auto;
   cursor: pointer;
   transition: transform var(--dur-normal) var(--ease);
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .envelope:hover {
@@ -64,14 +67,19 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   pointer-events: none;
   user-select: none;
 }
 
 /* ── 왁스 씰 ── */
 .envelope-seal {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 100px;
   height: 100px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   background: none;
   box-shadow: none;
@@ -140,7 +148,7 @@
 
 /* hover — 살짝 들뜨는 느낌 */
 .envelope:not(.peeling):hover .envelope-seal {
-  transform: translate(-50%, -53%) rotate(8deg);
+  transform: translate(-50%, -55%) rotate(8deg);
   filter: drop-shadow(0 8px 20px rgba(180,40,20,0.45));
 }
 
@@ -182,19 +190,20 @@
   animation: seal-mark-in 0.3s ease forwards;
 }
 
-.envelope-flap {
+..envelope-flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 55%;
+  height: 65%;
   background: linear-gradient(
     175deg,
     #bb310d 0%,
-    #9e2210 45%,
-    #7a0e0e 100%
+    #bb310d 18%,
+    #931b0e 55%,
+    #6b060e 100%
   );
-  clip-path: polygon(0 0, 100% 0, 50% 88%);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
   z-index: 3;
   transform-origin: top center;
   transition: transform var(--dur-slow) var(--ease);
@@ -213,7 +222,7 @@
     transparent 55%,
     rgba(0,0,0,0.08) 100%
   );
-  clip-path: polygon(0 0, 100% 0, 50% 88%);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
 }
 
 /* 플랩 하단 접힘선 */

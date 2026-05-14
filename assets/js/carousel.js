@@ -132,8 +132,7 @@
     expanded = true;
     var $c = $cards.filter('.is-active');
     $c.addClass('is-open').css({
-      transition: 'transform 0.65s ' + EASE,
-      transform: 'translateX(0px) scale(1.1)',
+      transition: 'transform 0.45s ' + EASE + ', width 0.45s ' + EASE + ', height 0.45s ' + EASE + ', top 0.45s ' + EASE + ', left 0.45s ' + EASE,
       zIndex: 999,
     });
     $('#carousel').addClass('has-open');
