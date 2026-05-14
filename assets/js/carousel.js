@@ -45,9 +45,8 @@
         : '';
 
       var preview = d.type === 'special'
-        ? '<div class="card-preview"><p class="special-question">?</p></div>'
+        ? '<div class="card-preview special-preview"><p class="special-question">?</p></div>'
         : '<div class="card-preview">'
-            + '<div class="env-body"><div class="env-seal"></div></div>'
             + '<p class="env-name">' + d.name + '</p>'
           + '</div>';
 
@@ -298,36 +297,79 @@
 
   /* ─── TEAM OVERLAY ─── */
   window.openTeamOverlay = function () {
-    var makers = window.CARDS_DATA.filter(function (d) {
-      return d.type === 'maker' || d.type === 'cheerleader';
+    var makerRows = window.CARDS_DATA.filter(function (d) { return d.type === 'maker'; });
+    makerRows.sort(function (a, b) {
+      return (b.contribution || 0) - (a.contribution || 0);
     });
+    var cheer     = window.CARDS_DATA.filter(function (d) { return d.type === 'cheerleader'; })[0];
 
-    var cardsHtml = makers.map(function (d) {
-      var isCheer = d.type === 'cheerleader';
-      var links = isCheer ? '' :
+    function makerCardHtml(d) {
+      var c = typeof d.contribution === 'number' ? d.contribution : 0;
+      var barPct = Math.min(100, Math.round((c / 35) * 100));
+      var bio = d.teamBio || '';
+      var links =
         '<div class="to-links">'
           + (d.github  ? '<a href="' + d.github  + '" target="_blank" rel="noopener" class="to-btn to-btn--gh">GitHub</a>' : '')
           + (d.tistory ? '<a href="' + d.tistory + '" target="_blank" rel="noopener" class="to-btn to-btn--ts">Blog</a>' : '')
           + (d.email   ? '<a href="mailto:' + d.email + '" class="to-btn to-btn--mail">✉</a>' : '')
         + '</div>';
-
-      return '<div class="to-card' + (isCheer ? ' to-card--cheer' : '') + '">'
-        + '<div class="to-avatar"><div class="to-avatar-init">' + d.name.slice(-1) + '</div></div>'
-        + '<p class="to-role">' + (isCheer ? '치어리더 🎉' : (d.role || '')) + '</p>'
-        + '<p class="to-name">' + d.name + '</p>'
-        + (d.email && !isCheer ? '<p class="to-email">' + d.email + '</p>' : '')
+      return '<article class="to-card">'
+        + '<div class="to-card-top">'
+          + '<div class="to-avatar" aria-hidden="true"><div class="to-avatar-init">' + d.name.slice(-1) + '</div></div>'
+          + '<div class="to-card-head">'
+            + '<h3 class="to-name">' + d.name + '</h3>'
+            + '<p class="to-role">' + (d.role || '') + '</p>'
+          + '</div>'
+        + '</div>'
+        + (bio ? '<p class="to-bio">' + bio + '</p>' : '')
+        + '<div class="to-contrib" role="group" aria-label="기여도">'
+          + '<div class="to-contrib-meta">'
+            + '<span class="to-contrib-label">기여도</span>'
+            + '<span class="to-contrib-num">' + c + '</span>'
+          + '</div>'
+          + '<div class="to-contrib-track"><div class="to-contrib-fill" style="width:' + barPct + '%"></div></div>'
+        + '</div>'
+        + (d.email ? '<p class="to-email">' + d.email + '</p>' : '')
         + links
+        + '</article>';
+    }
+
+    var teamGridHtml = makerRows.map(makerCardHtml).join('');
+
+    var cheerHtml = '';
+    if (cheer) {
+      cheerHtml =
+        '<div class="to-cheer-wrap" role="region" aria-label="치어">'
+          + '<p class="to-section-label">Special thanks</p>'
+          + '<div class="to-cheer-card">'
+            + '<div class="to-cheer-avatar"><span class="to-cheer-initial">' + cheer.name.slice(-1) + '</span></div>'
+            + '<div class="to-cheer-text">'
+              + '<p class="to-cheer-kicker">Cheerleader</p>'
+              + '<p class="to-cheer-name">' + cheer.name + '</p>'
+            + '</div>'
+          + '</div>'
         + '</div>';
-    }).join('');
+    }
 
     var html = '<div id="teamOverlay" class="to-overlay">'
-      + '<button class="to-close" id="teamOverlayClose">✕</button>'
+      + '<button type="button" class="to-close" id="teamOverlayClose" aria-label="닫기">✕</button>'
       + '<div class="to-inner">'
-        + '<div class="to-header">'
+        + '<header class="to-hero">'
+          + '<p class="to-kicker">스승의 날 · Rolling paper</p>'
           + '<img src="assets/images/margin.svg" alt="Margin" class="to-logo" />'
-          + '<p class="to-sub">Made with love · 2026</p>'
+          + '<h2 class="to-heading">만든이들</h2>'
+          + '<p class="to-lead">선생님께 전하는 마음을, 기획·디자인·개발로 하나로 엮었어요.</p>'
+          + '<span class="to-divider" aria-hidden="true"></span>'
+        + '</header>'
+        + '<div class="to-panel">'
+          + '<section class="to-section" aria-labelledby="to-team-label">'
+            + '<p id="to-team-label" class="to-section-label">Team</p>'
+            + '<div class="to-grid">' + teamGridHtml + '</div>'
+            + '<p class="to-legend">기여도는 팀 내 상대 가중치예요. (임예지 35 · 김주은 30 · 신혜인 25 · 윤태경 20)</p>'
+          + '</section>'
+          + cheerHtml
         + '</div>'
-        + '<div class="to-grid">' + cardsHtml + '</div>'
+        + '<p class="to-foot">ESC 또는 우측 상단 ✕ 로 닫을 수 있어요</p>'
       + '</div>'
     + '</div>';
 

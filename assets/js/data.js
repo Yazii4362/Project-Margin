@@ -22,7 +22,9 @@ window.CARDS_DATA = [
   {
     id: 5, type: 'maker', name: "김주은",
     bgImage: "assets/images/cards/card-01.png",
-    role: "UI Design · Planning",
+    role: "FE · 디자인 · 기획",
+    contribution: 30,
+    teamBio: "프론트엔드 개발과 디자인, 기획까지 폭넓게 함께했어요.",
     email: "jooeun@example.com",
     tistory: "https://jooeun.tistory.com",
     github: "https://github.com/jooeun",
@@ -36,7 +38,9 @@ window.CARDS_DATA = [
   {
     id: 7, type: 'maker', name: "신혜인",
     bgImage: "assets/images/cards/card-03.png",
-    role: "UX Research · Design",
+    role: "그래픽 · Figma · AI 음악",
+    contribution: 25,
+    teamBio: "그래픽 디자인(특히 Figma 작업)과 AI 음악 생성 등을 맡았어요.",
     email: "hyein@example.com",
     tistory: "https://hyein.tistory.com",
     github: "https://github.com/hyein",
@@ -45,7 +49,9 @@ window.CARDS_DATA = [
   {
     id: 8, type: 'maker', name: "윤태경",
     bgImage: "assets/images/cards/card-04.png",
-    role: "Frontend Dev · Design",
+    role: "FE · JavaScript",
+    contribution: 20,
+    teamBio: "프론트엔드 중에서도 JavaScript로 동작을 구현하는 부분을 중심으로 맡았어요.",
     email: "taekyung@example.com",
     tistory: "https://taekyung.tistory.com",
     github: "https://github.com/taekyung",
@@ -64,7 +70,9 @@ window.CARDS_DATA = [
   {
     id: 11, type: 'maker', name: "임예지",
     bgImage: "assets/images/cards/card-03.png",
-    role: "PM · Frontend Dev",
+    role: "리드 · 기획 · PM",
+    contribution: 35,
+    teamBio: "팀 리드와 기획, 그리고 프로젝트 전반을 총괄·조율했어요.",
     email: "yeji@example.com",
     tistory: "https://yeji.tistory.com",
     github: "https://github.com/yeji",
