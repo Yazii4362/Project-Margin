@@ -12,6 +12,9 @@
   var $cards = null;
   var hintShown = false;
   var touchBound = false;
+  var visited = [];
+  var specialIndexes = [];
+  var normalCount = 0;
 
   function build() {
     if (typeof window.CARDS_DATA === 'undefined' || !window.CARDS_DATA.length) {
@@ -20,9 +23,28 @@
 
     var $track = $('#carouselTrack');
     $track.empty();
-    total = window.CARDS_DATA.length;
+    var normalItems = [];
+    var specialItems = [];
 
     window.CARDS_DATA.forEach(function (d, i) {
+      var cardData = { data: d, index: i };
+      if (d.type === 'special') {
+        specialItems.push(cardData);
+      } else {
+        normalItems.push(cardData);
+      }
+    });
+
+    var orderedItems = normalItems.concat(specialItems);
+    total = orderedItems.length;
+    specialIndexes = specialItems.map(function (_, idx) {
+      return normalItems.length + idx;
+    });
+    normalCount = normalItems.length;
+    visited = new Array(total).fill(false);
+
+    orderedItems.forEach(function (item, i) {
+      var d = item.data;
       var cls = d.type === 'special' ? 'card card--special' : 'card';
       var linkBtn = d.link
         ? '<a class="card-link-btn" href="' +
@@ -66,9 +88,35 @@
 
     $cards = $track.find('.card');
     cur = 0;
+    markVisited(cur);
     place(false);
 
     setTimeout(swipeHint, 2000);
+  }
+
+  function markVisited(index) {
+    if (index >= 0 && index < total) {
+      visited[index] = true;
+    }
+  }
+
+  function allRegularVisited() {
+    if (!specialIndexes.length) {
+      return true;
+    }
+    return visited.every(function (value, index) {
+      return specialIndexes.indexOf(index) !== -1 || value;
+    });
+  }
+
+  function getNextIndex(direction) {
+    var next = ((cur + direction) % total + total) % total;
+    if (!allRegularVisited() && specialIndexes.indexOf(next) !== -1) {
+      do {
+        next = ((next + direction) % total + total) % total;
+      } while (specialIndexes.indexOf(next) !== -1 && next !== cur);
+    }
+    return next;
   }
 
   function swipeHint() {
@@ -123,7 +171,8 @@
 
   function go(dir) {
     if (!total) return;
-    cur = ((cur + dir) % total + total) % total;
+    cur = getNextIndex(dir);
+    markVisited(cur);
     place(true);
   }
 
@@ -210,6 +259,28 @@
     );
   }
 
+  function bindCarouselWheel() {
+    var $el = $('#carousel');
+    if (!$el.length) return;
+
+    var wheelLocked = false;
+    $el.on('wheel', function (e) {
+      if (expanded) return;
+      if (Math.abs(e.originalEvent.deltaY) < 25) return;
+      e.preventDefault();
+      if (wheelLocked) return;
+      wheelLocked = true;
+      if (e.originalEvent.deltaY > 0) {
+        go(1);
+      } else {
+        go(-1);
+      }
+      setTimeout(function () {
+        wheelLocked = false;
+      }, 250);
+    });
+  }
+
   $(document).ready(function () {
     $(document).on('carousel:init', build);
 
@@ -243,6 +314,7 @@
     });
 
     bindCarouselTouch();
+    bindCarouselWheel();
 
     $(document).on('mousedown', '#carousel', function (e) {
       onStart(e.clientX);

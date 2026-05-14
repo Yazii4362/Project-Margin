@@ -25,9 +25,11 @@
 </head>
 
 <body>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
 
-  <!-- SECTION 1: Hero -->
-  <section id="hero" class="screen active">
+      <!-- SECTION 1: Hero -->
+      <section id="hero" class="screen active">
     <div class="splash-blur"></div>
     <div class="hero-inner">
       <div class="hero-copy">
@@ -55,7 +57,7 @@
   <section id="carousel" class="screen" aria-hidden="true">
     <!-- 상단 마키 -->
     <div class="marquee marquee--top" aria-hidden="true">
-      <div class="marquee-inner">
+      <div class="marquee-inner" data-speed="0.24">
         <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
         <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
         <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
@@ -65,7 +67,7 @@
         <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
         <span class="marquee-item marquee-item--dim">강현명 선생님께</span><span class="marquee-dot"></span>
       </div>
-      <div class="marquee-inner" aria-hidden="true">
+      <div class="marquee-inner" aria-hidden="true" data-speed="0.16">
         <span class="marquee-item">스승의 날</span><span class="marquee-dot"></span>
         <span class="marquee-item marquee-item--dim">Teacher's Day</span><span class="marquee-dot"></span>
         <span class="marquee-item">2026. 05. 15</span><span class="marquee-dot"></span>
@@ -80,7 +82,10 @@
     <div class="carousel-track-wrap">
       <div class="carousel-track" id="carouselTrack"></div>
     </div>
-    <div class="rays-wrap" id="raysWrap">
+    <div class="carousel-instruction">
+      <p>PC로 스크롤하거나 카드 위를 드래그해 보세요. 키보드 ←/→로 이동 가능.</p>
+    </div>
+    <div class="rays-wrap" id="raysWrap" data-speed="-0.15">
       <div class="rays-disc"></div>
     </div>
 
@@ -135,9 +140,13 @@
     </div>
   </section>
 
+    </div>
+  </div>
+
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollSmoother.min.js"></script>
   <!-- JS -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/splash.js"></script>

@@ -18,6 +18,18 @@ gsap.to('#hero', {
   ease: 'power2.out',
 });
 
+if (window.ScrollSmoother && gsap.registerPlugin) {
+  gsap.registerPlugin(ScrollSmoother);
+  ScrollSmoother.create({
+    wrapper: '#smooth-wrapper',
+    content: '#smooth-content',
+    smooth: 1.2,
+    effects: true,
+    normalizeScroll: true,
+    preventOverscroll: true,
+  });
+}
+
 $(function () {
   // Hero screen only displays the initial greeting and envelope.
 });
