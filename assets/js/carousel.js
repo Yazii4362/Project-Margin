@@ -267,8 +267,15 @@
     $(document).on('keydown', function (e) {
       if (e.key === 'Escape') close();
       if (!$('#carousel').hasClass('active')) return;
-      if (e.key === 'ArrowRight') go(1);
-      if (e.key === 'ArrowLeft')  go(-1);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var dir = e.key === 'ArrowRight' ? 1 : -1;
+        if (expanded) {
+          close();
+          setTimeout(function () { go(dir); }, 80);
+        } else {
+          go(dir);
+        }
+      }
     });
 
     bindCarouselTouch();
