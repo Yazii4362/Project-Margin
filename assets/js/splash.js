@@ -35,7 +35,7 @@ if (window.ScrollSmoother && gsap.registerPlugin) {
 }
 
 $(function () {
-  // Hero game-screen only displays the initial greeting and envelope.
+  // Hero screen only displays the initial greeting and envelope.
 });
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -353,7 +353,7 @@ $(function () {
 
   function syncBgmPlayerMainVisibility() {
     var show = $('#carousel').hasClass('active') || $('#credits').hasClass('active');
-    $p.toggleClass('bgm-player--hidden-main-game-screen', !show);
+    $p.toggleClass('bgm-player--hidden-main-screen', !show);
   }
 
   syncBgmPlayerMainVisibility();

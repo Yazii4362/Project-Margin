@@ -277,7 +277,7 @@ gsap.to('.envelope-flap', {
 - ✅ ARIA labels and roles
 - ✅ Keyboard navigation
 - ✅ Focus management
-- ✅ game-screen reader support
+- ✅ screen reader support
 - ✅ Reduced motion support
 - ✅ Color contrast (WCAG AA)
 
@@ -285,7 +285,7 @@ gsap.to('.envelope-flap', {
 
 ## 📄 License
 
-This project is created for educational purposes as a game-teacher's Day gift.  
+This project is created for educational purposes as a teacher's Day gift.  
 © 2026 Team Margin. All rights reserved.
 
 ---

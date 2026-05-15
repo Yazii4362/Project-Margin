@@ -107,7 +107,7 @@ a,
 }
 
 /* 키보드 네비게이션 힌트 */
-.game-keyboard-hint {
+.keyboard-hint {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -123,7 +123,7 @@ a,
   z-index: 1000;
 }
 
-body:not(.using-mouse) .game-keyboard-hint {
+body:not(.using-mouse) .keyboard-hint {
   opacity: 1;
 }
 

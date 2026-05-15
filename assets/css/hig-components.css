@@ -4,7 +4,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* ── HIG 버튼 스타일 ── */
-.hig-game-button {
+.hig-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -24,79 +24,79 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Primary game-button (Filled) */
-.hig-game-button--primary {
+/* Primary button (Filled) */
+.hig-button--primary {
   background: #007AFF;
   color: #FFFFFF;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-.hig-game-button--primary:hover {
+.hig-button--primary:hover {
   background: #0051D5;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 
-.hig-game-button--primary:active {
+.hig-button--primary:active {
   background: #004FC4;
   transform: scale(0.98);
 }
 
-/* Secondary game-button (Tinted) */
-.hig-game-button--secondary {
+/* Secondary button (Tinted) */
+.hig-button--secondary {
   background: rgba(0, 122, 255, 0.1);
   color: #007AFF;
 }
 
-.hig-game-button--secondary:hover {
+.hig-button--secondary:hover {
   background: rgba(0, 122, 255, 0.15);
 }
 
-.hig-game-button--secondary:active {
+.hig-button--secondary:active {
   background: rgba(0, 122, 255, 0.2);
   transform: scale(0.98);
 }
 
-/* Tertiary game-button (Plain) */
-.hig-game-button--tertiary {
+/* Tertiary button (Plain) */
+.hig-button--tertiary {
   background: transparent;
   color: #007AFF;
 }
 
-.hig-game-button--tertiary:hover {
+.hig-button--tertiary:hover {
   background: rgba(0, 122, 255, 0.08);
 }
 
-.hig-game-button--tertiary:active {
+.hig-button--tertiary:active {
   background: rgba(0, 122, 255, 0.12);
   transform: scale(0.98);
 }
 
-/* Destructive game-button */
-.hig-game-button--destructive {
+/* Destructive button */
+.hig-button--destructive {
   background: #FF3B30;
   color: #FFFFFF;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-.hig-game-button--destructive:hover {
+.hig-button--destructive:hover {
   background: #E6342A;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 
-.hig-game-button--destructive:active {
+.hig-button--destructive:active {
   background: #CC2E24;
   transform: scale(0.98);
 }
 
-/* game-button Sizes */
-.hig-game-button--small {
+/* button Sizes */
+.hig-button--small {
   padding: 6px 14px;
   min-height: 32px;
   font-size: 15px;
   border-radius: 10px;
 }
 
-.hig-game-button--large {
+.hig-button--large {
   padding: 14px 24px;
   min-height: 50px;
   font-size: 19px;
@@ -104,7 +104,7 @@
 }
 
 /* Disabled State */
-.hig-game-button:disabled {
+.hig-button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
   transform: none !important;
@@ -540,11 +540,11 @@
 
 /* ── 다크 모드 지원 ── */
 @media (prefers-color-scheme: dark) {
-  .hig-game-button--primary {
+  .hig-button--primary {
     background: #0A84FF;
   }
   
-  .hig-game-button--primary:hover {
+  .hig-button--primary:hover {
     background: #409CFF;
   }
   
@@ -593,7 +593,7 @@
     padding: 20px;
   }
   
-  .hig-game-button {
+  .hig-button {
     font-size: 15px;
   }
 }

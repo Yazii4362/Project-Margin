@@ -511,7 +511,7 @@ html.splash-complete .bgm-player {
 }
 
 /* 메인(히어로만 활성) 및 전환 구간: 캐러셀·크레딧 비활성 시 숨김 */
-#bgmPlayer.bgm-player--hidden-main-game-screen {
+#bgmPlayer.bgm-player--hidden-main-screen {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;

@@ -72,7 +72,7 @@
     
 
     /* 학생 책상 */
-    .game-student-desk {
+    .student-desk {
       position: absolute;
       width: 70px;
       height: 70px;
@@ -92,21 +92,21 @@
       line-height: 1.2;
     }
 
-    .game-student-desk.occupied {
+    .student-desk.occupied {
       background-color: #90ee90;
     }
 
-    .game-student-desk.empty {
+    .student-desk.empty {
       background-color: #d3d3d3;
     }
 
-    .game-student-desk:hover {
+    .student-desk:hover {
       border-width: 3px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
     /* 출입문 (갈색) */
-    .game-door {
+    .door {
       position: absolute;
       bottom: 0;
       left: 50px;
@@ -221,7 +221,7 @@
     }
 
     /* 상호작용 메시지 */
-    .game-interaction-text {
+    .interaction-text {
       position: absolute;
       background: rgba(255, 255, 255, 0.98);
       border: 2px solid #333;
@@ -303,54 +303,54 @@
     <div class="game-screen" id="game-screen">스크린 (상호작용 예정)</div>
     
     <!-- 스크린 버튼 -->
-    <div class="game-screen-button" id="game-screenButton"></div>
+    <div class="game-screen-button" id="game-screenbutton"></div>
     
     
     
     <!-- 좌측 그룹 -->
     <!-- 1행 (회색3) -->
-    <div class="game-student-desk empty" style="top: 100px; left: 40px;" data-position="left-1-1"></div>
-    <div class="game-student-desk empty" style="top: 100px; left: 130px;" data-position="left-1-2"></div>
-    <div class="game-student-desk empty" style="top: 100px; left: 220px;" data-position="left-1-3"></div>
+    <div class="student-desk empty" style="top: 100px; left: 40px;" data-position="left-1-1"></div>
+    <div class="student-desk empty" style="top: 100px; left: 130px;" data-position="left-1-2"></div>
+    <div class="student-desk empty" style="top: 100px; left: 220px;" data-position="left-1-3"></div>
     
     <!-- 2행 (회색1, 초록2) -->
-    <div class="game-student-desk empty" style="top: 200px; left: 40px;" data-position="left-2-1"></div>
-    <div class="game-student-desk occupied" style="top: 200px; left: 130px;" data-position="left-2-2">임예지</div>
-    <div class="game-student-desk occupied" style="top: 200px; left: 220px;" data-position="left-2-3">신혜인</div>
+    <div class="student-desk empty" style="top: 200px; left: 40px;" data-position="left-2-1"></div>
+    <div class="student-desk occupied" style="top: 200px; left: 130px;" data-position="left-2-2">임예지</div>
+    <div class="student-desk occupied" style="top: 200px; left: 220px;" data-position="left-2-3">신혜인</div>
     
     <!-- 3행 (초록3) -->
-    <div class="game-student-desk occupied" style="top: 300px; left: 40px;" data-position="left-3-1">김태연</div>
-    <div class="game-student-desk occupied" style="top: 300px; left: 130px;" data-position="left-3-2">윤태경</div>
-    <div class="game-student-desk occupied" style="top: 300px; left: 220px;" data-position="left-3-3">김정수</div>
+    <div class="student-desk occupied" style="top: 300px; left: 40px;" data-position="left-3-1">김태연</div>
+    <div class="student-desk occupied" style="top: 300px; left: 130px;" data-position="left-3-2">윤태경</div>
+    <div class="student-desk occupied" style="top: 300px; left: 220px;" data-position="left-3-3">김정수</div>
     
     <!-- 4행 (회색3) -->
-    <div class="game-student-desk empty" style="top: 400px; left: 40px;" data-position="left-4-1"></div>
-    <div class="game-student-desk empty" style="top: 400px; left: 130px;" data-position="left-4-2"></div>
-    <div class="game-student-desk empty" style="top: 400px; left: 220px;" data-position="left-4-3"></div>
+    <div class="student-desk empty" style="top: 400px; left: 40px;" data-position="left-4-1"></div>
+    <div class="student-desk empty" style="top: 400px; left: 130px;" data-position="left-4-2"></div>
+    <div class="student-desk empty" style="top: 400px; left: 220px;" data-position="left-4-3"></div>
     
     <!-- 우측 그룹 -->
     <!-- 1행 (초록1, 회색1, 초록1) -->
-    <div class="game-student-desk occupied" style="top: 100px; right: 220px;" data-position="right-1-1">이기훈</div>
-    <div class="game-student-desk empty" style="top: 100px; right: 130px;" data-position="right-1-2"></div>
-    <div class="game-student-desk occupied" style="top: 100px; right: 40px;" data-position="right-1-3">김수연</div>
+    <div class="student-desk occupied" style="top: 100px; right: 220px;" data-position="right-1-1">이기훈</div>
+    <div class="student-desk empty" style="top: 100px; right: 130px;" data-position="right-1-2"></div>
+    <div class="student-desk occupied" style="top: 100px; right: 40px;" data-position="right-1-3">김수연</div>
     
     <!-- 2행 (초록2, 회색1) -->
-    <div class="game-student-desk occupied" style="top: 200px; right: 220px;" data-position="right-2-1">김주은</div>
-    <div class="game-student-desk occupied" style="top: 200px; right: 130px;" data-position="right-2-2">박연수</div>
-    <div class="game-student-desk empty" style="top: 200px; right: 40px;" data-position="right-2-3"></div>
+    <div class="student-desk occupied" style="top: 200px; right: 220px;" data-position="right-2-1">김주은</div>
+    <div class="student-desk occupied" style="top: 200px; right: 130px;" data-position="right-2-2">박연수</div>
+    <div class="student-desk empty" style="top: 200px; right: 40px;" data-position="right-2-3"></div>
     
     <!-- 3행 (초록1, 회색1, 초록1) -->
-    <div class="game-student-desk occupied" style="top: 300px; right: 220px;" data-position="right-3-1">이선규</div>
-    <div class="game-student-desk empty" style="top: 300px; right: 130px;" data-position="right-3-2"></div>
-    <div class="game-student-desk occupied" style="top: 300px; right: 40px;" data-position="right-3-3">김가은</div>
+    <div class="student-desk occupied" style="top: 300px; right: 220px;" data-position="right-3-1">이선규</div>
+    <div class="student-desk empty" style="top: 300px; right: 130px;" data-position="right-3-2"></div>
+    <div class="student-desk occupied" style="top: 300px; right: 40px;" data-position="right-3-3">김가은</div>
     
     <!-- 4행 (초록2, 회색1) -->
-    <div class="game-student-desk occupied" style="top: 400px; right: 220px;" data-position="right-4-1">김지원</div>
-    <div class="game-student-desk occupied" style="top: 400px; right: 130px;" data-position="right-4-2">최신비</div>
-    <div class="game-student-desk empty" style="top: 400px; right: 40px;" data-position="right-4-3"></div>
+    <div class="student-desk occupied" style="top: 400px; right: 220px;" data-position="right-4-1">김지원</div>
+    <div class="student-desk occupied" style="top: 400px; right: 130px;" data-position="right-4-2">최신비</div>
+    <div class="student-desk empty" style="top: 400px; right: 40px;" data-position="right-4-3"></div>
     
     <!-- 출입문 -->
-    <div class="game-door">출입문</div>
+    <div class="door">출입문</div>
     
     <!-- 정보 패널 -->
     <div class="game-info-panel">
@@ -501,7 +501,7 @@
         interactionText.textContent = `✓ ${studentName}과(와) 대화했습니다!`;
 
         const msgDiv = document.createElement('div');
-        msgDiv.className = 'game-interaction-text';
+        msgDiv.className = 'interaction-text';
         msgDiv.style.left = deskRect.left - containerRect.left + 'px';
         msgDiv.style.top = (deskRect.top - containerRect.top - 60) + 'px';
         msgDiv.textContent = `"${message}"`;
@@ -518,7 +518,7 @@
       let nearestDesk = null;
       let minDistance = Infinity;
 
-      document.querySelectorAll('.game-student-desk.occupied').forEach((desk) => {
+      document.querySelectorAll('.student-desk.occupied').forEach((desk) => {
         const deskRect = desk.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         
@@ -564,7 +564,7 @@
       interactionText.textContent = '(추후 기능 추가 예정)';
     });
 
-    document.getElementById('game-screenButton').addEventListener('click', (e) => {
+    document.getElementById('game-screenbutton').addEventListener('click', (e) => {
       e.stopPropagation();
       statusText.textContent = '스크린 버튼을 눌렀습니다.';
       interactionText.textContent = '(스크린 올리기/내리기 기능 준비 중)';

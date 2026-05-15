@@ -107,8 +107,8 @@
   --dur-slow:   680ms;
 }
 
-/* ── game-screen base ── */
-.game-screen {
+/* ── screen base ── */
+.screen {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -122,7 +122,7 @@
   z-index: 1;
 }
 
-.game-screen.active {
+.screen.active {
   opacity: 1;
   pointer-events: all;
   z-index: 10;

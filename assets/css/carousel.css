@@ -18,7 +18,7 @@
 position: relative;
 width: 100%;
 height: 100vh;
-/* .game-screen의 row flex 한 줄짜리 트랙이 뷰포트와 높이를 어긋나게 할 수 있어, 겹침 그리드로 중앙 스택 고정 */
+/* .screen의 row flex 한 줄짜리 트랙이 뷰포트와 높이를 어긋나게 할 수 있어, 겹침 그리드로 중앙 스택 고정 */
 display: grid;
 grid-template-rows: 1fr;
 grid-template-columns: 1fr;

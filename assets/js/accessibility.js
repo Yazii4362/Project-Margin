@@ -121,10 +121,10 @@
 
     // 카드 네비게이션 키보드 지원 강화
     $(document).on('keydown', function(e) {
-      var $activegame-screen = $('.game-screen.active');
+      var $activescreen = $('.screen.active');
       
       // 캐러셀 섹션에서만 작동
-      if ($activegame-screen.attr('id') !== 'carousel') return;
+      if ($activescreen.attr('id') !== 'carousel') return;
 
       switch(e.key) {
         case 'ArrowLeft':
@@ -159,7 +159,7 @@
       mutations.forEach(function(mutation) {
         if (mutation.attributeName === 'class') {
           var $target = $(mutation.target);
-          if ($target.hasClass('game-screen') && $target.hasClass('active')) {
+          if ($target.hasClass('screen') && $target.hasClass('active')) {
             var sectionName = $target.attr('id');
             var sectionLabel = {
               'hero': '편지함',
@@ -173,7 +173,7 @@
       });
     });
 
-    $('.game-screen').each(function() {
+    $('.screen').each(function() {
       observer.observe(this, { attributes: true });
     });
   });
