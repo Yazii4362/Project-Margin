@@ -514,20 +514,33 @@ position: absolute;
 bottom: 0;
 left: 0;
 width: 100%;
-height: 2px;
-background: rgba(26,22,18,0.08);
+height: 1px; /* 2px → 1px 더 얇게 */
+background: rgba(26,22,18,0.04); /* 0.08 → 0.04 더 투명하게 */
 z-index: 20;
+opacity: 0.6; /* 전체 투명도 추가 */
+transition: opacity 0.3s ease;
+}
+
+.carousel-progress:hover {
+opacity: 0.85; /* 호버시 약간 진하게 */
 }
 
 .carousel-progress-fill {
 height: 100%;
 background: var(--color-red);
+opacity: 0.7; /* 프로그레스 바 자체도 투명하게 */
 transition: width 420ms cubic-bezier(0.4,0,0.2,1),
-background 0.7s ease;
+background 0.7s ease,
+opacity 0.3s ease;
+}
+
+.carousel-progress:hover .carousel-progress-fill {
+opacity: 0.9; /* 호버시 약간 진하게 */
 }
 
 body.dark-theme .carousel-progress-fill {
 background: #f5c842;
+opacity: 0.5; /* 다크모드에서는 더 subtle */
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
