@@ -45,8 +45,8 @@
 
   var POINTER_SEL = [
     'a',
-    'game-button',
-    '[role="game-button"]',
+    'button',
+    '[role="button"]',
     'label',
     '[tabindex]:not([tabindex="-1"])',
     'input',

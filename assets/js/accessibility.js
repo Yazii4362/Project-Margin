@@ -10,7 +10,7 @@
 
   var A11y = {
     // 현재 포커스 가능한 요소들
-    focusableElements: 'game-button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    focusableElements: 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     
     // 포커스 트랩 (모달용)
     trapFocus: function(container) {

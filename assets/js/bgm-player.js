@@ -142,12 +142,12 @@ function initRandomBGM() {
       var title = formatPlaylistTitle(file);
       var $row = $(
         '<li class="bgm-playlist-item">' +
-          '<game-button type="game-button" class="bgm-playlist-row" data-index="' +
+          '<button type="button" class="bgm-playlist-row" data-index="' +
           idx +
           '">' +
           '<span class="bgm-playlist-row__mark" aria-hidden="true">▶</span>' +
           '<span class="bgm-playlist-row__title"></span>' +
-          '</game-button>' +
+          '</button>' +
           '</li>'
       );
       $row.find('.bgm-playlist-row__title').text(title);
