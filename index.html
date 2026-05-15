@@ -311,7 +311,7 @@
             <!-- ─── 치어리더 ─── -->
             <div class="cr-cheer" data-id="9">
               <div class="cr-cheer-avatar">
-                <img src="assets/images/kihoon-avatar.webp" alt="이기훈" />
+                <img src="assets/images/cards/keehoon-profile.webp" alt="이기훈" />
               </div>
               <div class="cr-cheer-info">
                 <h4 class="cr-cheer-name">이기훈</h4>
@@ -352,17 +352,55 @@
           </div><!-- /.cr-modal-box -->
         </div><!-- /.cr-modal -->
 
-        <!-- ─── 커피사주기 모달 ─── -->
+        <!-- ─── 커피사주기 모달 (티켓 스타일) ─── -->
         <div class="cr-coffee-modal" id="coffeeModal" aria-hidden="true">
           <div class="cr-coffee-bg" id="coffeeBg"></div>
-          <div class="cr-coffee-box">
+          <div class="cr-coffee-box cr-ticket">
             <button class="cr-coffee-close" id="coffeeClose" aria-label="닫기">×</button>
-            <div class="cr-coffee-content">
-              <div class="cr-coffee-icon">☕</div>
-              <h3 class="cr-coffee-title">커피 한 잔 사주기</h3>
-              <p class="cr-coffee-desc" id="coffeeDesc">응원의 마음을 전해보세요</p>
-              <div class="cr-coffee-links" id="coffeeLinks">
-                <!-- JavaScript로 동적 생성 -->
+            <div class="cr-ticket-inner">
+              <div class="cr-ticket-header">
+                <h2 class="cr-ticket-logo">커피 쿠폰</h2>
+              </div>
+              <div class="cr-ticket-body">
+                <p class="cr-ticket-to">To.</p>
+                <h3 class="cr-ticket-name" id="coffeeTitle">이름</h3>
+                <p class="cr-ticket-desc" id="coffeeDesc">응원의 마음을 전해보세요</p>
+              </div>
+              <div class="cr-ticket-divider"></div>
+              <div class="cr-ticket-footer">
+                <p class="cr-ticket-buy">마음 전하기</p>
+                <div class="cr-coffee-links" id="coffeeLinks">
+                  <!-- JavaScript로 동적 생성 -->
+                </div>
+                <div class="cr-ticket-barcode">
+                  <svg width="100%" height="40" preserveAspectRatio="none" viewBox="0 0 200 40" fill="currentColor">
+                    <rect x="0" y="0" width="4" height="40"/>
+                    <rect x="6" y="0" width="2" height="40"/>
+                    <rect x="12" y="0" width="8" height="40"/>
+                    <rect x="24" y="0" width="2" height="40"/>
+                    <rect x="30" y="0" width="6" height="40"/>
+                    <rect x="38" y="0" width="4" height="40"/>
+                    <rect x="46" y="0" width="10" height="40"/>
+                    <rect x="58" y="0" width="2" height="40"/>
+                    <rect x="64" y="0" width="6" height="40"/>
+                    <rect x="74" y="0" width="4" height="40"/>
+                    <rect x="80" y="0" width="8" height="40"/>
+                    <rect x="92" y="0" width="2" height="40"/>
+                    <rect x="98" y="0" width="4" height="40"/>
+                    <rect x="106" y="0" width="6" height="40"/>
+                    <rect x="114" y="0" width="8" height="40"/>
+                    <rect x="124" y="0" width="2" height="40"/>
+                    <rect x="130" y="0" width="4" height="40"/>
+                    <rect x="138" y="0" width="6" height="40"/>
+                    <rect x="146" y="0" width="10" height="40"/>
+                    <rect x="160" y="0" width="2" height="40"/>
+                    <rect x="166" y="0" width="8" height="40"/>
+                    <rect x="176" y="0" width="4" height="40"/>
+                    <rect x="182" y="0" width="6" height="40"/>
+                    <rect x="190" y="0" width="4" height="40"/>
+                    <rect x="198" y="0" width="2" height="40"/>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>

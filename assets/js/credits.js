@@ -230,6 +230,14 @@
     }
   };
 
+  // 각 제작자별 테마 색상 (티켓 디자인용 - 상징색 적용)
+  var ticketThemes = {
+    'yeji':     { bg: '#87CEEB', text: '#0F172A' }, // 스카이블루 & 네이비
+    'jooeun':   { bg: '#FF69B4', text: '#FFFFFF' }, // 핑크 & 화이트
+    'hyein':    { bg: '#222222', text: '#FFFFFF' }, // 블랙 & 화이트
+    'taekyung': { bg: '#4ADE80', text: '#064E3B' }  // 그린 & 다크그린
+  };
+
   // 아바타 더블클릭 이벤트
   $(document).on('dblclick', '.cr-avatar', function (e) {
     e.stopPropagation();
@@ -239,9 +247,15 @@
     if (!maker || !coffeeData[maker]) return;
     
     var data = coffeeData[maker];
+    var theme = ticketThemes[maker] || { bg: '#FF5A36', text: '#FFFFFF' };
     
     // 모달 내용 업데이트
-    $coffeeDesc.text(data.name + '님에게 응원의 마음을 전해보세요');
+    $('#coffeeTitle').text(data.name);
+    $coffeeDesc.html('☕ 마음을 전하는 커피 쿠폰<br><br>커피챗을 통해 가벼운 이야기를 나누거나,<br>따뜻한 커피 한 잔을 선물하며 응원해주세요!');
+    
+    // 테마 컬러 적용
+    $('.cr-coffee-box.cr-ticket')[0].style.setProperty('--ticket-bg', theme.bg);
+    $('.cr-coffee-box.cr-ticket')[0].style.setProperty('--ticket-text', theme.text);
     
     // 링크 버튼 생성
     $coffeeLinks.empty();
@@ -252,7 +266,7 @@
         .attr('href', link.url)
         .attr('target', '_blank')
         .attr('rel', 'noopener noreferrer')
-        .html('<span class="cr-coffee-link-icon">' + link.icon + '</span><span>' + link.text + '</span>');
+        .html('<span>' + link.text + '</span>');
       $coffeeLinks.append($link);
     });
     

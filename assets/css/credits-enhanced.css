@@ -362,7 +362,7 @@
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   COFFEE MODAL (커피사주기)
+   COFFEE MODAL (커피사주기 - POP ART TICKET)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .cr-coffee-modal {
   position: fixed;
@@ -389,36 +389,16 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-.cr-coffee-box {
-  position: relative;
-  z-index: 1;
-  background: linear-gradient(145deg, #fdfaf4 0%, #f8f4ec 100%);
-  border-radius: 24px;
-  padding: 40px 32px 36px;
-  max-width: 420px;
-  width: calc(100vw - 48px);
-  box-shadow: 
-    0 24px 80px rgba(0, 0, 0, 0.25),
-    0 8px 32px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  transform: scale(0.9) translateY(20px);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cr-coffee-modal[aria-hidden="false"] .cr-coffee-box {
-  transform: scale(1) translateY(0);
-}
-
 .cr-coffee-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: -50px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid rgba(26, 22, 18, 0.12);
-  background: rgba(255, 255, 255, 0.8);
-  color: rgba(26, 22, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
@@ -426,52 +406,141 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  z-index: 10;
 }
 
 .cr-coffee-close:hover {
-  background: rgba(255, 255, 255, 1);
-  color: rgba(26, 22, 18, 0.9);
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
   transform: rotate(90deg);
-  border-color: rgba(26, 22, 18, 0.2);
 }
 
-.cr-coffee-content {
-  text-align: center;
+@media (max-width: 500px) {
+  .cr-coffee-close {
+    top: -50px;
+    right: 0;
+  }
+}
+
+/* 티켓 컨테이너 */
+.cr-coffee-box.cr-ticket {
+  position: relative;
+  z-index: 1;
+  max-width: 320px;
+  width: calc(100vw - 48px);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --ticket-bg: #FF5A36; /* Default theme */
+  --ticket-text: #FFE600;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+}
+
+.cr-coffee-modal[aria-hidden="false"] .cr-coffee-box {
+  transform: scale(1) translateY(0) rotate(-2deg);
+}
+
+/* 티켓 내부 구조 & 타공 마스크 */
+.cr-ticket-inner {
+  background: var(--ticket-bg);
+  color: var(--ticket-text);
+  padding: 40px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  text-align: center;
+  /* 상단, 하단 반원 타공 (천공) 마스크 */
+  -webkit-mask-image: 
+    radial-gradient(circle at 12px 0, transparent 7px, black 7.5px),
+    radial-gradient(circle at 12px 100%, transparent 7px, black 7.5px);
+  -webkit-mask-size: 24px 51%, 24px 51%;
+  -webkit-mask-position: top left, bottom left;
+  -webkit-mask-repeat: repeat-x, repeat-x;
+  
+  mask-image: 
+    radial-gradient(circle at 12px 0, transparent 7px, black 7.5px),
+    radial-gradient(circle at 12px 100%, transparent 7px, black 7.5px);
+  mask-size: 24px 51%, 24px 51%;
+  mask-position: top left, bottom left;
+  mask-repeat: repeat-x, repeat-x;
 }
 
-.cr-coffee-icon {
-  font-size: 64px;
-  line-height: 1;
-  margin-bottom: 4px;
-  animation: coffee-bounce 2s ease-in-out infinite;
+/* 헤더: 로고 */
+.cr-ticket-header {
+  margin-bottom: 24px;
 }
 
-@keyframes coffee-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.cr-coffee-title {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 600;
+.cr-ticket-logo {
+  font-family: var(--font-display, "Playfair Display", serif);
+  font-size: 48px;
+  font-weight: 800;
   font-style: italic;
-  color: #1a1612;
   margin: 0;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--ticket-text);
+  /* 팝아트 느낌의 그림자 */
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
 }
 
-.cr-coffee-desc {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(26, 22, 18, 0.6);
-  margin: 0 0 8px;
-  line-height: 1.5;
+/* 바디: 이름과 설명 */
+.cr-ticket-body {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.cr-ticket-to {
+  font-family: var(--font-label, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  opacity: 0.8;
+}
+
+.cr-ticket-name {
+  font-family: var(--font-display, serif);
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+.cr-ticket-desc {
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-line; /* \n 허용 */
+  margin: 0;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* 점선 구분선 */
+.cr-ticket-divider {
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, var(--ticket-text) 50%, transparent 50%);
+  background-size: 16px 2px;
+  background-repeat: repeat-x;
+  margin-bottom: 24px;
+  opacity: 0.6;
+}
+
+/* 푸터: 액션 & 바코드 */
+.cr-ticket-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cr-ticket-buy {
+  font-family: var(--font-label, sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0 0 16px;
+  text-transform: uppercase;
 }
 
 .cr-coffee-links {
@@ -479,62 +548,47 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  margin-top: 8px;
+  margin-bottom: 24px;
 }
 
 .cr-coffee-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 14px 24px;
-  border-radius: 16px;
-  font-family: var(--font-label);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: var(--font-label, sans-serif);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 800;
   text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.2s;
+  background: var(--ticket-text);
+  color: var(--ticket-bg);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
   border: 2px solid transparent;
 }
 
-.cr-coffee-link--primary {
-  background: linear-gradient(135deg, #f5c842 0%, #e8b020 100%);
-  color: #1a1612;
-  box-shadow: 0 4px 16px rgba(245, 200, 66, 0.3);
+.cr-coffee-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
 }
 
-.cr-coffee-link--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 200, 66, 0.4);
-  background: linear-gradient(135deg, #ffd873 0%, #f5c842 100%);
+.cr-coffee-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 rgba(0,0,0,0.15);
 }
 
-.cr-coffee-link--secondary {
-  background: rgba(26, 22, 18, 0.06);
-  color: rgba(26, 22, 18, 0.8);
-  border-color: rgba(26, 22, 18, 0.12);
+.cr-ticket-barcode {
+  width: 80%;
+  height: 40px;
+  opacity: 0.9;
+  color: var(--ticket-text);
 }
 
-.cr-coffee-link--secondary:hover {
-  background: rgba(26, 22, 18, 0.1);
-  border-color: rgba(26, 22, 18, 0.2);
-  transform: translateY(-1px);
-}
-
-.cr-coffee-link-icon {
-  font-size: 20px;
-  line-height: 1;
-}
-
-/* 아바타 더블클릭 힌트 */
+/* 아바타 더블클릭 힌트 (커피 아이콘) */
 .cr-avatar {
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s ease;
-}
-
-.cr-avatar:hover {
-  transform: scale(1.02);
 }
 
 .cr-avatar::after {
@@ -560,29 +614,6 @@
 .cr-avatar:hover::after {
   opacity: 1;
   transform: scale(1);
-}
-
-@media (max-width: 480px) {
-  .cr-coffee-box {
-    padding: 36px 24px 32px;
-  }
-
-  .cr-coffee-icon {
-    font-size: 56px;
-  }
-
-  .cr-coffee-title {
-    font-size: 24px;
-  }
-
-  .cr-coffee-desc {
-    font-size: 14px;
-  }
-
-  .cr-coffee-link {
-    padding: 12px 20px;
-    font-size: 13px;
-  }
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
