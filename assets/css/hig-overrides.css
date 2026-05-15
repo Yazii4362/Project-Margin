@@ -1,0 +1,307 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   APPLE HIG STYLE OVERRIDES
+   기존 컴포넌트를 HIG 스타일로 교체
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Credits 버튼 스타일 오버라이드 ── */
+.cr-letter-btn,
+.cr-cheer-btn {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.33333 !important;
+  letter-spacing: -0.24px !important;
+  padding: 10px 16px !important;
+  min-height: 40px !important;
+  border-radius: 10px !important;
+  background: rgba(0, 122, 255, 0.1) !important;
+  color: #007AFF !important;
+  border: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: none !important;
+}
+
+.cr-letter-btn:hover,
+.cr-cheer-btn:hover {
+  background: rgba(0, 122, 255, 0.15) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2) !important;
+}
+
+.cr-letter-btn:active,
+.cr-cheer-btn:active {
+  background: rgba(0, 122, 255, 0.2) !important;
+  transform: scale(0.98) !important;
+}
+
+/* ── Credits 링크 버튼 ── */
+.cr-btn {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 10px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: saturate(180%) blur(10px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
+}
+
+.cr-btn--mail {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.cr-btn--mail:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(0, 122, 255, 0.2) !important;
+}
+
+.cr-btn--gh {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cr-btn--gh:hover {
+  background: rgba(0, 0, 0, 1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+}
+
+.cr-btn--ts {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.cr-btn--ts:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── Credits Back 버튼 ── */
+.cr-back {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.24px !important;
+  padding: 10px 20px !important;
+  min-height: 40px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #007AFF !important;
+  border: none !important;
+  text-transform: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cr-back:hover {
+  background: rgba(0, 122, 255, 0.08) !important;
+  color: #007AFF !important;
+}
+
+.cr-back:active {
+  background: rgba(0, 122, 255, 0.12) !important;
+  transform: scale(0.98) !important;
+}
+
+/* ── Modal Close 버튼 ── */
+.cr-modal-close,
+.cr-coffee-close,
+#teamOverlayClose {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: rgba(120, 120, 128, 0.16) !important;
+  border: none !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-size: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: saturate(180%) blur(10px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.cr-modal-close:hover,
+.cr-coffee-close:hover,
+#teamOverlayClose:hover {
+  background: rgba(120, 120, 128, 0.24) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+.cr-modal-close:active,
+.cr-coffee-close:active,
+#teamOverlayClose:active {
+  background: rgba(120, 120, 128, 0.32) !important;
+  transform: scale(0.95) !important;
+}
+
+/* ── BGM Player 버튼 ── */
+.bgm-btn-toggle,
+.bgm-playlist-toggle {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 10px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: saturate(180%) blur(10px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
+}
+
+.bgm-btn-toggle:hover,
+.bgm-playlist-toggle:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  transform: scale(1.05) !important;
+}
+
+.bgm-btn-toggle:active,
+.bgm-playlist-toggle:active {
+  transform: scale(0.95) !important;
+}
+
+/* ── BGM Player 전체 스타일 ── */
+.bgm-player {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 16px !important;
+  box-shadow: 
+    0 0 0 0.5px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.16) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border: none !important;
+}
+
+.bgm-track-label {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.08px !important;
+}
+
+/* ── Envelope Hint ── */
+.envelope-hint {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.24px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ── Hero Title & Labels ── */
+.hero-label {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06px !important;
+  text-transform: uppercase !important;
+}
+
+.hero-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.hero-sub,
+.hero-description {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.24px !important;
+}
+
+/* ── Card Link Button ── */
+.card-link-btn {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.24px !important;
+  padding: 10px 20px !important;
+  min-height: 40px !important;
+  border-radius: 10px !important;
+  background: #007AFF !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-link-btn:hover {
+  background: #0051D5 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16) !important;
+  transform: translateY(-1px) !important;
+}
+
+.card-link-btn:active {
+  background: #004FC4 !important;
+  transform: scale(0.98) !important;
+}
+
+/* ── 다크 모드 지원 ── */
+@media (prefers-color-scheme: dark) {
+  .cr-letter-btn,
+  .cr-cheer-btn {
+    background: rgba(10, 132, 255, 0.15) !important;
+    color: #0A84FF !important;
+  }
+  
+  .cr-letter-btn:hover,
+  .cr-cheer-btn:hover {
+    background: rgba(10, 132, 255, 0.2) !important;
+  }
+  
+  .cr-back {
+    color: #0A84FF !important;
+  }
+  
+  .cr-back:hover {
+    background: rgba(10, 132, 255, 0.12) !important;
+  }
+  
+  .cr-modal-close,
+  .cr-coffee-close,
+  #teamOverlayClose {
+    background: rgba(118, 118, 128, 0.24) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+  
+  .cr-modal-close:hover,
+  .cr-coffee-close:hover,
+  #teamOverlayClose:hover {
+    background: rgba(118, 118, 128, 0.32) !important;
+  }
+  
+  .bgm-player {
+    background: rgba(28, 28, 30, 0.8) !important;
+  }
+  
+  .card-link-btn {
+    background: #0A84FF !important;
+  }
+  
+  .card-link-btn:hover {
+    background: #409CFF !important;
+  }
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .cr-letter-btn,
+  .cr-cheer-btn,
+  .cr-back,
+  .card-link-btn {
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+    min-height: 36px !important;
+  }
+  
+  .cr-modal-close,
+  .cr-coffee-close,
+  #teamOverlayClose {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 18px !important;
+  }
+}

@@ -91,15 +91,20 @@ $(function () {
     var x, y;
     var jitter = (Math.random() - 0.5) * 50;
 
+    $tooltip.removeClass('tooltip-top tooltip-left tooltip-right');
+
     if (dir === 0) {
       x = rect.left + rect.width / 2 - tw / 2 + jitter;
       y = rect.top - th - 12;
+      $tooltip.addClass('tooltip-top');
     } else if (dir === 1) {
       x = rect.left - tw - 14;
       y = rect.top + rect.height / 2 - th / 2 + jitter * 0.5;
+      $tooltip.addClass('tooltip-left');
     } else {
       x = rect.right + 14;
       y = rect.top + rect.height / 2 - th / 2 + jitter * 0.5;
+      $tooltip.addClass('tooltip-right');
     }
 
     x = Math.max(8, Math.min(x, window.innerWidth - tw - 8));
