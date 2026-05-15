@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스승의날 이스터에그 게임</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    #gameContainer {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-color: #ffffff;
+      border: 3px solid #333;
+      outline: none;
+      cursor: default;
+    }
+
+    /* 스크린 (노란색) */
+    .screen {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 550px;
+      height: 45px;
+      background-color: #ffff00;
+      border: 3px solid #333;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    .screen:hover {
+      opacity: 0.8;
+    }
+
+    /* 스크린 버튼 (검은색) */
+    .screen-button {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      width: 35px;
+      height: 35px;
+      background-color: #000000;
+      border: 2px solid #333;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 50;
+    }
+
+    .screen-button:hover {
+      background-color: #444;
+      transform: scale(1.1);
+    }
+
+    
+
+    /* 학생 책상 */
+    .student-desk {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border: 2px solid #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 10px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      white-space: normal;
+      overflow: hidden;
+      padding: 4px;
+      line-height: 1.2;
+    }
+
+    .student-desk.occupied {
+      background-color: #90ee90;
+    }
+
+    .student-desk.empty {
+      background-color: #d3d3d3;
+    }
+
+    .student-desk:hover {
+      border-width: 3px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 출입문 (갈색) */
+    .door {
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+      width: 160px;
+      height: 45px;
+      background-color: #8b6914;
+      border: 3px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      font-size: 13px;
+      z-index: 5;
+    }
+
+    /* 선생님 캐릭터 */
+    .teacher {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .teacher-head {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #ffd4a3;
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .teacher-body {
+      width: 30px;
+      height: 45px;
+      background: #ff6347;
+      border: 2px solid #333;
+      margin-top: 2px;
+      border-radius: 2px;
+    }
+
+    .teacher-label {
+      font-size: 11px;
+      margin-top: 3px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2px 5px;
+      border-radius: 3px;
+      border: 1px solid #333;
+    }
+
+    /* 정보 패널 */
+    .info-panel {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 12px;
+      border-radius: 6px;
+      border: 2px solid #333;
+      min-width: 280px;
+      z-index: 200;
+      font-size: 13px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .info-panel h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+      font-size: 15px;
+      border-bottom: 2px solid #0000ff;
+      padding-bottom: 6px;
+    }
+
+    .info-panel p {
+      margin: 5px 0;
+      color: #555;
+      line-height: 1.3;
+      font-size: 12px;
+    }
+
+    .info-panel #status {
+      color: #0000ff;
+      font-weight: bold;
+    }
+
+    .info-panel #interaction {
+      color: #ff6347;
+      font-weight: bold;
+    }
+
+    /* 키보드 조작 안내 */
+    .keyboard-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 2px solid #333;
+      font-size: 11px;
+      color: #333;
+      z-index: 200;
+      text-align: center;
+      line-height: 1.5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 상호작용 메시지 */
+    .interaction-text {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.98);
+      border: 2px solid #333;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #333;
+      font-weight: bold;
+      pointer-events: none;
+      animation: fadeOut 3s ease-in-out forwards;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 150px;
+      text-align: center;
+      white-space: normal;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    /* 컨트롤 버튼 */
+    button {
+      padding: 8px 14px;
+      background: #0000ff;
+      color: white;
+      border: 2px solid #333;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      background: #0000cc;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 200;
+    }
+
+    .arrow-btn {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameContainer" tabindex="0">
+    <!-- 스크린 -->
+    <div class="screen" id="screen">스크린 (상호작용 예정)</div>
+    
+    <!-- 스크린 버튼 -->
+    <div class="screen-button" id="screenButton"></div>
+    
+    
+    
+    <!-- 좌측 그룹 -->
+    <!-- 1행 (회색3) -->
+    <div class="student-desk empty" style="top: 100px; left: 40px;" data-position="left-1-1"></div>
+    <div class="student-desk empty" style="top: 100px; left: 130px;" data-position="left-1-2"></div>
+    <div class="student-desk empty" style="top: 100px; left: 220px;" data-position="left-1-3"></div>
+    
+    <!-- 2행 (회색1, 초록2) -->
+    <div class="student-desk empty" style="top: 200px; left: 40px;" data-position="left-2-1"></div>
+    <div class="student-desk occupied" style="top: 200px; left: 130px;" data-position="left-2-2">임예지</div>
+    <div class="student-desk occupied" style="top: 200px; left: 220px;" data-position="left-2-3">신혜인</div>
+    
+    <!-- 3행 (초록3) -->
+    <div class="student-desk occupied" style="top: 300px; left: 40px;" data-position="left-3-1">김태연</div>
+    <div class="student-desk occupied" style="top: 300px; left: 130px;" data-position="left-3-2">윤태경</div>
+    <div class="student-desk occupied" style="top: 300px; left: 220px;" data-position="left-3-3">김정수</div>
+    
+    <!-- 4행 (회색3) -->
+    <div class="student-desk empty" style="top: 400px; left: 40px;" data-position="left-4-1"></div>
+    <div class="student-desk empty" style="top: 400px; left: 130px;" data-position="left-4-2"></div>
+    <div class="student-desk empty" style="top: 400px; left: 220px;" data-position="left-4-3"></div>
+    
+    <!-- 우측 그룹 -->
+    <!-- 1행 (초록1, 회색1, 초록1) -->
+    <div class="student-desk occupied" style="top: 100px; right: 220px;" data-position="right-1-1">이기훈</div>
+    <div class="student-desk empty" style="top: 100px; right: 130px;" data-position="right-1-2"></div>
+    <div class="student-desk occupied" style="top: 100px; right: 40px;" data-position="right-1-3">김수연</div>
+    
+    <!-- 2행 (초록2, 회색1) -->
+    <div class="student-desk occupied" style="top: 200px; right: 220px;" data-position="right-2-1">김주은</div>
+    <div class="student-desk occupied" style="top: 200px; right: 130px;" data-position="right-2-2">박연수</div>
+    <div class="student-desk empty" style="top: 200px; right: 40px;" data-position="right-2-3"></div>
+    
+    <!-- 3행 (초록1, 회색1, 초록1) -->
+    <div class="student-desk occupied" style="top: 300px; right: 220px;" data-position="right-3-1">이선규</div>
+    <div class="student-desk empty" style="top: 300px; right: 130px;" data-position="right-3-2"></div>
+    <div class="student-desk occupied" style="top: 300px; right: 40px;" data-position="right-3-3">김가은</div>
+    
+    <!-- 4행 (초록2, 회색1) -->
+    <div class="student-desk occupied" style="top: 400px; right: 220px;" data-position="right-4-1">김지원</div>
+    <div class="student-desk occupied" style="top: 400px; right: 130px;" data-position="right-4-2">최신비</div>
+    <div class="student-desk empty" style="top: 400px; right: 40px;" data-position="right-4-3"></div>
+    
+    <!-- 출입문 -->
+    <div class="door">출입문</div>
+    
+    <!-- 정보 패널 -->
+    <div class="info-panel">
+      <h3>강의실 상호작용</h3>
+      <p id="status">WASD로 이동!<br>SPACE 상호작용</p>
+      <p id="interaction"></p>
+    </div>
+    
+    <!-- 키보드 조작 안내 -->
+    <div class="keyboard-hint">
+      ⌨️ W A S D 이동<br>
+      SPACE 상호작용
+    </div>
+    
+    <!-- 게임 컨트롤 -->
+    <div class="controls">
+      <button class="arrow-btn" onclick="moveTeacher('left')">←(a)</button>
+      <button class="arrow-btn" onclick="moveTeacher('right')">→(d)</button>
+      <button class="arrow-btn" onclick="moveTeacher('up')">↑(w)</button>
+      <button class="arrow-btn" onclick="moveTeacher('down')">↓(s)</button>
+      <button onclick="interactWithNearestStudent()">상호작용 (space)</button>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('gameContainer');
+    const statusText = document.getElementById('status');
+    const interactionText = document.getElementById('interaction');
+
+    // 학생 이름 목록
+    const studentList = [
+      '이기훈',  // 우측 1-1
+      '김수연',  // 우측 1-3
+      '김주은',  // 우측 2-1
+      '박연수',  // 우측 2-2
+      '이선규',  // 우측 3-1
+      '김가은',  // 우측 3-3
+      '김지원',  // 우측 4-1
+      '최신비',   // 우측 4-2
+      '임예지',  // 좌측 2-2
+      '신혜인',  // 좌측 2-3
+      '김태연',  // 좌측 3-1
+      '윤태경',  // 좌측 3-2
+      '김정수',  // 좌측 3-3
+    ];
+
+    const studentMessages = [
+      '선생님, 이 문제 어려워요!',
+      '😊',
+      '선생님, 질문이 있어요.',
+      '숙제 언제까지 내요?',
+      '선생님 오타있어요',
+      '꺅! 아니이이',
+      '에이~~당연하죠~(리액션 요정)',
+      '썜 이거 (바이브) 이상해요',
+      '이거 맞나요?',
+      '아직 다 못 적었어요!',
+      '잼얘 해주세요!',
+      '죄송합니다',
+      '선생님, 감사합니다!'
+    ];
+
+    // 선생님 객체
+    const teacher = {
+      element: null,
+      x: 50,
+      y: 400,
+      speed: 15
+    };
+
+    const createTeacher = () => {
+      const teacherDiv = document.createElement('div');
+      teacherDiv.className = 'teacher';
+      teacherDiv.style.left = teacher.x + 'px';
+      teacherDiv.style.top = teacher.y + 'px';
+
+      const head = document.createElement('div');
+      head.className = 'teacher-head';
+      head.textContent = '👨‍🏫';
+
+      const body = document.createElement('div');
+      body.className = 'teacher-body';
+
+      const label = document.createElement('div');
+      label.className = 'teacher-label';
+      label.textContent = '강현명';
+
+      teacherDiv.appendChild(head);
+      teacherDiv.appendChild(body);
+      teacherDiv.appendChild(label);
+
+      container.appendChild(teacherDiv);
+      teacher.element = teacherDiv;
+    };
+
+    createTeacher();
+    container.focus();
+
+    const moveTeacher = (direction) => {
+      const containerWidth = container.offsetWidth;
+      
+      switch(direction) {
+        case 'up':
+          if (teacher.y > 30) teacher.y -= teacher.speed;
+          break;
+        case 'down':
+          if (teacher.y < container.offsetHeight - 100) teacher.y += teacher.speed;
+          break;
+        case 'left':
+          if (teacher.x > 20) teacher.x -= teacher.speed;
+          break;
+        case 'right':
+          if (teacher.x < containerWidth - 70) teacher.x += teacher.speed;
+          break;
+      }
+
+      teacher.element.style.left = teacher.x + 'px';
+      teacher.element.style.top = teacher.y + 'px';
+
+      statusText.textContent = `강현명 선생님 위치: (${Math.round(teacher.x)}, ${Math.round(teacher.y)})`;
+    };
+
+    const interactWithStudent = (deskElement) => {
+      const deskRect = deskElement.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      const deskCenterX = deskRect.left - containerRect.left + deskRect.width / 2;
+      const deskCenterY = deskRect.top - containerRect.top + deskRect.height / 2;
+
+      const distance = Math.sqrt(
+        Math.pow(teacher.x + 20 - deskCenterX, 2) + 
+        Math.pow(teacher.y + 40 - deskCenterY, 2)
+      );
+
+      const studentName = deskElement.textContent.trim();
+      
+      if (!studentName) {
+        statusText.textContent = '빈 책상입니다.';
+        return;
+      }
+
+      if (distance < 80) {
+        // 학생 이름으로 메시지 인덱스 결정
+        const studentIndex = studentList.indexOf(studentName);
+        const message = studentMessages[studentIndex >= 0 ? studentIndex : 0];
+        
+        statusText.textContent = `${studentName}: "${message}"`;
+        interactionText.textContent = `✓ ${studentName}과(와) 대화했습니다!`;
+
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'interaction-text';
+        msgDiv.style.left = deskRect.left - containerRect.left + 'px';
+        msgDiv.style.top = (deskRect.top - containerRect.top - 60) + 'px';
+        msgDiv.textContent = `"${message}"`;
+        container.appendChild(msgDiv);
+
+        setTimeout(() => msgDiv.remove(), 3000);
+      } else {
+        statusText.textContent = `${studentName}과(와) 거리가 멀어요. 더 가까워지세요!`;
+      }
+    };
+
+    // 가장 가까운 학생 찾기
+    const findNearestStudent = () => {
+      let nearestDesk = null;
+      let minDistance = Infinity;
+
+      document.querySelectorAll('.student-desk.occupied').forEach((desk) => {
+        const deskRect = desk.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        
+        const deskCenterX = deskRect.left - containerRect.left + deskRect.width / 2;
+        const deskCenterY = deskRect.top - containerRect.top + deskRect.height / 2;
+
+        const distance = Math.sqrt(
+          Math.pow(teacher.x + 20 - deskCenterX, 2) + 
+          Math.pow(teacher.y + 40 - deskCenterY, 2)
+        );
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestDesk = { element: desk, distance: distance };
+        }
+      });
+
+      return nearestDesk;
+    };
+
+    // 가장 가까운 학생과 상호작용
+    const interactWithNearestStudent = () => {
+      const nearest = findNearestStudent();
+      
+      if (!nearest) {
+        statusText.textContent = '근처에 학생이 없습니다.';
+        return;
+      }
+
+      if (nearest.distance < 80) {
+        interactWithStudent(nearest.element);
+      } else {
+        const studentName = nearest.element.textContent.trim();
+        statusText.textContent = `${studentName}과(와) 거리가 멀어요 (거리: ${Math.round(nearest.distance)}). 더 가까워지세요!`;
+      }
+    };
+
+    // 학생 책상 클릭 이벤트 제거 (space bar로 상호작용하도록 변경)
+
+    // 스크린 상호작용
+    document.getElementById('screen').addEventListener('click', () => {
+      statusText.textContent = '스크린 상호작용 준비 중입니다.';
+      interactionText.textContent = '(추후 기능 추가 예정)';
+    });
+
+    document.getElementById('screenButton').addEventListener('click', (e) => {
+      e.stopPropagation();
+      statusText.textContent = '스크린 버튼을 눌렀습니다.';
+      interactionText.textContent = '(스크린 올리기/내리기 기능 준비 중)';
+    });
+
+    // 키보드 이벤트
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+
+      if (key === 'w') {
+        moveTeacher('up');
+        event.preventDefault();
+      } else if (key === 'a') {
+        moveTeacher('left');
+        event.preventDefault();
+      } else if (key === 's') {
+        moveTeacher('down');
+        event.preventDefault();
+      } else if (key === 'd') {
+        moveTeacher('right');
+        event.preventDefault();
+      } else if (key === ' ') {
+        // space bar로 가장 가까운 학생과 상호작용
+        interactWithNearestStudent();
+        event.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>

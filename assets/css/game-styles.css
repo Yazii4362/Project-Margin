@@ -1,0 +1,349 @@
+/* 전체 레이아웃 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+/* 게임 컨테이너 */
+#gameContainer {
+  position: relative;
+  width: 100%;
+  height: 1200px;
+  background-color: #ffffff;
+  border: 3px solid #333;
+  outline: none;
+  cursor: default;
+}
+
+/* 스크린 스타일 */
+.screen {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560px;
+  height: 60px;
+  background-color: #ffff00;
+  border: 3px solid #333;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.screen:hover {
+  opacity: 0.8;
+}
+
+/* 스크린 버튼 (올리고 내리는 버튼) */
+.screen-button {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: #000000;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.screen-button:hover {
+  background-color: #444;
+  transform: scale(1.1);
+}
+
+.screen-button:active {
+  transform: scale(0.95);
+}
+
+/* 선생님 책상 */
+.teacher-desk {
+  position: absolute;
+  top: 110px;
+  right: 80px;
+  width: 300px;
+  height: 80px;
+  background-color: #0000ff;
+  border: 3px solid #333;
+}
+
+/* 학생 책상 */
+.student-desk {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #999;
+  background-color: #d3d3d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.student-desk.occupied {
+  background-color: #90ee90;
+}
+
+.student-desk.empty {
+  background-color: #d3d3d3;
+}
+
+.student-desk:hover {
+  border-width: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 학생 이름 표시 */
+.student-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* 출입문 */
+.door {
+  position: absolute;
+  bottom: 20px;
+  left: 200px;
+  width: 180px;
+  height: 50px;
+  background-color: #8b6914;
+  border: 3px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* 선생님 캐릭터 */
+.teacher {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+
+.teacher-head {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffd4a3;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.teacher-body {
+  width: 35px;
+  height: 50px;
+  background: #ff6347;
+  border: 2px solid #333;
+  margin-top: 2px;
+  border-radius: 3px;
+}
+
+.teacher-label {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #333;
+}
+
+/* 정보 패널 */
+.info-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #333;
+  min-width: 320px;
+  z-index: 200;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.info-panel h3 {
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 16px;
+  border-bottom: 2px solid #0000ff;
+  padding-bottom: 8px;
+}
+
+.info-panel p {
+  margin: 6px 0;
+  color: #555;
+  line-height: 1.4;
+}
+
+.info-panel #status {
+  color: #0000ff;
+  font-weight: bold;
+}
+
+.info-panel #interaction {
+  color: #ff6347;
+  font-weight: bold;
+}
+
+/* 키보드 조작 안내 */
+.keyboard-hint {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #333;
+  font-size: 12px;
+  color: #333;
+  z-index: 200;
+  text-align: center;
+  line-height: 1.6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 상호작용 메시지 */
+.interaction-text {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid #333;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #333;
+  font-weight: bold;
+  pointer-events: none;
+  animation: fadeOut 3s ease-in-out forwards;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+  text-align: center;
+  white-space: normal;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* 버튼 스타일 */
+button {
+  padding: 10px 16px;
+  background: #0000ff;
+  color: white;
+  border: 2px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: #0000cc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 게임 컨트롤 */
+.controls {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 200;
+}
+
+/* 방향 버튼 스타일 */
+.arrow-btn {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .info-panel {
+    min-width: 280px;
+    font-size: 12px;
+  }
+
+  .student-desk {
+    width: 60px;
+    height: 60px;
+  }
+
+  .keyboard-hint {
+    font-size: 11px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .classroom {
+    font-size: 12px;
+  }
+
+  .student-desk {
+    width: 50px;
+    height: 50px;
+  }
+
+  .info-panel {
+    min-width: 250px;
+    font-size: 11px;
+    padding: 12px;
+  }
+
+  .controls {
+    bottom: 80px;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
