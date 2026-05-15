@@ -414,18 +414,18 @@
     ];
 
     // 선생님 객체
-    const game-teacher = {
+    const game = {
       element: null,
       x: 50,
       y: 400,
       speed: 15
     };
 
-    const creategame-teacher = () => {
-      const game-teacherDiv = document.createElement('div');
-      game-teacherDiv.className = 'game-teacher';
-      game-teacherDiv.style.left = game-teacher.x + 'px';
-      game-teacherDiv.style.top = game-teacher.y + 'px';
+    const creategame = () => {
+      const gameDiv = document.createElement('div');
+      gameDiv.className = 'game';
+      gameDiv.style.left = game.x + 'px';
+      gameDiv.style.top = game.y + 'px';
 
       const head = document.createElement('div');
       head.className = 'game-teacher-head';
@@ -438,37 +438,37 @@
       label.className = 'game-teacher-label';
       label.textContent = '강현명';
 
-      game-teacherDiv.appendChild(head);
-      game-teacherDiv.appendChild(body);
-      game-teacherDiv.appendChild(label);
+      gameDiv.appendChild(head);
+      gameDiv.appendChild(body);
+      gameDiv.appendChild(label);
 
-      container.appendChild(game-teacherDiv);
-      game-teacher.element = game-teacherDiv;
+      container.appendChild(gameDiv);
+      game.element = gameDiv;
     };
 
     creategame-teacher();
     container.focus();
 
-    const movegame-teacher = (direction) => {
+    const movegame = (direction) => {
       const containerWidth = container.offsetWidth;
       
       switch(direction) {
         case 'up':
-          if (game-teacher.y > 30) game-teacher.y -= game-teacher.speed;
+          if (game.y > 30) game.y -= game.speed;
           break;
         case 'down':
-          if (game-teacher.y < container.offsetHeight - 100) game-teacher.y += game-teacher.speed;
+          if (game.y < container.offsetHeight - 100) game.y += game.speed;
           break;
         case 'left':
-          if (game-teacher.x > 20) game-teacher.x -= game-teacher.speed;
+          if (game.x > 20) game.x -= game.speed;
           break;
         case 'right':
-          if (game-teacher.x < containerWidth - 70) game-teacher.x += game-teacher.speed;
+          if (game.x < containerWidth - 70) game.x += game.speed;
           break;
       }
 
-      game-teacher.element.style.left = game-teacher.x + 'px';
-      game-teacher.element.style.top = game-teacher.y + 'px';
+      game.element.style.left = game.x + 'px';
+      game.element.style.top = game.y + 'px';
 
       statusText.textContent = `강현명 선생님 위치: (${Math.round(game-teacher.x)}, ${Math.round(game-teacher.y)})`;
     };
