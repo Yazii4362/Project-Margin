@@ -10,7 +10,7 @@
 
   var A11y = {
     // 현재 포커스 가능한 요소들
-    focusableElements: 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    focusableElements: 'game-button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     
     // 포커스 트랩 (모달용)
     trapFocus: function(container) {
@@ -121,10 +121,10 @@
 
     // 카드 네비게이션 키보드 지원 강화
     $(document).on('keydown', function(e) {
-      var $activeScreen = $('.screen.active');
+      var $activegame-screen = $('.game-screen.active');
       
       // 캐러셀 섹션에서만 작동
-      if ($activeScreen.attr('id') !== 'carousel') return;
+      if ($activegame-screen.attr('id') !== 'carousel') return;
 
       switch(e.key) {
         case 'ArrowLeft':
@@ -159,7 +159,7 @@
       mutations.forEach(function(mutation) {
         if (mutation.attributeName === 'class') {
           var $target = $(mutation.target);
-          if ($target.hasClass('screen') && $target.hasClass('active')) {
+          if ($target.hasClass('game-screen') && $target.hasClass('active')) {
             var sectionName = $target.attr('id');
             var sectionLabel = {
               'hero': '편지함',
@@ -173,7 +173,7 @@
       });
     });
 
-    $('.screen').each(function() {
+    $('.game-screen').each(function() {
       observer.observe(this, { attributes: true });
     });
   });

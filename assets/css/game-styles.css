@@ -22,7 +22,7 @@ body {
 }
 
 /* 스크린 스타일 */
-.screen {
+.game-screen {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -35,12 +35,12 @@ body {
   transition: opacity 0.3s;
 }
 
-.screen:hover {
+.game-screen:hover {
   opacity: 0.8;
 }
 
 /* 스크린 버튼 (올리고 내리는 버튼) */
-.screen-button {
+.game-screen-button {
   position: absolute;
   top: 20px;
   right: 40px;
@@ -52,17 +52,17 @@ body {
   transition: all 0.2s;
 }
 
-.screen-button:hover {
+.game-screen-button:hover {
   background-color: #444;
   transform: scale(1.1);
 }
 
-.screen-button:active {
+.game-screen-button:active {
   transform: scale(0.95);
 }
 
 /* 선생님 책상 */
-.teacher-desk {
+.game-teacher-desk {
   position: absolute;
   top: 110px;
   right: 80px;
@@ -73,7 +73,7 @@ body {
 }
 
 /* 학생 책상 */
-.student-desk {
+.game-student-desk {
   position: absolute;
   width: 70px;
   height: 70px;
@@ -86,15 +86,15 @@ body {
   transition: all 0.3s;
 }
 
-.student-desk.occupied {
+.game-student-desk.occupied {
   background-color: #90ee90;
 }
 
-.student-desk.empty {
+.game-student-desk.empty {
   background-color: #d3d3d3;
 }
 
-.student-desk:hover {
+.game-student-desk:hover {
   border-width: 3px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -112,7 +112,7 @@ body {
 }
 
 /* 출입문 */
-.door {
+.game-door {
   position: absolute;
   bottom: 20px;
   left: 200px;
@@ -129,7 +129,7 @@ body {
 }
 
 /* 선생님 캐릭터 */
-.teacher {
+.game-teacher {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -137,7 +137,7 @@ body {
   z-index: 100;
 }
 
-.teacher-head {
+.game-teacher-head {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -149,7 +149,7 @@ body {
   font-size: 24px;
 }
 
-.teacher-body {
+.game-teacher-body {
   width: 35px;
   height: 50px;
   background: #ff6347;
@@ -158,7 +158,7 @@ body {
   border-radius: 3px;
 }
 
-.teacher-label {
+.game-teacher-label {
   font-size: 12px;
   margin-top: 4px;
   font-weight: bold;
@@ -169,7 +169,7 @@ body {
 }
 
 /* 정보 패널 */
-.info-panel {
+.game-info-panel {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -183,7 +183,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.info-panel h3 {
+.game-info-panel h3 {
   margin: 0 0 12px 0;
   color: #333;
   font-size: 16px;
@@ -191,24 +191,24 @@ body {
   padding-bottom: 8px;
 }
 
-.info-panel p {
+.game-info-panel p {
   margin: 6px 0;
   color: #555;
   line-height: 1.4;
 }
 
-.info-panel #status {
+.game-info-panel #status {
   color: #0000ff;
   font-weight: bold;
 }
 
-.info-panel #interaction {
+.game-info-panel #interaction {
   color: #ff6347;
   font-weight: bold;
 }
 
 /* 키보드 조작 안내 */
-.keyboard-hint {
+.game-keyboard-hint {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -225,7 +225,7 @@ body {
 }
 
 /* 상호작용 메시지 */
-.interaction-text {
+.game-interaction-text {
   position: absolute;
   background: rgba(255, 255, 255, 0.98);
   border: 2px solid #333;
@@ -305,17 +305,17 @@ button:active {
 
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
-  .info-panel {
+  .game-info-panel {
     min-width: 280px;
     font-size: 12px;
   }
 
-  .student-desk {
+  .game-student-desk {
     width: 60px;
     height: 60px;
   }
 
-  .keyboard-hint {
+  .game-keyboard-hint {
     font-size: 11px;
     padding: 10px 12px;
   }
@@ -326,12 +326,12 @@ button:active {
     font-size: 12px;
   }
 
-  .student-desk {
+  .game-student-desk {
     width: 50px;
     height: 50px;
   }
 
-  .info-panel {
+  .game-info-panel {
     min-width: 250px;
     font-size: 11px;
     padding: 12px;

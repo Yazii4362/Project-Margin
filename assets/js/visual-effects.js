@@ -123,7 +123,7 @@
   $(document).ready(function() {
     
     // 버튼 클릭 시 리플 효과
-    $(document).on('mousedown', 'button, .cr-btn, .sticky-nav-item', function(e) {
+    $(document).on('mousedown', 'game-button, .cr-btn, .sticky-nav-item', function(e) {
       if (e.which === 1) { // 좌클릭만
         VisualEffects.createRipple(e, this);
       }

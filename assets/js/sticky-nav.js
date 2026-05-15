@@ -74,7 +74,7 @@
     
     if (section === 'hero') {
       // 편지함으로 이동
-      $('.screen').removeClass('active').attr('aria-hidden', 'true');
+      $('.game-screen').removeClass('active').attr('aria-hidden', 'true');
       $('#hero').addClass('active').attr('aria-hidden', 'false');
       updateActiveNav('hero');
       
@@ -83,7 +83,7 @@
     } 
     else if (section === 'carousel') {
       // 편지 섹션으로 이동
-      $('.screen').removeClass('active').attr('aria-hidden', 'true');
+      $('.game-screen').removeClass('active').attr('aria-hidden', 'true');
       $('#carousel').addClass('active').attr('aria-hidden', 'false');
       updateActiveNav('carousel');
       

@@ -142,12 +142,12 @@ function initRandomBGM() {
       var title = formatPlaylistTitle(file);
       var $row = $(
         '<li class="bgm-playlist-item">' +
-          '<button type="button" class="bgm-playlist-row" data-index="' +
+          '<game-button type="game-button" class="bgm-playlist-row" data-index="' +
           idx +
           '">' +
           '<span class="bgm-playlist-row__mark" aria-hidden="true">▶</span>' +
           '<span class="bgm-playlist-row__title"></span>' +
-          '</button>' +
+          '</game-button>' +
           '</li>'
       );
       $row.find('.bgm-playlist-row__title').text(title);
@@ -353,7 +353,7 @@ $(function () {
 
   function syncBgmPlayerMainVisibility() {
     var show = $('#carousel').hasClass('active') || $('#credits').hasClass('active');
-    $p.toggleClass('bgm-player--hidden-main-screen', !show);
+    $p.toggleClass('bgm-player--hidden-main-game-screen', !show);
   }
 
   syncBgmPlayerMainVisibility();

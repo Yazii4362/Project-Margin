@@ -227,18 +227,18 @@
 }
 
 /* ── 페이지 전환 효과 ── */
-.screen {
+.game-screen {
   transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.screen:not(.active) {
+.game-screen:not(.active) {
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
 }
 
-.screen.active {
+.game-screen.active {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
@@ -337,7 +337,7 @@
 /* ── 애니메이션 감소 모드 대응 ── */
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .screen,
+  .game-screen,
   .card-opened,
   .card-bg {
     animation: none !important;

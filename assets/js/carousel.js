@@ -383,7 +383,7 @@
     }
 
     var html = '<div id="teamOverlay" class="to-overlay">'
-      + '<button type="button" class="to-close" id="teamOverlayClose" aria-label="닫기">✕</button>'
+      + '<game-button type="game-button" class="to-close" id="teamOverlayClose" aria-label="닫기">✕</game-button>'
       + '<div class="to-inner">'
         + '<header class="to-hero">'
           + '<p class="to-kicker">스승의 날 · Rolling paper</p>'
