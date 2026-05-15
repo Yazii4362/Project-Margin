@@ -112,7 +112,7 @@
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   TEAM LOCK MODAL (Apple HIG Style)
+   TEAM LOCK MODAL (Redesigned - Modern & Elegant)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .team-lock-modal {
   position: fixed;
@@ -124,7 +124,7 @@
   padding: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .team-lock-modal[aria-hidden="false"] {
@@ -135,28 +135,69 @@
 .team-lock-bg {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: 
+    radial-gradient(ellipse at 50% 30%, rgba(255, 90, 69, 0.08), transparent 60%),
+    rgba(26, 22, 18, 0.75);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  animation: bg-fade-in 0.4s ease;
+}
+
+@keyframes bg-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .team-lock-box {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 32px 24px 24px;
-  max-width: 380px;
+  background: 
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 250, 244, 0.96) 100%);
+  border-radius: 28px;
+  padding: 48px 32px 32px;
+  max-width: 420px;
   width: 100%;
   box-shadow:
-    0 0 0 0.5px rgba(0, 0, 0, 0.04),
-    0 8px 16px rgba(0, 0, 0, 0.12),
-    0 24px 48px rgba(0, 0, 0, 0.16);
+    0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 8px 24px rgba(60, 40, 20, 0.12),
+    0 32px 64px rgba(60, 40, 20, 0.18),
+    0 0 80px rgba(255, 90, 69, 0.08);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   text-align: center;
-  transform: scale(0.95) translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.92) translateY(30px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+/* 상단 장식 라인 */
+.team-lock-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-red) 20%, 
+    var(--color-red-soft) 50%, 
+    var(--color-red) 80%, 
+    transparent 100%
+  );
+  opacity: 0.8;
+}
+
+/* 배경 그레인 */
+.team-lock-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 180px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .team-lock-modal[aria-hidden="false"] .team-lock-box {
@@ -164,122 +205,231 @@
 }
 
 .team-lock-icon {
-  font-size: 56px;
+  font-size: 72px;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 12px rgba(255, 90, 69, 0.15));
+  animation: lock-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes lock-bounce {
+  0% { 
+    transform: scale(0.5) rotate(-10deg); 
+    opacity: 0;
+  }
+  60% { 
+    transform: scale(1.1) rotate(5deg); 
+  }
+  100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 1;
+  }
 }
 
 .team-lock-title {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 22px;
+  font-family: var(--font-display, serif);
+  font-size: 28px;
   font-weight: 600;
-  line-height: 1.27273;
-  letter-spacing: 0.35px;
-  color: #000000;
-  margin: 0 0 8px;
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  position: relative;
+  z-index: 1;
 }
 
 .team-lock-desc {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.33333;
-  letter-spacing: -0.24px;
-  color: rgba(0, 0, 0, 0.6);
-  margin: 0 0 24px;
+  font-family: var(--font-body, serif);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-muted);
+  margin: 0 0 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .team-lock-progress {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
 }
 
 .team-lock-progress-bar {
   width: 100%;
-  height: 4px;
-  background: rgba(120, 120, 128, 0.16);
-  border-radius: 2px;
+  height: 8px;
+  background: rgba(26, 22, 18, 0.08);
+  border-radius: 100px;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    0 2px 4px rgba(0, 0, 0, 0.04) inset;
+  position: relative;
+}
+
+/* 프로그레스 바 배경 애니메이션 */
+.team-lock-progress-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 90, 69, 0.05) 50%, 
+    transparent 100%
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
 }
 
 .team-lock-progress-fill {
   height: 100%;
-  background: #007AFF;
-  border-radius: 2px;
+  background: linear-gradient(90deg, 
+    var(--color-red) 0%, 
+    var(--color-red-soft) 50%, 
+    var(--color-red) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: 100px;
   width: 0%;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 
+    0 0 12px rgba(255, 90, 69, 0.4),
+    0 2px 8px rgba(255, 90, 69, 0.3);
+  animation: gradient-shift 3s ease infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .team-lock-progress-text {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.5);
+  font-family: var(--font-label, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-muted);
   margin: 0;
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
 }
 
 .team-lock-btn {
   width: 100%;
-  padding: 12px 20px;
-  min-height: 44px;
-  border-radius: 12px;
+  padding: 16px 24px;
+  min-height: 52px;
+  border-radius: 100px;
   border: none;
-  background: #007AFF;
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-soft) 100%);
   color: #FFFFFF;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.29412;
-  letter-spacing: -0.41px;
+  font-family: var(--font-label, sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 
+    0 4px 16px rgba(255, 90, 69, 0.3),
+    0 2px 8px rgba(255, 90, 69, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* 버튼 글로우 효과 */
+.team-lock-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .team-lock-btn:hover {
-  background: #0051D5;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(255, 90, 69, 0.4),
+    0 4px 12px rgba(255, 90, 69, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+.team-lock-btn:hover::before {
+  opacity: 1;
 }
 
 .team-lock-btn:active {
-  background: #004FC4;
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 2px 8px rgba(255, 90, 69, 0.3),
+    0 1px 4px rgba(255, 90, 69, 0.2);
 }
 
-/* 다크 모드 */
-@media (prefers-color-scheme: dark) {
+/* 반응형 */
+@media (max-width: 768px) {
   .team-lock-box {
-    background: rgba(28, 28, 30, 0.95);
+    padding: 40px 28px 28px;
+    border-radius: 24px;
+  }
+
+  .team-lock-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
   }
 
   .team-lock-title {
-    color: #FFFFFF;
+    font-size: 24px;
   }
 
   .team-lock-desc {
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    margin-bottom: 28px;
   }
 
-  .team-lock-progress-bar {
-    background: rgba(118, 118, 128, 0.24);
-  }
-
-  .team-lock-progress-fill {
-    background: #0A84FF;
-  }
-
-  .team-lock-progress-text {
-    color: rgba(255, 255, 255, 0.5);
+  .team-lock-progress {
+    margin-bottom: 24px;
   }
 
   .team-lock-btn {
-    background: #0A84FF;
+    padding: 14px 20px;
+    min-height: 48px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-lock-box {
+    padding: 36px 24px 24px;
+    border-radius: 20px;
   }
 
-  .team-lock-btn:hover {
-    background: #409CFF;
+  .team-lock-icon {
+    font-size: 56px;
+  }
+
+  .team-lock-title {
+    font-size: 22px;
+  }
+
+  .team-lock-desc {
+    font-size: 14px;
   }
 }
 

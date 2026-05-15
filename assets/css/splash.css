@@ -3,7 +3,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 #hero {
   overflow: hidden;
-  background-color: #1a1410;
+  background-color: #2a241e; /* 밝게 조정 */
   flex-direction: column;
   cursor: default;
   user-select: none;
@@ -17,7 +17,7 @@
   background-image: url(../images/splash-bg.webp);
   background-size: cover;
   background-position: center;
-  filter: brightness(0.55) saturate(0.85);
+  filter: brightness(0.75) saturate(0.95); /* 밝기 증가 */
   z-index: 0;
 }
 
@@ -27,9 +27,9 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.10) 0%,
-    rgba(0,0,0,0.20) 40%,
-    rgba(0,0,0,0.55) 100%
+    rgba(0,0,0,0.05) 0%, /* 상단 더 밝게 */
+    rgba(0,0,0,0.12) 40%, /* 중간 밝게 */
+    rgba(0,0,0,0.35) 100% /* 하단도 밝게 */
   );
   z-index: 0;
 }
@@ -39,7 +39,7 @@
   inset: 0;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  background: rgba(20,16,12,0.30);
+  background: rgba(42, 36, 30, 0.15); /* 훨씬 밝게 */
   z-index: 1;
 }
 
