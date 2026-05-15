@@ -67,7 +67,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   pointer-events: none;
   user-select: none;
 }
@@ -106,45 +106,6 @@
 
 /* 씰 별 — 이미지 교체로 불필요 */
 .seal-star { display: none; }
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 32%,
-    #ff7a68 0%,
-    #ff5a45 45%,
-    #d93a28 100%
-  );
-  box-shadow:
-    0 2px  4px  rgba(180,40,20,0.25),
-    0 6px  18px rgba(180,40,20,0.30),
-    0 12px 28px rgba(180,40,20,0.18),
-    inset 0 1px 0 rgba(255,200,180,0.50),
-    inset 0 -2px 4px rgba(140,20,10,0.30);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1),
-              box-shadow 0.2s ease;
-}
-
-/* 씰 내부 링 */
-.envelope-seal::before {
-  content: '';
-  position: absolute;
-  inset: 8px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,200,180,0.40);
-}
-
-/* 씰 별 */
-.seal-star {
-  font-size: 30px;
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.20);
-  position: relative;
-  z-index: 1;
-  pointer-events: none;
-}
 
 /* hover — 살짝 들뜨는 느낌 */
 .envelope:not(.peeling):hover .envelope-seal {
@@ -257,15 +218,6 @@
   color: var(--color-muted);
   letter-spacing: 0.04em;
   transform: translateY(160%);
-}
-
-/* 5. 봉투 반응형 */
-.envelope {
-  position: relative;
-  width: min(530px, 90vw);
-  height: min(400px, 68vw);
-  cursor: pointer;
-  transition: transform var(--dur-normal) var(--ease);
 }
 
 @keyframes blink {

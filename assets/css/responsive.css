@@ -110,10 +110,6 @@
     --carousel-card-h: calc(var(--carousel-card-w) * 1.518292683);
   }
 
-  .card-opened {
-    padding: 0;
-  }
-
   .letter-name {
     font-size: 18px;
     padding: 24px 28px 0 28px;
@@ -285,10 +281,6 @@
   #carousel {
     --carousel-card-w: 240px;
     --carousel-card-h: calc(var(--carousel-card-w) * 1.518292683);
-  }
-
-  .card-opened {
-    padding: 0;
   }
 
   .letter-name {

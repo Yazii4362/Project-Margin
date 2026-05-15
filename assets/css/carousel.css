@@ -227,7 +227,7 @@ white-space: nowrap;
 position: absolute;
 inset: 0;
 z-index: 3;
-padding: 0;
+padding: 0 18px;
 display: flex;
 flex-direction: column;
 background: rgba(253,250,244,0.98);
@@ -265,12 +265,6 @@ z-index: 1;
 padding: 16px 32px 28px 32px;
 word-wrap: break-word;
 word-break: keep-all;
-}
-
-/* 펼친 카드 — 패딩 조정 */
-.card.is-open .letter-msg {
-padding-left: 0;
-padding-right: 0;
 }
 
 .letter-msg::-webkit-scrollbar { width: 3px; }
