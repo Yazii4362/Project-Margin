@@ -55,6 +55,11 @@
       $('.screen').removeClass('active').attr('aria-hidden', 'true');
       $('#carousel').addClass('active').attr('aria-hidden', 'false');
       updateActiveNav('carousel');
+      
+      // 안내 메시지 페이드아웃
+      setTimeout(function() {
+        $('.carousel-instruction').addClass('fade-out');
+      }, 3000);
     } 
     else if (section === 'credits') {
       // 팀 섹션 - 잠금 확인

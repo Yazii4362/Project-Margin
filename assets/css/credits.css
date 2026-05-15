@@ -653,6 +653,9 @@
 .cr-modal-box {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transform: translateY(32px) scale(0.94);
   transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),

@@ -14,6 +14,7 @@
   var touchBound = false;
   var visited    = [];
   var specialIndexes = [];
+  var bgmPausedBySpecialCard = false;
 
   /* ─── BUILD ─── */
   function build() {
@@ -140,6 +141,32 @@
     $('#progressFill').css('width', ((cur + 1) / total) * 100 + '%');
     var isSpecial = $cards && $cards.eq(cur).hasClass('card--special');
     $('body').toggleClass('dark-theme', !!isSpecial);
+
+    // 시크릿 카드(스페셜 카드) 진입 시 BGM 일시정지, 벗어나면 다시 재생
+    var $audio = $('#bgmAudio');
+    if ($audio.length) {
+      var audio = $audio[0];
+      if (isSpecial) {
+        if (!audio.paused && !audio.ended) {
+          audio.pause();
+          bgmPausedBySpecialCard = true;
+          // UI 업데이트 (선택 사항)
+          $('#bgmPlayer').addClass('bgm-player--paused');
+          $('#bgmBtnToggle').attr('aria-pressed', 'false');
+        }
+      } else {
+        if (bgmPausedBySpecialCard && audio.paused) {
+          var playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.then(function() {
+              $('#bgmPlayer').removeClass('bgm-player--paused');
+              $('#bgmBtnToggle').attr('aria-pressed', 'true');
+            }).catch(function() { /* 무시 */ });
+          }
+          bgmPausedBySpecialCard = false;
+        }
+      }
+    }
   }
 
   /* ─── NAVIGATE ─── */

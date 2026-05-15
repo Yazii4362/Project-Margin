@@ -48,6 +48,10 @@
         if (typeof window.showStickyNav === 'function') {
           window.showStickyNav();
         }
+        // 안내 메시지 3초 후 페이드아웃
+        setTimeout(function() {
+          $('.carousel-instruction').addClass('fade-out');
+        }, 3000);
       }, 900);
     }, 1100);
   }

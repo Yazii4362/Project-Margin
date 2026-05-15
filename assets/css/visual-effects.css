@@ -1,0 +1,354 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VISUAL EFFECTS ENHANCEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── 종이 질감 효과 ── */
+.paper-texture {
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(26, 22, 18, 0.01) 2px,
+      rgba(26, 22, 18, 0.01) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(26, 22, 18, 0.01) 2px,
+      rgba(26, 22, 18, 0.01) 4px
+    );
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+
+/* 편지지에 종이 질감 적용 */
+.card-opened,
+.cr-letter {
+  position: relative;
+}
+
+.card-opened::after,
+.cr-letter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' seed='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23paper)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* ── 카드 전환 애니메이션 강화 ── */
+.card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* 카드 넘길 때 3D 효과 */
+.card.transitioning {
+  animation: card-flip 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes card-flip {
+  0% {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100px) rotateY(-15deg) scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(-200px) rotateY(-30deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* 카드 등장 애니메이션 */
+.card.entering {
+  animation: card-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes card-enter {
+  0% {
+    transform: translateX(200px) rotateY(30deg) scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(100px) rotateY(15deg) scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── 편지 열기 애니메이션 강화 ── */
+.card.is-open .card-opened {
+  animation: letter-unfold 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes letter-unfold {
+  0% {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── 마우스 커서 인터랙션 ── */
+.card.is-active {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease;
+}
+
+.card.is-active:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 8px 24px rgba(60, 40, 20, 0.12),
+    0 16px 48px rgba(60, 40, 20, 0.16),
+    0 32px 72px rgba(60, 40, 20, 0.12);
+}
+
+/* 카드 호버 시 배경 이미지 확대 */
+.card.is-active:hover .card-bg {
+  transform: scale(1.08);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* ── 파티클 효과 (카드 읽음 표시) ── */
+@keyframes particle-burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+.card.just-read::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--color-red) 0%, transparent 70%);
+  opacity: 0;
+  animation: read-flash 0.6s ease-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes read-flash {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* ── 글로우 효과 ── */
+.card.is-active::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 90, 69, 0.3),
+    rgba(245, 200, 66, 0.3),
+    rgba(255, 90, 69, 0.3)
+  );
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.card.is-active:hover::after {
+  opacity: 0.6;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: blur(12px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(16px);
+  }
+}
+
+/* ── 리플 효과 (클릭 시) ── */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── 페이지 전환 효과 ── */
+.screen {
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.screen:not(.active) {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* ── 텍스트 타이핑 효과 (편지 내용) ── */
+.letter-msg.typing {
+  overflow: hidden;
+  border-right: 2px solid var(--color-ink);
+  white-space: nowrap;
+  animation: typing 3s steps(40) 1s forwards,
+             blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--color-ink);
+  }
+}
+
+/* ── 스크롤 인디케이터 ── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(26, 22, 18, 0.3);
+  border-radius: 12px;
+  opacity: 0.6;
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: rgba(26, 22, 18, 0.5);
+  border-radius: 2px;
+  animation: scroll-dot 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+@keyframes scroll-dot {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(12px);
+    opacity: 0.3;
+  }
+}
+
+/* ── 반응형 최적화 ── */
+@media (max-width: 768px) {
+  .card.is-active:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  @keyframes card-flip {
+    0% {
+      transform: translateX(0) rotateY(0deg) scale(1);
+    }
+    100% {
+      transform: translateX(-150px) rotateY(-20deg) scale(0.92);
+    }
+  }
+}
+
+/* ── 애니메이션 감소 모드 대응 ── */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .screen,
+  .card-opened,
+  .card-bg {
+    animation: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+  
+  .card.is-active:hover {
+    transform: none;
+  }
+  
+  .scroll-indicator {
+    animation: none;
+  }
+}

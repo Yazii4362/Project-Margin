@@ -1,0 +1,221 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ACCESSIBILITY ENHANCEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* 스크린 리더 전용 텍스트 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 스킵 링크 */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  z-index: 10000;
+  padding: 12px 20px;
+  background: var(--color-red, #ff5a45);
+  color: white;
+  font-family: var(--font-label, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* 포커스 표시 강화 */
+body:not(.using-mouse) *:focus {
+  outline: 3px solid var(--color-red, #ff5a45);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+body:not(.using-mouse) button:focus,
+body:not(.using-mouse) a:focus {
+  outline: 3px solid var(--color-red, #ff5a45);
+  outline-offset: 3px;
+}
+
+/* 다크 테마 포커스 */
+body.dark-theme:not(.using-mouse) *:focus {
+  outline-color: #f5c842;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  body {
+    --color-ink: #000;
+    --color-bg: #fff;
+    --color-muted: #333;
+  }
+  
+  .card {
+    border: 2px solid #000;
+  }
+  
+  button, a {
+    border: 2px solid currentColor;
+  }
+  
+  .loading-spinner {
+    border-width: 4px;
+  }
+}
+
+/* 애니메이션 감소 모드 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .loading-spinner {
+    animation: none;
+    border-top-color: transparent;
+    border-right-color: var(--color-red, #ff5a45);
+  }
+}
+
+/* 터치 타겟 크기 보장 (최소 44x44px) */
+button,
+a,
+.card,
+.sticky-nav-item,
+.cr-btn,
+.cr-letter-btn {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* 키보드 네비게이션 힌트 */
+.keyboard-hint {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-family: var(--font-label, sans-serif);
+  font-size: 12px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+body:not(.using-mouse) .keyboard-hint {
+  opacity: 1;
+}
+
+/* 포커스 가능한 요소 호버 상태 */
+button:hover,
+a:hover,
+[role="button"]:hover {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 라이브 리전 (스크린 리더용) */
+#a11y-live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* 모달 포커스 트랩 표시 */
+[aria-hidden="false"] {
+  /* 모달이 열렸을 때 */
+}
+
+[aria-hidden="true"] {
+  /* 모달이 닫혔을 때 */
+  pointer-events: none;
+}
+
+/* 탭 인덱스 관리 */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* 색맹 모드 지원 */
+@media (prefers-color-scheme: dark) {
+  /* 다크 모드 자동 적용 시 대비 조정 */
+}
+
+/* 큰 텍스트 모드 */
+@media (min-resolution: 2dppx) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  .card {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  /* 터치 영역 확대 */
+  .sticky-nav-item {
+    padding: 12px 16px;
+  }
+}
+
+/* 키보드 전용 사용자를 위한 힌트 */
+.keyboard-only-hint {
+  position: absolute;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 11px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+*:focus + .keyboard-only-hint {
+  opacity: 1;
+}
+
+/* 고대비 모드 - 다크 테마 */
+@media (prefers-contrast: high) and (prefers-color-scheme: dark) {
+  body {
+    --color-ink: #fff;
+    --color-bg: #000;
+    --color-muted: #ccc;
+  }
+}

@@ -14,39 +14,43 @@
 }
 
 .cr-title {
-  font-size: clamp(36px, 5.5vw, 52px) !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
-  background: linear-gradient(135deg, #1a1612 0%, #3a3428 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-heading, serif) !important;
+  font-size: clamp(30px, 4.5vw, 44px) !important;
+  font-weight: normal !important;
+  line-height: 1.35 !important;
+  color: #2a241e !important;
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  letter-spacing: -0.01em !important;
 }
 
 .cr-eyebrow {
-  font-size: 11px !important;
-  letter-spacing: 0.25em !important;
-  color: rgba(26, 22, 18, 0.5) !important;
-  font-weight: 600 !important;
+  font-family: var(--font-label, sans-serif) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.15em !important;
+  color: rgba(42, 36, 30, 0.45) !important;
+  font-weight: 500 !important;
   margin-bottom: 0 !important;
 }
 
 .cr-header-img {
   width: 100% !important;
-  max-width: 720px !important;
-  border-radius: 28px !important;
+  max-width: 440px !important;
+  border-radius: 20px !important;
   box-shadow: 
-    0 16px 64px rgba(60, 40, 20, 0.14),
-    0 4px 20px rgba(60, 40, 20, 0.1) !important;
-  border: 2px solid rgba(255, 255, 255, 0.9) !important;
-  margin-top: 8px !important;
+    0 12px 36px rgba(60, 40, 20, 0.1),
+    0 4px 16px rgba(60, 40, 20, 0.06) !important;
+  border: 4px solid rgba(255, 255, 255, 0.95) !important;
+  margin-top: 16px !important;
+  transform: rotate(-1.5deg);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease !important;
 }
 
 .cr-header-img:hover {
-  transform: translateY(-12px) !important;
+  transform: translateY(-8px) rotate(1deg) !important;
   box-shadow: 
-    0 24px 80px rgba(60, 40, 20, 0.18),
-    0 8px 32px rgba(60, 40, 20, 0.12) !important;
+    0 20px 56px rgba(60, 40, 20, 0.15),
+    0 6px 20px rgba(60, 40, 20, 0.1) !important;
 }
 
 /* 카드 호버 시 상단 액센트 라인 */

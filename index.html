@@ -10,6 +10,14 @@
   <title>2026년 스승의날에 - 다정하신 강현명 선생님께</title>
   <link rel="icon" href="assets/images/siling.webp" type="image/webp" />
   <link rel="shortcut icon" href="assets/images/siling.webp" />
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="assets/images/envelope-red.svg" as="image" />
+  <link rel="preload" href="assets/images/siling.webp" as="image" />
+  <link rel="preload" href="assets/css/reset.css" as="style" />
+  <link rel="preload" href="assets/css/tokens.css" as="style" />
+  <link rel="preload" href="assets/css/common.css" as="style" />
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,9 +40,18 @@
   <link rel="stylesheet" href="assets/css/margin-cursor.css" />
   <link rel="stylesheet" href="assets/css/sticky-nav.css" />
   <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/loading.css" />
+  <link rel="stylesheet" href="assets/css/accessibility.css" />
+  <link rel="stylesheet" href="assets/css/visual-effects.css" />
 </head>
 
 <body>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay hidden" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Loading...</p>
+  </div>
+
   <!-- Sticky Navigation Header -->
   <nav class="sticky-nav" id="stickyNav" aria-label="메인 네비게이션">
     <button class="sticky-nav-item" data-section="hero" aria-label="편지함으로 이동">
@@ -167,7 +184,7 @@
               <img src="assets/images/margin.svg" alt="Margin" class="cr-logo" />
               <h2 class="cr-title">스승의 날 편지를<br>함께 만든 사람들</h2>
               <p class="cr-eyebrow">2026. 05. 15</p>
-              <img src="assets/images/image.png" alt="" class="cr-header-img" loading="lazy" decoding="async" />
+              <img src="assets/images/team-margin.png" alt="팀 마진" class="cr-header-img" loading="lazy" decoding="async" />
             </header>
 
             <!-- ─── 프로필 그리드 ─── -->
@@ -215,7 +232,7 @@
                   </div>
                   <h3 class="cr-name">김주은</h3>
                   <p class="cr-tag">FE · 디자인 · 기획</p>
-                  <p class="cr-desc">디자인 · 기획 일부 + FE 하드코딩</p>
+                  <p class="cr-desc">디자인 · 기획 지원 + FE 하드코딩</p>
                 </div>
                 <div class="cr-card-bottom">
                   <div class="cr-links">
@@ -332,7 +349,7 @@
         <!-- ─── 편지 모달 ─── -->
         <div class="cr-modal" id="makerCardModal" aria-hidden="true">
           <div class="cr-modal-bg" id="crModalBg"></div>
-          <div class="cr-modal-box">시크릿카드로 오게되면 노래 자동으로 정지되게해주세요, 스크롤 다시해서 ㅜ옆으로 넘어가면 다시 노래재생
+          <div class="cr-modal-box">
             <!-- 봉투 -->
             <div class="cr-envelope" id="modalEnvelope">
               <!-- 플랩 -->
@@ -480,6 +497,9 @@
   <script src="assets/js/carousel.js"></script>
   <script src="assets/js/credits.js"></script>
   <script src="assets/js/sticky-nav.js"></script>
+  <script src="assets/js/haptic-feedback.js"></script>
+  <script src="assets/js/accessibility.js"></script>
+  <script src="assets/js/visual-effects.js"></script>
 </body>
 
 </html>
