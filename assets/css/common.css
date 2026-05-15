@@ -13,17 +13,23 @@
   z-index: 20;
   display: flex;
   align-items: center;
+  opacity: 0.5; /* UX 개선: 더 subtle하게 */
+  transition: opacity 0.4s ease;
+}
+
+.marquee:hover {
+  opacity: 0.75; /* 호버시 약간 더 보이게 */
 }
 
 .marquee--top {
   top: 0;
-  background: var(--color-red);
+  background: transparent; /* 투명 배경 */
   padding: 8px 0;
 }
 
 .marquee--bottom {
   bottom: 2px; /* progress bar(2px) 바로 위 */
-  background: var(--color-ink);
+  background: transparent; /* 투명 배경 */
   padding: 7px 0;
 }
 
@@ -31,12 +37,13 @@
 .marquee-inner {
   display: inline-flex;
   flex-shrink: 0;
-  animation: marquee-left var(--marquee-dur, 28s) linear infinite;
+  animation: marquee-left var(--marquee-dur, 45s) linear infinite; /* 속도 60% 느리게 */
+  filter: blur(0.3px); /* 미세한 블러로 배경 느낌 */
 }
 
 .marquee-inner--reverse {
   animation-name: marquee-right;
-  animation-duration: 34s; /* 하단은 살짝 다른 속도 */
+  animation-duration: 52s; /* 하단도 느리게 조정 */
 }
 
 /* ── 아이템 ── */
@@ -49,21 +56,22 @@
   display: inline-flex;
   align-items: center;
   padding: 0 var(--sp-4);
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.85); /* 흰색 계열 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 가독성 */
 }
 
 /* 상단 마키 — 어두운 교차 아이템 */
 .marquee--top .marquee-item--dim {
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.45); /* 더 subtle */
 }
 
 /* 하단 마키 — 레드 강조 / 페인트 교차 */
 .marquee--bottom .marquee-item--red {
-  color: var(--color-red-soft);
+  color: rgba(255, 255, 255, 0.9); /* 흰색 */
 }
 
 .marquee--bottom .marquee-item--faint {
-  color: rgba(255, 255, 255, 0.32);
+  color: rgba(255, 255, 255, 0.4); /* 더 subtle */
 }
 
 /* ── 구분 점 ── */
@@ -75,16 +83,16 @@
   flex-shrink: 0;
   vertical-align: middle;
   margin: 0 var(--sp-2);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.4); /* 흰색 계열 */
 }
 
 .marquee-dot--red {
-  background: var(--color-red-soft);
+  background: rgba(255, 255, 255, 0.5); /* 흰색 */
   opacity: 0.7;
 }
 
 .marquee-dot--faint {
-  background: rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ── 애니메이션 ── */

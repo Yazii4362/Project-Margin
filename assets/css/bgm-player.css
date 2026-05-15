@@ -5,10 +5,11 @@
 .bgm-player {
   position: fixed;
   z-index: 75;
-  left: max(var(--sp-4), env(safe-area-inset-left, 0px));
-  right: auto;
-  top: calc(env(safe-area-inset-top, 0px) + 40px);
-  bottom: auto;
+  /* UX 최적화: 우측 하단으로 이동 - 시선 방해 최소화 */
+  right: max(var(--sp-4), env(safe-area-inset-right, 0px));
+  left: auto;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+  top: auto;
   min-width: 220px;
   max-width: min(300px, calc(100vw - var(--sp-8) - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
   padding: var(--sp-3) var(--sp-4);
@@ -26,7 +27,7 @@
   /* 스플래시 화면 동안 숨김 */
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
+  transform: translateY(10px);
   transition:
     opacity 0.6s var(--ease),
     visibility 0.6s var(--ease),
@@ -44,13 +45,13 @@ html.splash-complete .bgm-player {
   transform: translateY(0);
 }
 
-/* 모바일: 하단 중앙 고정 */
+/* 모바일: 하단 중앙 고정 (네비게이션과 겹치지 않게) */
 @media (max-width: 768px) {
   .bgm-player {
     left: 50% !important;
     right: auto !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 80px) !important; /* 네비게이션 위 */
     top: auto !important;
-    bottom: max(20px, env(safe-area-inset-bottom, 0px) + 8px) !important;
     min-width: 0;
     width: min(340px, calc(100vw - var(--sp-6)));
     max-width: none;
@@ -64,9 +65,9 @@ html.splash-complete .bgm-player {
     transform: translateX(-50%) translateY(0);
   }
   
-  /* 플레이리스트 열렸을 때 위로 확장 */
+  /* 플레이리스트 열렸을 때 위치 고정 */
   .bgm-player--playlist-open {
-    bottom: max(20px, env(safe-area-inset-bottom, 0px) + 8px) !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 80px) !important;
   }
 }
 

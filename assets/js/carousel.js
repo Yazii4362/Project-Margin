@@ -74,7 +74,19 @@
 
   /* ─── VISITED ─── */
   function markVisited(idx) {
-    if (idx >= 0 && idx < total) visited[idx] = true;
+    if (idx >= 0 && idx < total) {
+      visited[idx] = true;
+      
+      // 로컬 스토리지에 읽은 카드 저장 (팀 잠금 모달 및 탭 업데이트용)
+      var readCards = JSON.parse(localStorage.getItem('readCards') || '[]');
+      if (readCards.indexOf(idx) === -1) {
+        readCards.push(idx);
+        localStorage.setItem('readCards', JSON.stringify(readCards));
+        if (window.updateTeamTabUI) {
+          window.updateTeamTabUI();
+        }
+      }
+    }
   }
 
   function allRegularVisited() {

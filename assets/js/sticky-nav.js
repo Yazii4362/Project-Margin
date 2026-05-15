@@ -28,14 +28,45 @@
   window.showStickyNav = function() {
     setTimeout(function() {
       $stickyNav.addClass('is-visible');
+      updateCreditsIcon(); // 아이콘 상태 업데이트
     }, 500);
   };
+
+  // Credits 아이콘 업데이트
+  function updateCreditsIcon() {
+    var $creditsIcon = $('#creditsIcon');
+    if (isTeamUnlocked()) {
+      $creditsIcon.text('👥');
+    } else {
+      $creditsIcon.text('❓');
+    }
+  }
 
   // 섹션 활성화 상태 업데이트
   function updateActiveNav(section) {
     $navItems.removeClass('active');
     $navItems.filter('[data-section="' + section + '"]').addClass('active');
   }
+
+  // 팀 탭 아이콘 및 텍스트 업데이트 (잠금 상태에 따라)
+  window.updateTeamTabUI = function() {
+    var $creditsBtn = $navItems.filter('[data-section="credits"]');
+    var $icon = $creditsBtn.find('.sticky-nav-icon');
+    var $label = $creditsBtn.find('.sticky-nav-label');
+    
+    if (isTeamUnlocked()) {
+      $icon.text('👥');
+      $label.text('팀');
+    } else {
+      $icon.text('❓');
+      $label.text('???');
+    }
+  };
+
+  // 초기 로드 시 한 번 확인
+  $(document).ready(function() {
+    window.updateTeamTabUI();
+  });
 
   // 네비게이션 클릭 이벤트
   $navItems.on('click', function() {
@@ -74,6 +105,11 @@
         showTeamLockModal();
       }
     }
+  });
+
+  // 카드 읽음 상태 변경 감지 (아이콘 업데이트)
+  $(document).on('card:read', function() {
+    updateCreditsIcon();
   });
 
   // 팀 잠금 모달 표시

@@ -1,16 +1,15 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    APPLE HIG STYLE OVERRIDES
-   기존 컴포넌트를 HIG 스타일로 교체
+   기존 컴포넌트를 HIG 스타일로 교체 (기존 폰트 유지)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* ── Credits 버튼 스타일 오버라이드 ── */
 .cr-letter-btn,
 .cr-cheer-btn {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 400 !important;
-  line-height: 1.33333 !important;
-  letter-spacing: -0.24px !important;
+  font-family: var(--font-label) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
   padding: 10px 16px !important;
   min-height: 40px !important;
   border-radius: 10px !important;
@@ -80,17 +79,17 @@
 
 /* ── Credits Back 버튼 ── */
 .cr-back {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.24px !important;
+  font-family: var(--font-label) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
   padding: 10px 20px !important;
   min-height: 40px !important;
   border-radius: 10px !important;
   background: transparent !important;
   color: #007AFF !important;
   border: none !important;
-  text-transform: none !important;
+  text-transform: uppercase !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -175,49 +174,26 @@
 }
 
 .bgm-track-label {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.08px !important;
+  font-family: var(--font-label) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
 }
 
 /* ── Envelope Hint ── */
 .envelope-hint {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.24px !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-/* ── Hero Title & Labels ── */
-.hero-label {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.06px !important;
-  text-transform: uppercase !important;
-}
-
-.hero-title {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.02em !important;
-}
-
-.hero-sub,
-.hero-description {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.24px !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.02em !important;
 }
 
 /* ── Card Link Button ── */
 .card-link-btn {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.24px !important;
+  font-family: var(--font-label) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
   padding: 10px 20px !important;
   min-height: 40px !important;
   border-radius: 10px !important;
@@ -292,7 +268,7 @@
   .cr-cheer-btn,
   .cr-back,
   .card-link-btn {
-    font-size: 14px !important;
+    font-size: 12px !important;
     padding: 8px 16px !important;
     min-height: 36px !important;
   }
