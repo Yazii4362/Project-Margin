@@ -107,7 +107,7 @@
   --dur-slow:   680ms;
 }
 
-/* ── Screen base ── */
+/* ── screen base ── */
 .screen {
   position: fixed;
   inset: 0;

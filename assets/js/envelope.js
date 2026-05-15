@@ -43,7 +43,7 @@
         $('#carousel').addClass('active').attr('aria-hidden', 'false');
         $(document).trigger('carousel:init');
         // 캐러셀 진입 상태 저장
-        if (window.StateManager) window.StateManager.saveScreen('carousel');
+        if (window.StateManager) window.StateManager.savescreen('carousel');
         // Sticky Nav 표시
         if (typeof window.showStickyNav === 'function') {
           window.showStickyNav();

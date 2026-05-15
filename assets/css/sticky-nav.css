@@ -170,7 +170,23 @@
   overflow: hidden;
 }
 
-
+/* 상단 장식 라인 */
+.team-lock-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-red) 20%, 
+    var(--color-red-soft) 50%, 
+    var(--color-red) 80%, 
+    transparent 100%
+  );
+  opacity: 0.8;
+}
 
 /* 배경 그레인 */
 .team-lock-box::after {

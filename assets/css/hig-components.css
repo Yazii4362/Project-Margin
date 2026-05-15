@@ -24,7 +24,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Primary Button (Filled) */
+/* Primary button (Filled) */
 .hig-button--primary {
   background: #007AFF;
   color: #FFFFFF;
@@ -41,7 +41,7 @@
   transform: scale(0.98);
 }
 
-/* Secondary Button (Tinted) */
+/* Secondary button (Tinted) */
 .hig-button--secondary {
   background: rgba(0, 122, 255, 0.1);
   color: #007AFF;
@@ -56,7 +56,7 @@
   transform: scale(0.98);
 }
 
-/* Tertiary Button (Plain) */
+/* Tertiary button (Plain) */
 .hig-button--tertiary {
   background: transparent;
   color: #007AFF;
@@ -71,7 +71,7 @@
   transform: scale(0.98);
 }
 
-/* Destructive Button */
+/* Destructive button */
 .hig-button--destructive {
   background: #FF3B30;
   color: #FFFFFF;
@@ -88,7 +88,7 @@
   transform: scale(0.98);
 }
 
-/* Button Sizes */
+/* button Sizes */
 .hig-button--small {
   padding: 6px 14px;
   min-height: 32px;

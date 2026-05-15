@@ -121,10 +121,10 @@
 
     // 카드 네비게이션 키보드 지원 강화
     $(document).on('keydown', function(e) {
-      var $activeScreen = $('.screen.active');
+      var $activescreen = $('.screen.active');
       
       // 캐러셀 섹션에서만 작동
-      if ($activeScreen.attr('id') !== 'carousel') return;
+      if ($activescreen.attr('id') !== 'carousel') return;
 
       switch(e.key) {
         case 'ArrowLeft':
