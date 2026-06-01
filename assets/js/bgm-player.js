@@ -22,6 +22,8 @@ function initRandomBGM() {
     'khm2-hyein.mp3',
     'khm3-jueun.mp3',
     'khm4-jueun.mp3',
+    'worksong1-jueun.mp3',
+    'worksong2-jueun.mp3',
   ];
 
   /** 트랙 메타데이터: 노래명, 작곡/작사 정보 */
@@ -45,7 +47,19 @@ function initRandomBGM() {
       title: '고강도노력',
       composer: '김주은',
       lyricist: '김주은'
-    }
+    },
+    'worksong1-jueun.mp3': {
+      trackNum: 5,
+      title: '걸어서 광기속으로',
+      composer: '김주은',
+      lyricist: '김주은'
+    },
+    'worksong2-jueun.mp3': {
+      trackNum: 6,
+      title: '걸어서 광기속으로',
+      composer: '김주은',
+      lyricist: '김주은'
+    },
   };
 
   var BGM_BASE = 'assets/audio/';
@@ -55,6 +69,38 @@ function initRandomBGM() {
   };
 
   var KHM_FILE_RE = /^khm(\d+)-([^.]+)\.mp3$/i;
+  var SLUG_FILE_RE = /^[^-]+-([^.]+)\.mp3$/i;
+
+  function getTrackSlug(filename) {
+    var m = filename.match(KHM_FILE_RE);
+    if (m) return m[2].toLowerCase();
+    var s = filename.match(SLUG_FILE_RE);
+    return s ? s[1].toLowerCase() : '';
+  }
+
+  /** 플레이리스트·라벨용 Track 번호 (khmN → N, worksong 등은 meta.trackNum) */
+  function getDisplayTrackNum(filename, fileIndex) {
+    var m = filename.match(KHM_FILE_RE);
+    if (m) return m[1];
+    var meta = BGM_TRACK_META[filename];
+    if (meta && meta.trackNum != null) return String(meta.trackNum);
+    return String(fileIndex + 1);
+  }
+
+  function formatMetaLine(filename, fileIndex) {
+    var meta = BGM_TRACK_META[filename];
+    if (!meta) return '';
+    var trackNum = getDisplayTrackNum(filename, fileIndex);
+    var slug = getTrackSlug(filename);
+    var who = BGM_MAKER_LABELS[slug] || slug;
+    return {
+      num: trackNum,
+      slug: slug,
+      line:
+        'Track ' + trackNum + ' · ' + meta.title + ' - 작곡/작사: ' + meta.composer,
+      shortLine: meta.title + ' · ' + who + '님',
+    };
+  }
 
   var deferredPlay = false;
   var userExplicitPause = false;
@@ -67,28 +113,22 @@ function initRandomBGM() {
   audio.loop = false;
   audio.preload = 'none';
 
-  function parseTrackMeta(filename) {
+  function parseTrackMeta(filename, fileIndex) {
+    var idx =
+      typeof fileIndex === 'number' && fileIndex >= 0
+        ? fileIndex
+        : BGM_TRACK_FILES.indexOf(filename);
+    var formatted = formatMetaLine(filename, idx);
+    if (formatted) return formatted;
+
     var m = filename.match(KHM_FILE_RE);
-    var meta = BGM_TRACK_META[filename];
-    
     if (!m) {
-      return { num: '', slug: '', line: filename };
+      return { num: '', slug: '', line: filename.replace(/\.mp3$/i, '') };
     }
-    
+
     var trackNum = m[1];
     var slug = m[2].toLowerCase();
     var who = BGM_MAKER_LABELS[slug] || m[2];
-    
-    // 메타데이터가 있으면 상세 정보 표시
-    if (meta) {
-      return {
-        num: trackNum,
-        slug: slug,
-        line: 'Track ' + trackNum + ' · ' + meta.title + ' - 작곡/작사: ' + meta.composer,
-        shortLine: meta.title + ' · ' + who + '님'
-      };
-    }
-    
     return {
       num: trackNum,
       slug: slug,
@@ -97,23 +137,22 @@ function initRandomBGM() {
   }
 
   /** UI 리스트용: "Track 번호 · 노래명 - 작곡/작사: 이름" */
-  function formatPlaylistTitle(filename) {
-    var meta = BGM_TRACK_META[filename];
+  function formatPlaylistTitle(filename, fileIndex) {
+    var idx =
+      typeof fileIndex === 'number' && fileIndex >= 0
+        ? fileIndex
+        : BGM_TRACK_FILES.indexOf(filename);
+    var formatted = formatMetaLine(filename, idx);
+    if (formatted) return formatted.line;
+
     var m = filename.match(KHM_FILE_RE);
-    
-    if (meta && m) {
-      return 'Track ' + m[1] + ' · ' + meta.title + ' - 작곡/작사: ' + meta.composer;
-    }
-    
-    if (!m) {
-      return filename.replace(/\.mp3$/i, '');
-    }
+    if (!m) return filename.replace(/\.mp3$/i, '');
     return 'Track ' + m[1] + ' - ' + m[2].toLowerCase();
   }
 
   function setTrackLabel(filename) {
     if (!$label.length) return;
-    var meta = parseTrackMeta(filename);
+    var meta = parseTrackMeta(filename, currentIndex);
     $label.text(meta.line);
     $player.attr('data-bgm-track', filename);
   }
@@ -139,7 +178,7 @@ function initRandomBGM() {
     if (!$playlist.length) return;
     $playlist.empty();
     BGM_TRACK_FILES.forEach(function (file, idx) {
-      var title = formatPlaylistTitle(file);
+      var title = formatPlaylistTitle(file, idx);
       var $row = $(
         '<li class="bgm-playlist-item">' +
           '<button type="button" class="bgm-playlist-row" data-index="' +
